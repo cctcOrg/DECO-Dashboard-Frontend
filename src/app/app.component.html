@@ -1,17 +1,22 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <button (click)="toggleMenu()" class="hamburger">
   <span>toggle menu</span>
 </button>
 
-<h1>
-  {{title}}
-</h1>
+<div *ngIf="true;else other_content">
+  <h1>
+    {{title}}
+  </h1>
 
-<p>
-  Dashboard goes here
-</p>
+  <p>
+    Dashboard goes here
+  </p>
+</div>
+
+<ng-template #other_content>You are viewing a case</ng-template>
 <app-menu [@slideInOut]="menuState"></app-menu>
 
 

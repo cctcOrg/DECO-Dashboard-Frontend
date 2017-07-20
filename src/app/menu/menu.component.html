@@ -1,6 +1,4 @@
 <h2>{{name}}</h2>
 <ul>
-    <li>Settings</li>
-    <li>Case 1</li>
-    <li>Case 2</li>
+    <li *ngFor="let item of links; let i = index">{{item}}</li>
 </ul>
