@@ -6,7 +6,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  isNotLoggedIn = true;
 
   constructor() { }
 
@@ -16,7 +15,6 @@ export class LoginComponent implements OnInit {
   }
 
   temp_login() {
-    this.isNotLoggedIn = false;
     this.loginEvent.emit(null);
   }
 

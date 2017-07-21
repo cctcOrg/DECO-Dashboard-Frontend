@@ -8,16 +8,18 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-bootstrap';
 import { LoginComponent } from './login/login.component';
-
+import { CaseComponent } from './case/case.component';
+import { TreeModule } from 'angular-tree-component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    CaseComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule
+    BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]

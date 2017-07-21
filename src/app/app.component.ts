@@ -31,10 +31,10 @@ export class AppComponent {
   bsmid = '';
   clicked = false;
   servers = [];
-  isHomePage = true;
+  isHomePage = false;
   isLoginPage = true;
-  
-  
+  isCasePage = false;
+    
   constructor(private serverService: ServerService) {
 
   }
@@ -42,11 +42,18 @@ export class AppComponent {
   menuState:string = 'out';
 
   viewCase() {
-    this.isHomePage = !this.isHomePage;
+    this.isHomePage = false;
+    this.isCasePage = true;
+  }
+
+  viewMenu() {
+    this.isHomePage = true;
+    this.isCasePage = false;
   }
   
   temp_login() {
     this.isLoginPage = false;
+    this.isHomePage = true;
   }
  
   toggleMenu() {
