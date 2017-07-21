@@ -1,22 +1,60 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- login page is broken --!>
+<!--<div *ngIf="isNotLoggedIn;else main">
+
+  <div class="jumbotron">
+       <h1>Forensic Dashboard</h1>
+   </div>
+
+ 
+  <form>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    
+    <button type="primary" (click)="temp_login();" class="btn btn-primary">Submit</button>
+  </form>
+ 
+</div> !-->
+
 
 <button (click)="toggleMenu()" class="hamburger">
   <span>toggle menu</span>
 </button>
 
-<div *ngIf="true;else other_content">
+<div *ngIf="isHomePage;else other_content">
   <h1>
     {{title}}
   </h1>
 
   <p>
-    Dashboard goes here
+    This is your welcome page. Your dashboard goes here
   </p>
+  <div class="col-md-3 text-center"> 
+    <button type="button" (click)=viewCase() class="btn btn-primary">View Case</button>
+    </div>
 </div>
 
-<ng-template #other_content>You are viewing a case</ng-template>
+<ng-template #other_content>
+    <p>You are viewing a case</p>
+    <div class="col-md-3 text-center"> 
+      <button type="button" (click)=viewCase() class="btn btn-primary">Go back</button>
+    </div>
+</ng-template>
+
 <app-menu [@slideInOut]="menuState"></app-menu>
+
 
 

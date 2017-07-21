@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MenuComponent implements OnInit {
-  links = ["Settings", "Case 1"];
+  links = ["Settings", "Case 1", "Case 2"];
 
   constructor() { }
 
@@ -17,5 +17,9 @@ export class MenuComponent implements OnInit {
   }
   
   name = "John Doe";
+  
+  onClick() {
+     console.log("Hello");
+  }
 
 }

@@ -1,4 +1,4 @@
 <h2>{{name}}</h2>
 <ul>
-    <li *ngFor="let item of links; let i = index">{{item}}</li>
+    <li *ngFor="let link of links; let i = index" (click)="changeLink()">{{link}}</li>
 </ul>
