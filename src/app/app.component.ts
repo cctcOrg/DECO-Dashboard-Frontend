@@ -32,23 +32,21 @@ export class AppComponent {
   clicked = false;
   servers = [];
   isHomePage = true;
-  isNotLoggedIn = true;
+  isLoginPage = true;
   
   
-  
- constructor(private serverService: ServerService) {
+  constructor(private serverService: ServerService) {
 
   }
   
   menuState:string = 'out';
-  
+
   viewCase() {
     this.isHomePage = !this.isHomePage;
   }
   
   temp_login() {
-    this.isNotLoggedIn = false;
-   
+    this.isLoginPage = false;
   }
  
   toggleMenu() {

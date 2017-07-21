@@ -28,33 +28,36 @@
   </form>
  
 </div> !-->
+<app-login *ngIf="isLoginPage; else main" (loginEvent)="temp_login()"></app-login>
 
+<ng-template #main>
+  <button (click)="toggleMenu()" class="hamburger">
+    <span>toggle menu</span>
+  </button>
 
-<button (click)="toggleMenu()" class="hamburger">
-  <span>toggle menu</span>
-</button>
+  <div *ngIf="isHomePage;else other_content">
+    <h1>
+      {{title}}
+    </h1>
 
-<div *ngIf="isHomePage;else other_content">
-  <h1>
-    {{title}}
-  </h1>
-
-  <p>
-    This is your welcome page. Your dashboard goes here
-  </p>
-  <div class="col-md-3 text-center"> 
-    <button type="button" (click)=viewCase() class="btn btn-primary">View Case</button>
-    </div>
-</div>
-
-<ng-template #other_content>
-    <p>You are viewing a case</p>
+    <p>
+      This is your welcome page. Your dashboard goes here
+    </p>
     <div class="col-md-3 text-center"> 
-      <button type="button" (click)=viewCase() class="btn btn-primary">Go back</button>
-    </div>
+      <button type="button" (click)=viewCase() class="btn btn-primary">View Case</button>
+      </div>
+  </div>
+
+  <ng-template #other_content>
+      <p>You are viewing a case</p>
+      <div class="col-md-3 text-center"> 
+        <button type="button" (click)=viewCase() class="btn btn-primary">Go back</button>
+      </div>
+  </ng-template>
+
+  <app-menu [@slideInOut]="menuState"></app-menu>
 </ng-template>
 
-<app-menu [@slideInOut]="menuState"></app-menu>
 
 
 
