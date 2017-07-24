@@ -10,6 +10,7 @@ import { AlertModule } from 'ngx-bootstrap';
 import { LoginComponent } from './login/login.component';
 import { CaseComponent } from './case/case.component';
 import { TreeModule } from 'angular-tree-component';
+import { MaterializeModule } from 'ng2-materialize';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { TreeModule } from 'angular-tree-component';
     CaseComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule
+    BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule, MaterializeModule.forRoot()
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]
