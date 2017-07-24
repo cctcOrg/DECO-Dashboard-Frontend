@@ -2,13 +2,13 @@
   background: #1a2580;
   color: #fff;
   position: fixed;
-  left: auto;
+  left: 0;
   top: 0;
   right: 0;
   bottom: 0;
   width: 20%;
-  min-width: 250px;
-  z-index: 9999;
+  min-width: 100px;
+  z-index: 1;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -22,4 +22,8 @@ ul {
 
 h2 {
      text-align: center;
+}
+
+mz-button {
+    text-align:center;
 }

@@ -20,7 +20,7 @@
   position: absolute;
   top: 44px;
   left: 18px;
-  right: 18px;
+  right: 20px;
   height: 8px;
   background: #1a2580;
 }
@@ -46,4 +46,9 @@ p {
 
 h {
     text-align:center;
+}
+
+button {
+    background-color:darkblue;
+    color:white;
 }

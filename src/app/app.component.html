@@ -44,17 +44,17 @@
     <p>
       This is your welcome page. Your dashboard goes here
     </p>
-    <div class="col-md-3 text-center"> 
+    <div class="col-md-8 text-center"> 
       <button mz-button (click)=viewCase()>View Case</button>
       <button mz-button> Add case</button>
-      </div>
+    </div>
   </div>
 
   <ng-template #other_content>
     <app-case (caseEvent)="viewMenu()"></app-case>
   </ng-template>
 
-  <app-menu [@slideInOut]="menuState"></app-menu>
+  <app-menu></app-menu>
 </ng-template>
 
 
