@@ -32,29 +32,7 @@
 <app-login *ngIf="isLoginPage; else main" (loginEvent)="temp_login()"></app-login>
 
 <ng-template #main>
-  <button (click)="toggleMenu()" class="hamburger">
-    <span>toggle menu</span>
-  </button>
-
-  <div *ngIf="isHomePage;else other_content">
-    <h1>
-      {{title}}
-    </h1>
-
-    <p>
-      This is your welcome page. Your dashboard goes here
-    </p>
-    <div class="col-md-8 text-center"> 
-      <button mz-button (click)=viewCase()>View Case</button>
-      <button mz-button> Add case</button>
-    </div>
-  </div>
-
-  <ng-template #other_content>
-    <app-case (caseEvent)="viewMenu()"></app-case>
-  </ng-template>
-
-  <app-menu></app-menu>
+  <app-dashboard></app-dashboard>
 </ng-template>
 
 

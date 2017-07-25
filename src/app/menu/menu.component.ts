@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class MenuComponent implements OnInit {
-  links = ["Settings", "Account Info", "Case 1", "Case 2"];
+  links = ["Cases", "Settings"];
 
   constructor() { }
 
