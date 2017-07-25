@@ -1,24 +1,18 @@
-<div class="row">
-  <div class="col s4">
-    <app-menu></app-menu>
-  </div>
-  <div class="col s8">
-    <div *ngIf="isHomePage;else other_content">
-      <h1>
-        {{title}}
-      </h1>
+ <router-outlet></router-outlet> 
+<div *ngIf="isHomePage;else other_content">
+  <h1>
+    {{title}}
+  </h1>
 
-      <p>
-        This is your welcome page. Your dashboard goes here
-      </p>
-      <div class="col-md-8 text-center"> 
-        <button mz-button (click)=viewCase()>View Case</button>
-        <button mz-button> Add case</button>
-      </div>
-    </div>
-
-    <ng-template #other_content>
-      <app-case></app-case>
-    </ng-template>
+  <p>
+    This is your welcome page. Your dashboard goes here
+  </p>
+  <div class="col-md-8 text-center"> 
+    <button mz-button (click)=viewCase()>View Case</button>
+    <button mz-button> Add case</button>
   </div>
+
+  <ng-template #other_content>
+    <app-case></app-case>
+  </ng-template>
 </div>
