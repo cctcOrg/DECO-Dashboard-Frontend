@@ -18,8 +18,8 @@ import { CasesComponent } from './cases/cases.component';
 import { SettingsComponent } from './settings/settings.component';
 
 import { AppRoutingModule }     from './app-routing.module';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AccountComponent } from './account/account.component';
+import { DevicesComponent } from './devices/devices.component';
  
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ import { AccountComponent } from './account/account.component';
     DashboardComponent,
     CasesComponent,
     SettingsComponent,
-    ToolbarComponent,
-    AccountComponent
+    AccountComponent,
+    DevicesComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule, MaterializeModule.forRoot(), AppRoutingModule, ReactiveFormsModule

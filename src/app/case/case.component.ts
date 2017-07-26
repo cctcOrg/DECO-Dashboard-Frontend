@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-case',
@@ -42,6 +42,10 @@ export class CaseComponent implements OnInit {
     },
   ];
 
+  @Input() caseNumber: number;
+  @Input() caseDescription: string;
+  @Input() suspectName: string;
+  
   constructor() { }
 
   @Output() caseEvent = new EventEmitter();

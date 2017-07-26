@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../server.service';
+import { CASES } from '../mock-cases';
 
 export class Case {
   dateReceived: string;
@@ -33,6 +34,10 @@ export class CasesComponent implements OnInit {
   }
   suspectName: string; 
   arr = [];
+
+  contentLayers = ['cases'];
+  mockCases = CASES; 
+
   constructor(private serverService: ServerService) { }
 
   ngOnInit() {
