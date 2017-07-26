@@ -19,6 +19,7 @@ import { SettingsComponent } from './settings/settings.component';
 
 import { AppRoutingModule }     from './app-routing.module';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { AccountComponent } from './account/account.component';
  
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     DashboardComponent,
     CasesComponent,
     SettingsComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule, MaterializeModule.forRoot(), AppRoutingModule, ReactiveFormsModule

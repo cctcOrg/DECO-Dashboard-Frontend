@@ -1,24 +1,49 @@
-<div class="jumbotron">
-      <h1>Forensic Dashboard</h1>
-  </div>
+ <nav>
+    <div class="nav-wrapper">
+      <p class="brand-logo"><i class="material-icons">cloud</i>Forensic Dashboard</p>
+    </div>
+</nav>
+
+
+<div class="col-md-3 text-center" style="text-align:center"> 
 <form>
   <div class="form-group">
     <mz-input-container class="col s12">
-    <label for="email">Email address:</label>
-    <input mz-input type="email" class="form-control" id="email">
+    
+    <input mz-input 
+      type="email" 
+      class="form-control" 
+      id="email"
+      [dataError]="'Email is invalid'"
+      [dataSuccess]="'Email is valid'"  
+      [label]="'Email Address'">
       </mz-input-container>
   </div>
   <div class="form-group">
-    <label for="pwd">Password:</label>
+    
     <mz-input-container class="col s12">
-      <input mz-input type="password" class="form-control" id="pwd">
+      <input mz-input type="password" 
+        class="form-control" 
+        id="pwd"
+        [label]="'Password'">
     </mz-input-container>
   </div>
     
     
-  <div class="checkbox">
-    <label><input type="checkbox"> Remember me</label>
-  </div>
+    
+  <mz-checkbox-container>
+    <input mz-checkbox
+      [label]="'Remember Me'"
+      id="checkbox-id"
+      type="checkbox">
+  </mz-checkbox-container>
   
-  <button type="primary" (click)="temp_login();" class="btn btn-primary">Submit</button>
+  <button mz-button (click)="temp_login();">Login</button>
+  <app-account></app-account>
 </form>
+</div>
+
+
+<ng-template #createAcc>
+    <app-account></app-account>
+</ng-template>

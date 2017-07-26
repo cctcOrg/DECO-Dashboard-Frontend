@@ -1,39 +1,26 @@
-<div class="row">
-  <div class="valign-wrapper">
-    <div class="col s1" *ngIf="caseSelected">
-      <i mz-icon-mdi
-        [icon]="'arrow-left'"
-        [size]="'36px'">
-      </i>
-    </div>
-    <div class="col s8">
-      <h2>Cases</h2>
-    </div>
-    <div class="col s3">
-      <button mz-button (click)="fixedFooterModal.open()">Add Case</button>
 
-      <mz-modal #fixedFooterModal [fixedFooter]="true">
+
+      <button mz-button (click)="fixedAccModal.open()">Create Account</button>
+
+      <mz-modal #fixedAccModal [fixedFooter]="true">
         <mz-modal-header>
           Create Your Account
         </mz-modal-header>
         <mz-modal-content>
           <mz-input-container class="col s6">
             <input mz-input
-              [(ngModel)]="acc.firstName"
               [label]="'First Name'"
               id="input-firstname"
               type="text">              
           </mz-input-container>
           <mz-input-container class="col s6">
             <input mz-input
-              [(ngModel)]="acc.lastName"
               [label]="'Last Name'"
               id="input-lastname"
               type="text">              
           </mz-input-container>
           <mz-input-container class="col s12">
             <input mz-input
-              [(ngModel)]="acc.email"
               [label]="'Email (and your login)'"
               id="input-caseNumber"
               type="number">
@@ -41,7 +28,6 @@
           <div class="col s12">
             <mz-input-container class="col s12">
               <input mz-input
-                [(ngModel)]="acc.password"
                 [label]="'Password'"
                 id="input-desc"
                 type="text">              
@@ -53,6 +39,4 @@
           <button mz-button [flat]="true" mz-modal-close>Cancel</button>
         </mz-modal-footer>
       </mz-modal>
-    </div>
-  </div>
-</div>
+

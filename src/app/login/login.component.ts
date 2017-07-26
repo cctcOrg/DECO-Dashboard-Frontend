@@ -7,6 +7,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  isLogin = true;
+
   constructor() { }
 
   @Output() loginEvent = new EventEmitter();
@@ -17,5 +19,7 @@ export class LoginComponent implements OnInit {
   temp_login() {
     this.loginEvent.emit(null);
   }
+  
+
 
 }
