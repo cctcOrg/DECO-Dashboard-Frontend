@@ -7,41 +7,6 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class CaseComponent implements OnInit {
 
-  nodes = [
-    {id: 1,name: 'Devices',
-      children: [
-        {id: 2, name: 'device1',
-          children: [
-            {id: 3, name: 'image1',
-              children: [
-                {id: 4, name: 'relevant files'}
-              ]
-            },
-            {id: 4, name: 'image2',
-              children: [
-                {id: 4, name: 'relevant files'}
-              ]
-            },
-          ]
-        },
-        {id: 5, name: 'device2',
-          children: [
-            {id: 6, name: 'image1',
-              children: [
-                {id: 4, name: 'relevant files'}
-              ]
-            },
-            {id: 7, name: 'image2',
-                children: [
-                {id: 4, name: 'relevant files'}
-              ]
-            }
-          ]
-        }
-      ]
-    },
-  ];
-
   @Input() caseNumber: number;
   @Input() caseDescription: string;
   @Input() suspectName: string;
