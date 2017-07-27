@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ServerService } from '../server.service';
 import { CASES } from '../mock-cases';
 
@@ -35,8 +35,7 @@ export class CasesComponent implements OnInit {
   suspectName: string; 
   arr = [];
 
-  contentLayers = ['cases'];
-  mockCases = CASES; 
+  @Input() mockCases: Case[]; 
 
   constructor(private serverService: ServerService) { }
 
