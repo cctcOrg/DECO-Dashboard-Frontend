@@ -20,6 +20,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AppRoutingModule }     from './app-routing.module';
 import { AccountComponent } from './account/account.component';
 import { DevicesComponent } from './devices/devices.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
  
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DevicesComponent } from './devices/devices.component';
     CasesComponent,
     SettingsComponent,
     AccountComponent,
-    DevicesComponent
+    DevicesComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule, MaterializeModule.forRoot(), AppRoutingModule, ReactiveFormsModule

@@ -32,14 +32,7 @@
 <app-login *ngIf="isLoginPage; else main" (loginEvent)="temp_login()"></app-login>
 
 <ng-template #main>
-  <div class="row">
-    <div class="col s4">
-      <app-menu></app-menu>
-    </div>
-    <div class="col s8">
       <app-dashboard></app-dashboard>
-    </div>
-  </div>
 </ng-template>
 
 

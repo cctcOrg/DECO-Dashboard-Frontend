@@ -1,11 +1,18 @@
+
 <div class="row">
   <div class="valign-wrapper">
-    <div class="col s1" *ngIf="caseSelected">
-      <i mz-icon-mdi
-        [icon]="'arrow-left'"
-        [size]="'36px'">
-      </i>
-    </div>
+    <ul>
+      <li *ngFor="let case of mockCases">
+        <app-case 
+          [caseNumber]="case.caseNumber" 
+          [caseDescription]="case.caseDescription"
+          [suspectName]="case.suspectName"></app-case>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- <div class="row">
+  <div class="valign-wrapper">
     <div class="col s8">
       <nav>
         <div class="nav-wrapper">
@@ -69,17 +76,4 @@
       </mz-modal>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <div class="valign-wrapper">
-    <ul>
-      <li *ngFor="let case of mockCases">
-        <app-case 
-          [caseNumber]="case.caseNumber" 
-          [caseDescription]="case.caseDescription"
-          [suspectName]="case.suspectName"></app-case>
-      </li>
-    </ul>
-  </div>
-</div>
+</div> -->

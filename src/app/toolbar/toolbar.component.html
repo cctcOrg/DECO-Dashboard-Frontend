@@ -1,0 +1,60 @@
+  <div class="row" id="toolbar">
+    <div class="valign-wrapper"> 
+      <div class="col s1">
+        <mz-sidenav
+          [id]="'sidenav'"
+          [collapseButtonId]="'btn-sidenav'"
+          [edge]="'left'">
+
+          <div id="header">
+            <mz-sidenav-header>
+              <div class="user-view">
+                <div class="white-text name">{{name}}</div>
+                <div class="white-text email">{{name}}@email.com</div>
+              </div>
+            </mz-sidenav-header>
+          </div>
+
+          <div id="main">
+            <mz-sidenav-link>
+              <a>Cases</a>
+            </mz-sidenav-link>
+
+            <mz-sidenav-link [active]="true">
+              <a>Account Info</a>
+            </mz-sidenav-link>
+          </div>
+          
+          <div id="footer">
+            <footer class="page-footer">
+              <div class="container">
+                <div class="row">
+                  <mz-sidenav-link [active]="true">
+                    <a>Settings</a>
+                  </mz-sidenav-link>
+                </div>
+                <div class="row">
+                  <mz-sidenav-link [active]="true">
+                    <a>Log Out</a>
+                  </mz-sidenav-link>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </mz-sidenav>  
+        <button mz-button id="btn-sidenav"><i class="medium material-icons">menu</i></button>
+      </div>
+      <div class="col s10">
+        <nav>
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb">{{breadcrumb}}</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="col s1">
+        <button ><i class="medium material-icons">view_comfy</i></button>
+      </div>
+    </div>
+  </div>

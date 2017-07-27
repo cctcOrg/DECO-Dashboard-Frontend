@@ -1,1 +1,26 @@
-<router-outlet></router-outlet> 
+<app-toolbar></app-toolbar>
+<div class="row">  
+    <div class="container">
+    <mz-collapsible
+        [mode]="'expandable'"
+        [onClose]="closeFunctionCallback"
+        [onOpen]="openFunctionCallback"
+        [popout]="true">
+        <mz-collapsible-item *ngFor="let contentLayer of contentLayers">
+            <mz-collapsible-item-header>
+            {{contentLayer}}
+            </mz-collapsible-item-header>
+            <mz-collapsible-item-body>
+            contentLayer
+            </mz-collapsible-item-body>
+        </mz-collapsible-item>
+    </mz-collapsible>
+    </div>
+</div>
+<!-- Collection of cases  -->
+<a class="btn-floating btn-large red waves-effect waves-light" id="fab"> <i class="large material-icons">add</i></a>
+<div class="row">
+    <div class="container"> 
+        <app-cases></app-cases>
+    </div>
+</div>
