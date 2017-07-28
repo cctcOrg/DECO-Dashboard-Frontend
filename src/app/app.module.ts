@@ -20,12 +20,12 @@ import { AppRoutingModule }     from './app-routing.module';
 import { AccountComponent } from './account/account.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { ImagesComponent } from './images/images.component';
-import { DmComponent } from './dm/dm.component';
-import { ImageComponent } from './image/image.component';
-import { DeviceComponent } from './device/device.component';
-import { FileComponent } from './file/file.component';
-import { FilesComponent } from './files/files.component';
+// import { ImagesComponent } from './images/images.component';
+// import { DmComponent } from './dm/dm.component';
+// import { ImageComponent } from './image/image.component';
+// import { DeviceComponent } from './device/device.component';
+// import { FileComponent } from './file/file.component';
+// import { FilesComponent } from './files/files.component';
  
 @NgModule({
   declarations: [
@@ -37,13 +37,14 @@ import { FilesComponent } from './files/files.component';
     SettingsComponent,
     AccountComponent,
     DevicesComponent,
-    ToolbarComponent,
-    ImagesComponent,
-    DmComponent,
-    ImageComponent,
-    DeviceComponent,
-    FileComponent,
-    FilesComponent
+    ToolbarComponent
+    // ToolbarComponent,
+    // ImagesComponent,
+    // DmComponent,
+    // ImageComponent,
+    // DeviceComponent,
+    // FileComponent,
+    // FilesComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule, MaterializeModule.forRoot(), AppRoutingModule, ReactiveFormsModule
