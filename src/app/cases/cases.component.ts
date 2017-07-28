@@ -57,10 +57,10 @@ export class CasesComponent implements OnInit {
     this.arr.push(json); 
 
     // convert object to array
-    this.serverService.postCase(this.arr).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );
+    // this.serverService.postCase(this.arr).subscribe(
+    //   (response) => console.log(response),
+    //   (error) => console.log(error)
+    // );
   }
 
 }
