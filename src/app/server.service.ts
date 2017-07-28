@@ -3,7 +3,7 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 
 @Injectable()
 export class ServerService {
-  url = 'http://129.65.100.50:6000';
+  url = 'http://129.65.100.50:5000';
 
   constructor(private http: Http) { }
 
