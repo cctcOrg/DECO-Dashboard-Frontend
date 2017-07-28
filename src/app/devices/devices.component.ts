@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Device } from '../device';
 
 @Component({
   selector: 'app-devices',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent implements OnInit {
+  caseId: number;
+  devices: Device[];
+
   contentLayers = ['cases', 'devices']; 
   constructor() { }
 
