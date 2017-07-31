@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ServerService } from '../server.service';
+import { MzToastService } from 'ng2-materialize';
 import { CASES } from '../mock-cases';
 import { Case } from '../case';
 
@@ -9,48 +10,50 @@ import { Case } from '../case';
   styleUrls: ['./cases.component.css']
 })
 export class CasesComponent implements OnInit {
-  cases: Case[];
+  cases: Case[] = [];
 
   caseSelected = false; 
+
+
   newCase: Case = {
-    dateReceived: "07-07-2010 04:20",
-    caseNumber: 0,
+    dateReceived: "",
+    caseNumber: -1,
     caseDescription: "",
     suspectName: "",
-    examinerName: "Jonathan Chianglin",
-    collectionLocation: "San Luis Obispo",
-    labId: 12,
-    userId:  2
+    examinerName: "",
+    collectionLocation: "",
+    labId: -1,
+    userId:  -1
   }
-  suspectName: string; 
-  arr = [];
+
+  firstName = '';
+  lastName = ''; 
+  exfirstName = '';
+  exlastName = ''; 
+  userId = 12; 
 
   @Input() mockCases: Case[]; 
 
-  constructor(private serverService: ServerService) { }
+  constructor(private serverService: ServerService,
+              private toastService: MzToastService) { }
 
   ngOnInit() {
   }
 
-  addCase() {
-    const json = {
-      dateReceived: this.newCase.dateReceived,
-      caseNumber: this.newCase.caseNumber,
-      caseDescription: this.newCase.caseDescription,
-      suspectName: this.newCase.suspectName,
-      examinerName: this.newCase.examinerName,
-      collectionLocation: this.newCase.collectionLocation,
-      labId: this.newCase.labId,
-      userId: this.newCase.userId
-    }
+  postCase() {
+    this.newCase.suspectName = this.firstName + " " + this.lastName; 
+    this.newCase.examinerName = this.exfirstName + " " + this.exlastName; 
 
-    this.arr.push(json); 
-
-    // convert object to array
-    // this.serverService.postCase(this.arr).subscribe(
-    //   (response) => console.log(response),
-    //   (error) => console.log(error)
+    console.log(this.newCase); 
+    this.addCase(this.newCase); 
+    // this.serverService.postCase(this.userId, JSON.stringify(this.newCase)).subscribe(
+    //   (response) => this.addCase(this.newCase), 
+    //   (error) => this.toastService.show('ERROR: Case not added', 4000)
     // );
   }
 
+  addCase(newCase: Case) {
+    this.cases.push(newCase); 
+    console.log("Case posted"); 
+  }
 }

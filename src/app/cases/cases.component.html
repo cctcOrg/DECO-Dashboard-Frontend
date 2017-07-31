@@ -1,8 +1,7 @@
-
 <div class="row">
   <div class="valign-wrapper">
     <ul>
-      <li *ngFor="let case of mockCases">
+      <li *ngFor="let case of cases">
         <app-case 
           [caseNumber]="case.caseNumber" 
           [caseDescription]="case.caseDescription"
@@ -11,69 +10,90 @@
     </ul>
   </div>
 </div>
-<!-- <div class="row">
-  <div class="valign-wrapper">
-    <div class="col s8">
-      <nav>
-        <div class="nav-wrapper">
-          <div class="col s12">
-            <a *ngFor="let contentLayer of contentLayers" routerLink="{{contentLayer}}" class="breadcrumb">{{contentLayer}}</a>
-          </div>
-        </div>
-      </nav>
-    </div>
-    <div class="col s3">
-      <button mz-button (click)="fixedFooterModal.open()">Add Case</button>
 
-      <mz-modal #fixedFooterModal [fixedFooter]="true">
-        <mz-modal-header>
-          Case Information
-        </mz-modal-header>
-        <mz-modal-content>
-          <mz-input-container class="col s6">
-            <input mz-input
-              [(ngModel)]="newCase.firstName"
-              [label]="'Suspect First Name'"
-              id="input-firstname"
-              type="text">              
+<button mz-button [float]="true" id="fab"><div class="valign-wrapper" (click)="fixedFooterModal.open()"><i mz-icon [icon]="'add'"></i></div></button>
+<mz-modal #fixedFooterModal [fixedFooter]="true">
+    <mz-modal-header>
+        Case Information
+    </mz-modal-header>
+    <mz-modal-content>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="firstName"
+          [label]="'Suspect First Name'"
+          id="input-firstname"
+          type="text">              
+        </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="lastName"
+          [label]="'Suspect Last Name'"
+          id="input-lastname"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newCase.caseNumber"
+          [label]="'Case Number'"
+          id="input-caseNumber"
+          placeholder=""
+          type="number">
+      </mz-input-container>
+      <div class="col s12">
+        Date Received
+        <div class="input-field inline">
+          <mz-input-container class="col s12">              
+            <input [(ngModel)]="newCase.dateReceived" id="datereceived" type="datetime-local">
           </mz-input-container>
-          <mz-input-container class="col s6">
-            <input mz-input
-              [(ngModel)]="newCase.lastName"
-              [label]="'Suspect Last Name'"
-              id="input-firstname"
-              type="text">              
-          </mz-input-container>
-          <mz-input-container class="col s12">
-            <input mz-input
-              [(ngModel)]="newCase.caseNumber"
-              [label]="'Case Number'"
-              id="input-caseNumber"
-              type="number">
-          </mz-input-container>
-          <div class="col s12">
-            Date Received
-            <div class="input-field inline">
-              <mz-input-container class="col s12">              
-                <input [(ngModel)]="newCase.dateReceived" id="datereceived" type="datetime-local">
-              </mz-input-container>
-            </div>
-          </div>
-          <div class="col s12">
-            <mz-input-container class="col s12">
-              <input mz-input
-                [(ngModel)]="newCase.caseDescription"
-                [label]="'Case Description'"
-                id="input-desc"
-                type="text">              
-            </mz-input-container>
-          </div>
-        </mz-modal-content>
-        <mz-modal-footer>
-          <button mz-button [flat]="true" mz-modal-close (click)="addCase()">Add</button>
-          <button mz-button [flat]="true" mz-modal-close>Cancel</button>
-        </mz-modal-footer>
-      </mz-modal>
-    </div>
-  </div>
-</div> -->
+        </div>
+      </div> 
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newCase.caseDescription"
+          [label]="'Case Description'"
+          id="input-desc"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="exfirstName"
+          [label]="'Examiner First Name'"
+          id="input-ex-firstname"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="exlastName"
+          [label]="'Suspect Last Name'"
+          id="input-ex-lastname"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newCase.collectionLocation"
+          [label]="'Collection Location'"
+          id="input-loc"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="newCase.labId"
+          [label]="'Lab ID'"
+          id="input-labid"
+          placeholder=""
+          type="number">
+      </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="newCase.userId"
+          [label]="'User ID'"
+          id="input-userid"
+          placeholder=""
+          type="number">
+      </mz-input-container>        
+    </mz-modal-content>
+    <mz-modal-footer>
+        <button mz-button [flat]="true" mz-modal-close (click)="postCase()">Add</button>
+        <button mz-button [flat]="true" mz-modal-close>Cancel</button>
+    </mz-modal-footer>
+</mz-modal>
