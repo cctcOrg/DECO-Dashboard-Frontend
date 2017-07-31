@@ -49,11 +49,11 @@
           <div class="nav-wrapper">
             <div class="col s12">
               <!--<a *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb">{{breadcrumb}}</a>-->
-              <a *ngIf="isCase" class="breadcrumb" [routerLink]="['/cases']" (click)="displayCaseBreadcrumb()">Cases</a>
-              <a *ngIf="isDevice" class="breadcrumb" [routerLink]="['/devices']" (click)="displayDeviceBreadcrumb()">Devices</a>
-              <a *ngIf="isDM" class="breadcrumb" href="#" (click)="displayDMBreadcrumb()">Digital Media</a>
-              <a *ngIf="isImage" class="breadcrumb" href="#" (click)="displayImageBreadcrumb()">Images</a>
-              <a *ngIf="isFile" class="breadcrumb" href="#" (click)="displayFileBreadcrumb()">Files</a>
+              <a *ngIf="caseView" class="breadcrumb" [routerLink]="['/cases']" (click)="displayCaseBreadcrumb()">Cases</a>
+              <a *ngIf="deviceView" class="breadcrumb" [routerLink]="['/devices']" (click)="displayDeviceBreadcrumb()">Devices</a>
+              <a *ngIf="digitalMediaView" class="breadcrumb" href="#" (click)="displayDMBreadcrumb()">Digital Media</a>
+              <a *ngIf="imageView" class="breadcrumb" href="#" (click)="displayImageBreadcrumb()">Images</a>
+              <a *ngIf="fileView" class="breadcrumb" href="#" (click)="displayFileBreadcrumb()">Files</a>
             </div>
           </div>
         </nav>

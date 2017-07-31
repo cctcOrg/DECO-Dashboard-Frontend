@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { BreadcrumbService } from '../breadcrumb.service';
 
 @Component({
   selector: 'app-case',
@@ -11,11 +12,16 @@ export class CaseComponent implements OnInit {
   @Input() caseDescription: string;
   @Input() suspectName: string;
   
-  constructor() { }
+  constructor(private breadcrumbs: BreadcrumbService) { }
 
   @Output() caseEvent = new EventEmitter();
 
   ngOnInit() {
+
+  }
+
+  viewDevices() {
+    this.breadcrumbs.viewDevices();
   }
 
   viewCase() {
@@ -25,5 +31,4 @@ export class CaseComponent implements OnInit {
   viewMenu() {
     this.caseEvent.emit(null);
   }
-
 }

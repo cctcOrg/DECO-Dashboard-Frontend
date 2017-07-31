@@ -1,20 +1,21 @@
 <mz-card
-    [hoverable]="true">
-    <mz-card-title>
-      {{caseNumber}}
-      <i mz-icon
-        [align]="'left'"
-        [icon]="'laptop'"
-        [size]="'medium'">
-      </i>
-   </mz-card-title>
+  (click) = "viewDevices()"
+  [hoverable]="true">
+  <mz-card-title>
+    {{caseNumber}}
+    <i mz-icon
+      [align]="'left'"
+      [icon]="'laptop'"
+      [size]="'medium'">
+    </i>
+  </mz-card-title>
 
-   <mz-card-content>
+  <mz-card-content>
     <p>Suspect Name : {{suspectName}}    </p>
     {{caseDescription}}
 
-    </mz-card-content>
-    <mz-card-action>
-      <a>View Detailed information</a>
-    </mz-card-action>
-  </mz-card>
+  </mz-card-content>
+  <mz-card-action>
+    <a>View Detailed information</a>
+  </mz-card-action>
+</mz-card>

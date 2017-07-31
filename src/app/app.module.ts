@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ServerService } from './server.service';
+import { BreadcrumbService } from './breadcrumb.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-bootstrap';
 import { LoginComponent } from './login/login.component';
@@ -64,7 +65,7 @@ import { FilesComponent } from './files/files.component';
     routing
     /*AppRoutingModule,*/
   ],
-  providers: [ServerService], 
+  providers: [ServerService, BreadcrumbService], 
   bootstrap: [AppComponent],
   exports: [ ReactiveFormsModule ]
 })
