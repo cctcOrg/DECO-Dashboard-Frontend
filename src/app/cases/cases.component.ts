@@ -15,16 +15,7 @@ export class CasesComponent implements OnInit {
   caseSelected = false; 
 
 
-  newCase: Case = {
-    dateReceived: "",
-    caseNumber: -1,
-    caseDescription: "",
-    suspectName: "",
-    examinerName: "",
-    collectionLocation: "",
-    labId: -1,
-    userId:  -1
-  }
+  newCase = new Case(); 
 
   firstName = '';
   lastName = ''; 
@@ -43,7 +34,7 @@ export class CasesComponent implements OnInit {
   postCase() {
     this.newCase.suspectName = this.firstName + " " + this.lastName; 
     this.newCase.examinerName = this.exfirstName + " " + this.exlastName; 
-
+    
     console.log(this.newCase); 
     this.addCase(this.newCase); 
     // this.serverService.postCase(this.userId, JSON.stringify(this.newCase)).subscribe(
@@ -54,6 +45,7 @@ export class CasesComponent implements OnInit {
 
   addCase(newCase: Case) {
     this.cases.push(newCase); 
+    this.newCase = new Case(); 
     console.log("Case posted"); 
   }
 }
