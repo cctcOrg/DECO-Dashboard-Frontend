@@ -1,4 +1,10 @@
-<app-toolbar></app-toolbar>
+<app-toolbar
+    (caseEvent)="displayCaseBreadcrumb()"
+    (deviceEvent)="displayDeviceBreadcrumb()"
+    (dmEvent)="displayDMBreadcrumb()"
+    (imageEvent)="displayImageBreadcrumb()"
+    (fileEvent)="displayFileBreadcrumb()"></app-toolbar>
+
 <div class="row">  
     <div class="container">
     <mz-collapsible
@@ -67,9 +73,10 @@
         <button mz-button [flat]="true" mz-modal-close>Cancel</button>
     </mz-modal-footer>
 </mz-modal>
+<router-outlet></router-outlet>
 <!-- Collection of cases  -->
-<div class="row">
+<!--<div class="row">
     <div class="container"> 
         <app-cases [mockCases]="mockCases"></app-cases>
     </div>
-</div>
+</div>-->

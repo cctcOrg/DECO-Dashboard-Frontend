@@ -16,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CasesComponent } from './cases/cases.component';
 import { SettingsComponent } from './settings/settings.component';
 
-import { AppRoutingModule }     from './app-routing.module';
+import { routing } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import { AccountComponent } from './account/account.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -47,10 +48,17 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     // FilesComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule, BrowserAnimationsModule, TreeModule, MaterializeModule.forRoot(), AppRoutingModule, ReactiveFormsModule
-    
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    TreeModule,
+    MaterializeModule.forRoot(),
+    ReactiveFormsModule,
+    routing
+    /*AppRoutingModule,*/
   ],
-  providers: [ServerService],
+  providers: [ServerService], 
   bootstrap: [AppComponent],
   exports: [ ReactiveFormsModule ]
 })
