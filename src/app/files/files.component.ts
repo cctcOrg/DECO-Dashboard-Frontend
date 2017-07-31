@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { File } from '../file';
 
 @Component({
   selector: 'app-files',
