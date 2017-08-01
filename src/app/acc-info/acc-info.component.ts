@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../user';
 
-
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  selector: 'app-acc-info',
+  templateUrl: './acc-info.component.html',
+  styleUrls: ['./acc-info.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccInfoComponent implements OnInit {
 
-  currMakingAcc = true;
   email = "";
   first = "";
   last = "";
@@ -26,8 +24,5 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
   }
   
-  finishMakingAcc() {
-     this.currMakingAcc = false;
-  }
 
 }

@@ -44,10 +44,9 @@
         </mz-sidenav>  
         <button mz-button id="btn-sidenav"><i class="medium material-icons">menu</i></button>
       </div>
-      <div class="col s10">
-        <nav>
-          <div class="nav-wrapper">
-            <div class="col s12">
+
+        <nav class="z-length-0">
+            <div>
               <!--<a *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb">{{breadcrumb}}</a>-->
               <a *ngIf="caseView" class="breadcrumb" [routerLink]="['/cases']">Cases</a>
               <a *ngIf="deviceView" class="breadcrumb" [routerLink]="['/devices']">Devices</a>
@@ -55,11 +54,11 @@
               <a *ngIf="imageView" class="breadcrumb" [routerLink]="['/images']">Images</a>
               <a *ngIf="fileView" class="breadcrumb" [routerLink]="['/files']">Files</a>
             </div>
-          </div>
+
         </nav>
-      </div>
+
       <div class="col s1">
-        <button ><i class="medium material-icons">view_comfy</i></button>
+        <a  class="material-icons right"><i class="medium material-icons">view_comfy</i></a>
       </div>
     </div>
   </div>
