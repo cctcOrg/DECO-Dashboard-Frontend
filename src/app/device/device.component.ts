@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-device',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./device.component.css']
 })
 export class DeviceComponent implements OnInit {
+
+  @Input() make:string;
+  @Input() model:string;
+  @Input() serial:number;
 
   constructor() { }
 

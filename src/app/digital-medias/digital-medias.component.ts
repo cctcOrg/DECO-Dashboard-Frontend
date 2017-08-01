@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadcrumbService } from '../breadcrumb.service';
 
 @Component({
   selector: 'app-digital-medias',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DigitalMediasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private breadcrumbs: BreadcrumbService) { }
 
   ngOnInit() {
+    this.breadcrumbs.viewDigitalMedias();
   }
 
 }

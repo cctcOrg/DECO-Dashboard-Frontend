@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadcrumbService } from '../breadcrumb.service';
 import { Image } from '../image';
 
 @Component({
@@ -10,9 +11,10 @@ export class ImagesComponent implements OnInit {
   fileId: number;
   images: Image[];
 
-  constructor() { }
+  constructor(private breadcrumbs: BreadcrumbService) { }
 
   ngOnInit() {
+    this.breadcrumbs.viewImages();
   }
 
 }

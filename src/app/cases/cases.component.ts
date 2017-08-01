@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ServerService } from '../server.service';
+import { BreadcrumbService } from '../breadcrumb.service';
 import { MzToastService } from 'ng2-materialize';
 import { CASES } from '../mock-cases';
 import { Case } from '../case';
@@ -23,12 +24,14 @@ export class CasesComponent implements OnInit {
   exlastName = ''; 
   userId = 12; 
 
-  @Input() mockCases: Case[]; 
+  // @Input() mockCases: Case[]; 
 
   constructor(private serverService: ServerService,
-              private toastService: MzToastService) { }
+              private toastService: MzToastService,
+              private breadcrumbs: BreadcrumbService) { }
 
   ngOnInit() {
+    this.breadcrumbs.viewCases();
   }
 
   postCase() {

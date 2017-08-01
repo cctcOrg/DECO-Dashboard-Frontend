@@ -1,3 +1,21 @@
-<p>
-  device works!
-</p>
+<mz-card
+  [routerLink] = "['/digital-medias']"
+  [hoverable]="true">
+  <mz-card-title>
+    Make: {{make}}
+    <i mz-icon
+      [align]="'left'"
+      [icon]="'laptop'"
+      [size]="'medium'">
+    </i>
+  </mz-card-title>
+
+  <mz-card-content>
+    <p>Model : {{model}}    </p>
+    {{serial}}
+
+  </mz-card-content>
+  <mz-card-action>
+    <a>View Detailed information</a>
+  </mz-card-action>
+</mz-card>
