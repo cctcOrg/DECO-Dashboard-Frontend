@@ -4,4 +4,5 @@ export class DigitalMedia {
     model: string;
     serialNumber: number;
     capacity: number;
+    deviceId: number;
 }

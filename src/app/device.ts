@@ -9,4 +9,5 @@ export class Device {
     localDateTime: string;
     typeOfCollection: string;
     mediaStatus: string;
+    caseId:number;
 }

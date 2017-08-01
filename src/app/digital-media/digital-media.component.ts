@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DigitalMedia } from '../digital-media';
 
 @Component({
   selector: 'app-digital-media',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./digital-media.component.css']
 })
 export class DigitalMediaComponent implements OnInit {
+
+  @Input() digitalMedia: DigitalMedia;
 
   constructor() { }
 

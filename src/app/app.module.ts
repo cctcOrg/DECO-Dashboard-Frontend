@@ -20,18 +20,21 @@ import { SettingsComponent } from './settings/settings.component';
 import { routing } from './app-routing.module';
 // import { AppRoutingModule } from './app-routing.module';
 import { AccountComponent } from './account/account.component';
+import { DeviceComponent } from './device/device.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DigitalMediasComponent } from './digital-medias/digital-medias.component';
+import { ImageComponent } from './image/image.component';
 import { ImagesComponent } from './images/images.component';
+import { FileComponent } from './file/file.component';
 import { FilesComponent } from './files/files.component';
+
 import { DigitalMediaComponent } from './digital-media/digital-media.component';
 import { AccInfoComponent } from './acc-info/acc-info.component';
 // import { ImagesComponent } from './images/images.component';
+import { DigitalMediaComponent } from './digital-media/digital-media.component'; 
+
 // import { DmComponent } from './dm/dm.component';
-// import { ImageComponent } from './image/image.component';
-// import { DeviceComponent } from './device/device.component';
-// import { FileComponent } from './file/file.component';
 // import { FilesComponent } from './files/files.component';
  
 @NgModule({
@@ -50,12 +53,13 @@ import { AccInfoComponent } from './acc-info/acc-info.component';
     FilesComponent,
     DigitalMediaComponent,
     AccInfoComponent
+    DeviceComponent,
+    ImagesComponent,
+    ImageComponent,
+    FileComponent
     // ToolbarComponent,
-    // ImagesComponent,
     // DmComponent,
     // ImageComponent,
-    // DeviceComponent,
-    // FileComponent,
     // FilesComponent
   ],
   imports: [
@@ -67,7 +71,6 @@ import { AccInfoComponent } from './acc-info/acc-info.component';
     MaterializeModule.forRoot(),
     ReactiveFormsModule,
     routing
-    /*AppRoutingModule,*/
   ],
   providers: [ServerService, BreadcrumbService], 
   bootstrap: [AppComponent],

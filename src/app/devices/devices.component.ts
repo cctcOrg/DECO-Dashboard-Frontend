@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadcrumbService } from '../breadcrumb.service';
 import { Device } from '../device';
 
 @Component({
@@ -8,15 +9,25 @@ import { Device } from '../device';
 })
 export class DevicesComponent implements OnInit {
   caseId: number;
-  devices: Device[];
+  devices: Device[] = [];
 
-  contentLayers = ['cases', 'devices']; 
-  constructor() { }
+
+  newDevice = new Device();
+
+  constructor(private breadcrumbs: BreadcrumbService) { }
 
   ngOnInit() {
+    this.breadcrumbs.viewDevices();
   }
 
-  addDevice() {
+  postDevice() {
+    console.log(this.newDevice);
+    this.addDevice(this.newDevice);
+  }
 
+  addDevice(newDevice: Device) {
+    this.devices.push(newDevice);
+    this.newDevice = new Device;
+    console.log("Device posted");
   }
 }

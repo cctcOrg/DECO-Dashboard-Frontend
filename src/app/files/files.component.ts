@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadcrumbService } from '../breadcrumb.service';
 import { File } from '../file';
 
 @Component({
@@ -7,12 +8,25 @@ import { File } from '../file';
   styleUrls: ['./files.component.css']
 })
 export class FilesComponent implements OnInit {
-  dmId: number;
-  files: File[];
+  files: File[] = [];
 
-  constructor() { }
+  newFile = new File();
+
+  constructor(private breadcrumbs: BreadcrumbService) { }
 
   ngOnInit() {
+    this.breadcrumbs.viewFiles();
+  }
+
+  postFile() {
+    this.addFile(this.newFile);
+    console.log(this.newFile);
+  }
+
+  addFile(newFile: File) {
+    this.files.push(newFile);
+    this.newFile = new File();
+    console.log("File posted");
   }
 
 }

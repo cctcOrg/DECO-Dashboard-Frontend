@@ -7,17 +7,6 @@ import { BreadcrumbService } from '../breadcrumb.service';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  //name = 'John Doe'; 
-  //breadcrumbs = ['Dashboard'];
-
-  /*
-  isCase = true;
-  isDevice = true;
-  isDM = true;
-  isImage = true;
-  isFile = true;
-  */
-
   caseView:boolean;
   deviceView:boolean;
   digitalMediaView:boolean;
@@ -33,51 +22,4 @@ export class ToolbarComponent implements OnInit {
     this.breadcrumbs.currentImage.subscribe(imageView => this.imageView = imageView);
     this.breadcrumbs.currentFile.subscribe(fileView => this.fileView = fileView);
   }
-
-  /*
-  displayCaseBreadcrumb() {
-    this.isDevice = this.isDM = this.isImage = this.isFile = false;
-    this.isCase = true;
-  }
-  
-  displayDeviceBreadcrumb() {
-    this.isDM = this.isImage = this.isFile = false;
-    this.isCase = this.isDevice = true;
-  }
-
-  displayDMBreadcrumb() {
-    this.isImage = this.isFile = false;
-    this.isCase = this.isDevice = this.isDM = true;
-  }
-
-  displayImageBreadcrumb() {
-    this.isFile = false;
-    this.isCase = this.isDevice = this.isDM = this.isImage = true;
-  }
-
-  displayFileBreadcrumb() {
-    this.isCase = this.isDevice = this.isDM = this.isImage = this.isFile = true;
-  }
-  */
-
-  displayCaseBreadcrumb() {
-    this.breadcrumbs.viewCases();
-  }
-  
-  displayDeviceBreadcrumb() {
-    this.breadcrumbs.viewDevices();
-  }
-
-  displayDMBreadcrumb() {
-    this.breadcrumbs.viewDigitalMedias();
-  }
-
-  displayImageBreadcrumb() {
-    this.breadcrumbs.viewImages();
-  }
-
-  displayFileBreadcrumb() {
-    this.breadcrumbs.viewFiles();
-  }
 }
- 

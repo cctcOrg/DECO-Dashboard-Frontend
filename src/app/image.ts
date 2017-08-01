@@ -11,4 +11,5 @@ export class Image {
     postCollection: string;
     size: number;
     Notes: string;
+    dmId: number;
 }

@@ -1,4 +1,4 @@
-<div class="row">
+<!--<div class="row">
   <div class="valign-wrapper">
     <div class="col s1" *ngIf="caseSelected">
       <i mz-icon-mdi
@@ -31,4 +31,89 @@
       </mz-modal>
     </div>
   </div>
+</div>-->
+<div class="row">
+  <div class="valign-wrapper">
+    <ul>
+      <li *ngFor="let device of devices">
+        <app-device 
+          [make]="device.make" 
+          [model]="device.model"
+          [serial]="device.serial"></app-device>
+      </li>
+    </ul>
+  </div>
 </div>
+
+<button mz-button [float]="true" id="fab"><div class="valign-wrapper" (click)="fixedFooterModal.open()"><i mz-icon [icon]="'add'"></i></div></button>
+<mz-modal #fixedFooterModal [fixedFooter]="true">
+    <mz-modal-header>
+        Device Information
+    </mz-modal-header>
+    <mz-modal-content>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="newDevice.deviceDesc"
+          [label]="'Device description'"
+          id="input-deviceDesc"
+          type="text">              
+        </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="newDevice.make"
+          [label]="'Make'"
+          id="input-make"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newDevice.model"
+          [label]="'Model'"
+          id="input-model"
+          placeholder=""
+          type="number">
+      </mz-input-container>
+      <div class="col s12">
+        System Date and Time
+        <div class="input-field inline">
+          <mz-input-container class="col s12">              
+            <input [(ngModel)]="newDevice.systemDateTime" id="systemDate" type="datetime-local">
+          </mz-input-container>
+        </div>
+      </div> 
+      <div class="col s12">
+        Local Date and Time
+        <div class="input-field inline">
+          <mz-input-container class="col s12">              
+            <input [(ngModel)]="newDevice.localDateTime" id="localDate" type="datetime-local">
+          </mz-input-container>
+        </div>
+      </div> 
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newDevice.typeOfCollection"
+          [label]="'Type of Collection'"
+          id="input-collectionType"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="newDevice.mediaStatus"
+          [label]="'Media Status'"
+          id="input-mediaStatus"
+          type="text">              
+      </mz-input-container>
+      <mz-input-container class="col s6">
+        <input mz-input
+          [(ngModel)]="newDevice.caseId"
+          [label]="'Case ID'"
+          id="input-caseid"
+          placeholder=""
+          type="number">
+      </mz-input-container>        
+    </mz-modal-content>
+    <mz-modal-footer>
+        <button mz-button [flat]="true" mz-modal-close (click)="postDevice()">Add</button>
+        <button mz-button [flat]="true" mz-modal-close>Cancel</button>
+    </mz-modal-footer>
+</mz-modal>
