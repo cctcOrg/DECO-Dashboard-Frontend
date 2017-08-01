@@ -14,8 +14,6 @@ export class CasesComponent implements OnInit {
   cases: Case[] = [];
 
   caseSelected = false; 
-
-
   newCase = new Case(); 
 
   firstName = '';
