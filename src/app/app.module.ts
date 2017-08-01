@@ -24,13 +24,12 @@ import { DeviceComponent } from './device/device.component';
 import { DevicesComponent } from './devices/devices.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DigitalMediasComponent } from './digital-medias/digital-medias.component';
+import { ImageComponent } from './image/image.component';
 import { ImagesComponent } from './images/images.component';
+import { FileComponent } from './file/file.component';
 import { FilesComponent } from './files/files.component';
-import { DigitalMediaComponent } from './digital-media/digital-media.component';
-// import { ImagesComponent } from './images/images.component';
+import { DigitalMediaComponent } from './digital-media/digital-media.component'; 
 // import { DmComponent } from './dm/dm.component';
-// import { ImageComponent } from './image/image.component';
-// import { FileComponent } from './file/file.component';
 // import { FilesComponent } from './files/files.component';
  
 @NgModule({
@@ -49,11 +48,12 @@ import { DigitalMediaComponent } from './digital-media/digital-media.component';
     FilesComponent,
     DigitalMediaComponent,
     DeviceComponent,
+    ImagesComponent,
+    ImageComponent,
+    FileComponent
     // ToolbarComponent,
-    // ImagesComponent,
     // DmComponent,
     // ImageComponent,
-    // FileComponent,
     // FilesComponent
   ],
   imports: [
@@ -65,7 +65,6 @@ import { DigitalMediaComponent } from './digital-media/digital-media.component';
     MaterializeModule.forRoot(),
     ReactiveFormsModule,
     routing
-    /*AppRoutingModule,*/
   ],
   providers: [ServerService, BreadcrumbService], 
   bootstrap: [AppComponent],

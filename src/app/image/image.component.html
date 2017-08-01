@@ -1,3 +1,21 @@
-<p>
-  image works!
-</p>
+<mz-card
+  [routerLink] = "['/files']"
+  [hoverable]="true">
+  <mz-card-title>
+    {{image.primaryStorageMediaName}}
+    <i mz-icon
+      [align]="'left'"
+      [icon]="'laptop'"
+      [size]="'medium'">
+    </i>
+  </mz-card-title>
+
+  <mz-card-content>
+    <p>Media ID : {{image.primaryStorageMediaId}}</p>
+    Size: {{image.size}} GB
+
+  </mz-card-content>
+  <mz-card-action>
+    <a>View Detailed information</a>
+  </mz-card-action>
+</mz-card>

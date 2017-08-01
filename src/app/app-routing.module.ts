@@ -9,7 +9,7 @@ import { ImagesComponent } from './images/images.component';
 import { FilesComponent } from './files/files.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full'},
+  { path: '', redirectTo: '/cases', pathMatch: 'full'},
   { path: 'cases',  component: CasesComponent },
   { path: 'devices', component: DevicesComponent },
   { path: 'digital-medias', component: DigitalMediasComponent},

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { File } from '../file';
 
 @Component({
   selector: 'app-file',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./file.component.css']
 })
 export class FileComponent implements OnInit {
+
+  @Input() file: File;
 
   constructor() { }
 

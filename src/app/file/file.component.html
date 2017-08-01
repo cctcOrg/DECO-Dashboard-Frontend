@@ -1,3 +1,19 @@
-<p>
-  file works!
-</p>
+<mz-card
+  [hoverable]="true">
+  <mz-card-title>
+    File name (created by BE)
+    <i mz-icon
+      [align]="'left'"
+      [icon]="'laptop'"
+      [size]="'medium'">
+    </i>
+  </mz-card-title>
+
+  <mz-card-content>
+    <p>Description: {{file.currentDesc}}</p>
+    Notes: {{file.notes}}
+  </mz-card-content>
+  <mz-card-action>
+    <a>View Detailed information</a>
+  </mz-card-action>
+</mz-card>>

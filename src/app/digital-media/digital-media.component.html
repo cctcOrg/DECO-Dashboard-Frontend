@@ -1,3 +1,20 @@
-<p>
-  digital-media works!
-</p>
+<mz-card
+  [routerLink] = "['/images']"
+  [hoverable]="true">
+  <mz-card-title>
+    {{digitalMedia.make}}
+    <i mz-icon
+      [align]="'left'"
+      [icon]="'laptop'"
+      [size]="'medium'">
+    </i>
+  </mz-card-title>
+
+  <mz-card-content>
+    <p>Model: {{digitalMedia.model}}</p>
+    Serial Number: {{digitalMedia.serialNumber}}
+  </mz-card-content>
+  <mz-card-action>
+    <a>View Detailed information</a>
+  </mz-card-action>
+</mz-card>>
