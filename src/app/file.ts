@@ -1,3 +1,5 @@
 export class File {
-    // TODO: Implement this with back-end
+    currentDesc: string;
+    suggestedReviewPlatform: string;
+    notes: string;
 }
