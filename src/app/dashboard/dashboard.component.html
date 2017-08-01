@@ -8,12 +8,43 @@
         [onClose]="closeFunctionCallback"
         [onOpen]="openFunctionCallback"
         [popout]="true">
-        <mz-collapsible-item *ngFor="let contentLayer of contentLayers">
+        <mz-collapsible-item *ngIf="caseView">
             <mz-collapsible-item-header>
-                {{contentLayer}}
+                {{ caseView.caseNumber }}
             </mz-collapsible-item-header>
             <mz-collapsible-item-body>
-                contentLayer
+                <h6>Date Received : </h6>{{caseView.dateReceived}}
+                <h6>Case Number</h6>{{caseView.caseNumber}}
+                <h6>Case Description</h6>{{caseView.caseDescription}}
+                <h6>Suspect Name</h6>{{caseView.suspectName}}
+                <h6>Examiner Name</h6>{{caseView.examinerName}}
+                <h6>Collection Location</h6>{{caseView.collectionLocation}}
+                <h6>Lab ID</h6>{{caseView.labId}}
+                <h6>User ID</h6>{{caseView.userId}}
+            </mz-collapsible-item-body>
+        </mz-collapsible-item>
+        <mz-collapsible-item *ngIf="deviceView">
+            <mz-collapsible-item-header>
+                
+            </mz-collapsible-item-header>
+            <mz-collapsible-item-body>
+                
+            </mz-collapsible-item-body>
+        </mz-collapsible-item>
+        <mz-collapsible-item *ngIf="digitalMediaView">
+            <mz-collapsible-item-header>
+                
+            </mz-collapsible-item-header>
+            <mz-collapsible-item-body>
+                
+            </mz-collapsible-item-body>
+        </mz-collapsible-item>
+        <mz-collapsible-item *ngIf="imageView">
+            <mz-collapsible-item-header>
+                
+            </mz-collapsible-item-header>
+            <mz-collapsible-item-body>
+                
             </mz-collapsible-item-body>
         </mz-collapsible-item>
     </mz-collapsible>

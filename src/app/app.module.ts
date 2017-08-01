@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ServerService } from './server.service';
 import { BreadcrumbService } from './breadcrumb.service';
+import { CollapsibleService } from './collapsible.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-bootstrap';
 import { LoginComponent } from './login/login.component';
@@ -18,7 +19,6 @@ import { CasesComponent } from './cases/cases.component';
 import { SettingsComponent } from './settings/settings.component';
 
 import { routing } from './app-routing.module';
-// import { AppRoutingModule } from './app-routing.module';
 import { AccountComponent } from './account/account.component';
 import { DeviceComponent } from './device/device.component';
 import { DevicesComponent } from './devices/devices.component';
@@ -28,9 +28,11 @@ import { ImageComponent } from './image/image.component';
 import { ImagesComponent } from './images/images.component';
 import { FileComponent } from './file/file.component';
 import { FilesComponent } from './files/files.component';
+<<<<<<< Updated upstream
 import { DigitalMediaComponent } from './digital-media/digital-media.component'; 
-// import { DmComponent } from './dm/dm.component';
-// import { FilesComponent } from './files/files.component';
+=======
+import { DigitalMediaComponent } from './digital-media/digital-media.component';
+>>>>>>> Stashed changes
  
 @NgModule({
   declarations: [
@@ -46,15 +48,15 @@ import { DigitalMediaComponent } from './digital-media/digital-media.component';
     DigitalMediasComponent,
     ImagesComponent,
     FilesComponent,
+<<<<<<< Updated upstream
     DigitalMediaComponent,
     DeviceComponent,
     ImagesComponent,
     ImageComponent,
     FileComponent
-    // ToolbarComponent,
-    // DmComponent,
-    // ImageComponent,
-    // FilesComponent
+=======
+    DigitalMediaComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,7 @@ import { DigitalMediaComponent } from './digital-media/digital-media.component';
     ReactiveFormsModule,
     routing
   ],
-  providers: [ServerService, BreadcrumbService], 
+  providers: [ServerService, BreadcrumbService, CollapsibleService], 
   bootstrap: [AppComponent],
   exports: [ ReactiveFormsModule ]
 })

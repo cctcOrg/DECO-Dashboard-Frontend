@@ -1,9 +1,7 @@
 <mz-card
-  (click) = "viewDevices()"
-  [routerLink] = "['/devices']"
   [hoverable]="true">
   <mz-card-title>
-    {{caseNumber}}
+    {{case.caseNumber}}
     <i mz-icon
       [align]="'left'"
       [icon]="'laptop'"
@@ -12,11 +10,24 @@
   </mz-card-title>
 
   <mz-card-content>
-    <p>Suspect Name : {{suspectName}}    </p>
-    {{caseDescription}}
+    <p>Suspect Name : {{case.suspectName}}    </p>
+    {{case.caseDescription}}
 
   </mz-card-content>
   <mz-card-action>
-    <a>View Detailed information</a>
+    <a [routerLink]="['/devices']" 
+      [queryParams]="{ dateReceived: case.dateReceived,
+        caseNumber: case.caseNumber,
+        caseDescription: case.caseDescription,
+        suspectName: case.suspectName,
+        examinerName: case.examinerName,
+        collectionLocation: case.collectionLocation,
+        labId: case.labId,
+<<<<<<< Updated upstream
+        userId: case.userId }">View Detailed information</a>
+=======
+        userId: case.userId }"
+      (click)="displayDevice()">View Detailed information</a>
+>>>>>>> Stashed changes
   </mz-card-action>
 </mz-card>

@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BreadcrumbService } from '../breadcrumb.service';
+import { CollapsibleService } from '../collapsible.service'; 
+import { Case } from '../case'; 
 
 @Component({
   selector: 'app-case',
@@ -8,11 +10,10 @@ import { BreadcrumbService } from '../breadcrumb.service';
 })
 export class CaseComponent implements OnInit {
 
-  @Input() caseNumber: number;
-  @Input() caseDescription: string;
-  @Input() suspectName: string;
+  @Input() case: Case;
   
-  constructor(private breadcrumbs: BreadcrumbService) { }
+  constructor(private breadcrumbs: BreadcrumbService,
+              private collapsibles: CollapsibleService) { }
 
   @Output() caseEvent = new EventEmitter();
 
@@ -30,5 +31,10 @@ export class CaseComponent implements OnInit {
 
   viewMenu() {
     this.caseEvent.emit(null);
+  }
+
+  displayDevice() {
+    // get the event 
+    this.breadcrumbs.viewDevices(); 
   }
 }

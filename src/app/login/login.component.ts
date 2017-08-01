@@ -19,27 +19,28 @@ export class LoginComponent implements OnInit {
   temp_login() {
     this.loginEvent.emit(null);
   }
-  email = "email12@email.com";
-  userid = 25;
-  caseid= 4; 
+  email = "chianglin@email.com";
+  userid = 1;
+  caseid= 2; 
 
   userjson = {
     "email": this.email,
     "firstName": "Jonathan",
     "lastName": "Chianglin"};
-  postUser() { this.serverService.postUser(this.userjson).subscribe(
-    (response) => console.log(response),
-    (error) => console.log(error)
-  );}
+  postUser() { 
+    this.serverService.postUser(this.userjson).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );}
 
   casejson = {
           "dateReceived": "2017-7-7 04:20",
-          "caseNumber": 123452348,
+          "caseNumber": 2467584,
           "caseDescription": "This is some description for some case",
           "suspectName": "Jonathan Chianglin",
           "examinerNames": "Jonathan Chianglin",
           "collectionLocation": "San Luis Obispo, CA",
-          "labId": 1082,
+          "labId": 1000,
           "userId": this.userid};
   postCase() { this.serverService.postCase(this.userid, this.casejson).subscribe(
     (response) => console.log(response),
@@ -115,4 +116,9 @@ export class LoginComponent implements OnInit {
     (response) => console.log(response),
     (error) => console.log(error)
     );}
+  NUKE() {
+    this.serverService.NUKE().subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+  );}
 }

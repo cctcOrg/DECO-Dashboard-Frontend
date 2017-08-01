@@ -15,9 +15,14 @@ export class ServerService {
     return this.http.post(this.url + '/evd/user', json);
   }
 
-  getCases(userId: any, caseId: any) {
+  getCases(userId: any, caseId?: any) {
     // return this.http.get(this.url + '/evd/' + userId + '/case?id=' + caseId); 
-    return this.http.get(this.url + '/evd/' + userId + '/case?id=' + caseId); 
+    if (caseId) {
+      return this.http.get(this.url + '/evd/' + userId + '/case?id=' + caseId); 
+    }
+    else {
+      return this.http.get(this.url + '/evd/' + userId + '/case'); 
+    }
   }
 
   postCase(userId: any, json: any) {
@@ -53,6 +58,10 @@ export class ServerService {
 
   // TODO : Implement this (waiting on back-end)
   postFile() {}
+
+  NUKE() {
+    return this.http.delete(this.url+'/evd/nuke'); 
+  }
 
   storeServer(servers: any[]) {
     return this.http.post(this.url + '/form',
