@@ -1,5 +1,5 @@
 #header {
-    background:#0000FF;
+    background:#e57373;
 }
 
 #body {
@@ -16,6 +16,10 @@
     padding: 10px;
     white-space: nowrap;
     overflow:hidden;
-    background: #62A4A4;
+    background: #e57373;
+}
+
+a {
+    background:#e57373;
 }
 

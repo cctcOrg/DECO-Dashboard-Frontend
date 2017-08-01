@@ -26,6 +26,7 @@ import { DigitalMediasComponent } from './digital-medias/digital-medias.componen
 import { ImagesComponent } from './images/images.component';
 import { FilesComponent } from './files/files.component';
 import { DigitalMediaComponent } from './digital-media/digital-media.component';
+import { AccInfoComponent } from './acc-info/acc-info.component';
 // import { ImagesComponent } from './images/images.component';
 // import { DmComponent } from './dm/dm.component';
 // import { ImageComponent } from './image/image.component';
@@ -47,7 +48,8 @@ import { DigitalMediaComponent } from './digital-media/digital-media.component';
     DigitalMediasComponent,
     ImagesComponent,
     FilesComponent,
-    DigitalMediaComponent
+    DigitalMediaComponent,
+    AccInfoComponent
     // ToolbarComponent,
     // ImagesComponent,
     // DmComponent,
