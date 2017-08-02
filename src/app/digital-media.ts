@@ -1,4 +1,5 @@
 export class DigitalMedia {
+    id:number;
     storageId: number;
     make: string;
     model: string;

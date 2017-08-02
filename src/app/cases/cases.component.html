@@ -17,14 +17,14 @@
     <mz-modal-content>
       <mz-input-container class="col s6">
         <input mz-input
-          [(ngModel)]="firstName"
+          [(ngModel)]="newCase.suspectFirstName"
           [label]="'Suspect First Name'"
           id="input-firstname"
           type="text">              
         </mz-input-container>
       <mz-input-container class="col s6">
         <input mz-input
-          [(ngModel)]="lastName"
+          [(ngModel)]="newCase.suspectLastName"
           [label]="'Suspect Last Name'"
           id="input-lastname"
           type="text">              
@@ -54,14 +54,14 @@
       </mz-input-container>
       <mz-input-container class="col s6">
         <input mz-input
-          [(ngModel)]="exfirstName"
+          [(ngModel)]="newCase.examinerFirstName"
           [label]="'Examiner First Name'"
           id="input-ex-firstname"
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s6">
         <input mz-input
-          [(ngModel)]="exlastName"
+          [(ngModel)]="newCase.examinerLastName"
           [label]="'Suspect Last Name'"
           id="input-ex-lastname"
           type="text">              

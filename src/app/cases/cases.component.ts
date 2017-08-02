@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Response } from '@angular/http'; 
 import { ServerService } from '../server.service';
 import { BreadcrumbService } from '../breadcrumb.service';
 import { MzToastService } from 'ng2-materialize';
@@ -16,12 +17,8 @@ export class CasesComponent implements OnInit {
   caseSelected = false; 
   newCase = new Case(); 
 
-  firstName = '';
-  lastName = ''; 
-  exfirstName = '';
-  exlastName = ''; 
   // Need dynamic way of holding userId 
-  userId = 2;
+  userId = 1;
 
 
   constructor(private serverService: ServerService,
@@ -33,6 +30,8 @@ export class CasesComponent implements OnInit {
     setTimeout( () => {
       this.breadcrumbs.viewCases();
     });
+
+    this.loadCases();
   }
 
   ngAfterViewInit() {
@@ -40,21 +39,42 @@ export class CasesComponent implements OnInit {
 
   }
 
-  postCase() {
-    this.newCase.suspectName = this.firstName + " " + this.lastName; 
-    this.newCase.examinerName = this.exfirstName + " " + this.exlastName; 
-    
+  postCase() {    
     console.log(this.newCase); 
-    this.addCase(this.newCase); 
-    // this.serverService.postCase(this.userId, this.newCase).subscribe(
-    //   (response) => this.addCase(this.newCase), 
-    //   (error) => this.toastService.show('ERROR: Case not added', 4000)
-    // );
+    
+    this.serverService.postCase(this.userId, this.newCase).subscribe(
+      (response) => this.loadCases(), 
+      (error) => this.toastService.show('ERROR: Case not added', 4000)
+    );
   }
 
-  addCase(newCase: Case) {
-    this.cases.push(newCase); 
-    this.newCase = new Case(); 
-    console.log("Case posted"); 
+  loadCases() {
+    this.cases = []; 
+    this.serverService.getCases(this.userId).subscribe(
+      (response: Response) => {
+        let tempCase: Case;
+        const data = response.json();
+        console.log(data); 
+        
+        for (let obj of data.case_summary_list) {
+          tempCase = new Case(); 
+          tempCase.caseId = obj.caseId; 
+          tempCase.caseDescription = obj.caseDescription; 
+          tempCase.caseNumber = obj.caseNumber;
+          tempCase.collectionLocation = obj.collectionLocation; 
+          tempCase.examinerFirstName = obj.examinerFirstName;
+          tempCase.examinerLastName = obj.examinerLastName;
+          tempCase.suspectFirstName = obj.suspectFirstName;
+          tempCase.suspectLastName = obj.suspectLastName;
+          tempCase.labId = obj.labId;
+          tempCase.userId = obj.userId;
+          tempCase.dateReceived = obj.dateReceived; 
+          console.log(tempCase); 
+          this.cases.push(tempCase); 
+        }
+
+      },
+      (error) => console.log(error)
+    );
   }
 }

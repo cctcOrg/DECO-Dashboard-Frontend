@@ -24,7 +24,8 @@ export class CollapsibleService {
     constructor() {}
 
     removeAllCollapsible() {
-        this.caseSource.next(null);
+        console.log("removed");
+        this.caseSource.next(new Case());
         this.deviceSource.next(null);
         this.digitalMediaSource.next(null);
         this.imageSource.next(null);

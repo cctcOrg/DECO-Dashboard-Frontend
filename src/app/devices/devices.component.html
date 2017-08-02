@@ -1,37 +1,3 @@
-<!--<div class="row">
-  <div class="valign-wrapper">
-    <div class="col s1" *ngIf="caseSelected">
-      <i mz-icon-mdi
-        [icon]="'arrow-left'"
-        [size]="'36px'">
-      </i>
-    </div>
-    <div class="col s8">
-      <nav>
-        <div class="nav-wrapper">
-          <div class="col s12">
-            <a *ngFor="let contentLayer of contentLayers" href="{{contentLayer}}" class="breadcrumb">{{contentLayer}}</a>
-          </div>
-        </div>
-      </nav>
-    </div>
-    <div class="col s3">
-      <button mz-button (click)="fixedFooterModal.open()">Add Device</button>
-
-      <mz-modal #fixedFooterModal [fixedFooter]="true">
-        <mz-modal-header>
-          Device Information
-        </mz-modal-header>
-        <mz-modal-content>
-        </mz-modal-content>
-        <mz-modal-footer>
-          <button mz-button [flat]="true" mz-modal-close (click)="addDevice()">Add</button>
-          <button mz-button [flat]="true" mz-modal-close>Cancel</button>
-        </mz-modal-footer>
-      </mz-modal>
-    </div>
-  </div>
-</div>-->
 <div class="row">
   <div class="valign-wrapper">
     <ul>
@@ -73,6 +39,27 @@
           placeholder=""
           type="number">
       </mz-input-container>
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newDevice.serialNumber"
+          [label]="'Serial Number'"
+          id="input-serialNumber"
+          type="number">
+      </mz-input-container>
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newDevice.deviceStatus"
+          [label]="'Device Status'"
+          id="input-deviceStatus"
+          type="text">
+      </mz-input-container>
+      <mz-input-container class="col s12">
+        <input mz-input
+          [(ngModel)]="newDevice.shutDownStatus"
+          [label]="'Shutdown Status'"
+          id="input-shutdownStatus"
+          type="text">
+      </mz-input-container>   
       <div class="col s12">
         System Date and Time
         <div class="input-field inline">

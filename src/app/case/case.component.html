@@ -10,24 +10,12 @@
   </mz-card-title>
 
   <mz-card-content>
-    <p>Suspect Name : {{case.suspectName}}    </p>
+    <p>Suspect Name : {{case.suspectFirstName}}    </p>
     {{case.caseDescription}}
 
   </mz-card-content>
   <mz-card-action>
     <a [routerLink]="['/devices']" 
-      [queryParams]="{ dateReceived: case.dateReceived,
-        caseNumber: case.caseNumber,
-        caseDescription: case.caseDescription,
-        suspectName: case.suspectName,
-        examinerName: case.examinerName,
-        collectionLocation: case.collectionLocation,
-        labId: case.labId,
-<<<<<<< Updated upstream
-        userId: case.userId }">View Detailed information</a>
-=======
-        userId: case.userId }"
-      (click)="displayDevice()">View Detailed information</a>
->>>>>>> Stashed changes
+      [queryParams]="{ caseId: case.caseId, userId: case.userId }">View Detailed information</a>
   </mz-card-action>
 </mz-card>

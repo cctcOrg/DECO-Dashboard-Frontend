@@ -4,7 +4,7 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 @Injectable()
 export class ServerService {
   url = 'http://129.65.100.50:5000';
-
+  // url = 'http://ec2-54-153-120-156.us-west-1.compute.amazonaws.com:80';
   constructor(private http: Http) { }
 
   getUsers(email: string) {
@@ -15,42 +15,52 @@ export class ServerService {
     return this.http.post(this.url + '/evd/user', json);
   }
 
-  getCases(userId: any, caseId?: any) {
-    // return this.http.get(this.url + '/evd/' + userId + '/case?id=' + caseId); 
-    if (caseId) {
-      return this.http.get(this.url + '/evd/' + userId + '/case?id=' + caseId); 
-    }
-    else {
-      return this.http.get(this.url + '/evd/' + userId + '/case'); 
-    }
+  getCase(userId: any, caseId) {
+    return this.http.get(this.url + '/evd/' + userId + '/case?id=' + caseId); 
+  }
+  
+  getCases(userId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case'); 
   }
 
   postCase(userId: any, json: any) {
     return this.http.post(this.url + '/evd/' + userId+ '/case', json);
   }
 
-  getDevices() {
-    return this.http.get(this.url + '/evd/dev');
+  getDevice(userId: any, caseId:any, deviceId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev?deviceId=' + deviceId); 
   }
 
-  postDevice(json: any) {
-    return this.http.post(this.url + '/evd/dev', json);
+  getDevices(userId: any, caseId:any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev');
   }
 
-  getDigitalMedias() {
-    return this.http.get(this.url + '/evd/dm'); 
+  postDevice(userId: any, caseId: any, json: any) {
+    return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev', json);
   }
 
-  postDigitalMedia(json: any) {
-    return this.http.post(this.url + '/evd/dm', json);
+  getDigitalMedia(userId: any, caseId: any, deviceId: any, dmId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm?dmId=' + dmId); 
   }
 
-  getImages() {
-    return this.http.get(this.url + '/evd/img'); 
+  getDigitalMedias(userId: any, caseId: any, deviceId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm'); 
   }
 
-  postImage(json: any) {
-    return this.http.post(this.url + '/evd/img', json); 
+  postDigitalMedia(userId: any, caseId: any, deviceId: any, json: any) {
+    return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm', json);
+  }
+
+  getImage(userId: any, caseId: any, deviceId: any, dmId: any, imageId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img?imgId=' + imageId );
+  }
+
+  getImages(userId: any, caseId: any, deviceId: any, dmId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img');
+  }
+
+  postImage(userId: any, caseId: any, deviceId: any, dmId: any, json: any) {
+    return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img', json);
   }
 
   // TODO : Implement this (waiting on back-end)

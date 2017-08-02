@@ -28,23 +28,9 @@ import { ImageComponent } from './image/image.component';
 import { ImagesComponent } from './images/images.component';
 import { FileComponent } from './file/file.component';
 import { FilesComponent } from './files/files.component';
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 import { DigitalMediaComponent } from './digital-media/digital-media.component'; 
-=======
-import { DigitalMediaComponent } from './digital-media/digital-media.component';
->>>>>>> Stashed changes
-=======
-
-import { DigitalMediaComponent } from './digital-media/digital-media.component';
 import { AccInfoComponent } from './acc-info/acc-info.component';
-// import { ImagesComponent } from './images/images.component';
 
-
-// import { DmComponent } from './dm/dm.component';
-// import { FilesComponent } from './files/files.component';
->>>>>>> 35ad05f677207382e102d6d29fbdc5ccacacb2ab
- 
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,16 +45,12 @@ import { AccInfoComponent } from './acc-info/acc-info.component';
     DigitalMediasComponent,
     ImagesComponent,
     FilesComponent,
-<<<<<<< Updated upstream
     DigitalMediaComponent,
-    AccInfoComponent,
     DeviceComponent,
     ImagesComponent,
     ImageComponent,
-    FileComponent
-=======
-    DigitalMediaComponent
->>>>>>> Stashed changes
+    FileComponent,
+    AccInfoComponent
   ],
   imports: [
     BrowserModule,
