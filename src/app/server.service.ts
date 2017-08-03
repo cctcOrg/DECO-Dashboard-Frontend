@@ -51,8 +51,8 @@ export class ServerService {
     return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm', json);
   }
 
-  getImage(userId: any, caseId: any, deviceId: any, dmId: any, imageId: any) {
-    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img?imgId=' + imageId );
+  getImage(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img?imgId=' + imgId );
   }
 
   getImages(userId: any, caseId: any, deviceId: any, dmId: any) {
@@ -63,11 +63,17 @@ export class ServerService {
     return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img', json);
   }
 
-  // TODO : Implement this (waiting on back-end)
-  getFiles() {}
+  getFile(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any, fileId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file?fileId=' + fileId); 
+  }
 
-  // TODO : Implement this (waiting on back-end)
-  postFile() {}
+  getFiles(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file');
+  }
+
+  postFile(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any, json: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file', json);
+  }
 
   NUKE() {
     return this.http.delete(this.url+'/evd/nuke'); 

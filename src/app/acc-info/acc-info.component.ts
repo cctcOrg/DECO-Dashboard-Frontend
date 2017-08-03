@@ -11,7 +11,7 @@ export class AccInfoComponent implements OnInit {
   email = "";
   first = "";
   last = "";
-
+   
 
   newUser: User = {
      email: this.email,

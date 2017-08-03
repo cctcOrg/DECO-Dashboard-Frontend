@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
   dmid2:number;
   imgid1:number;
   imgid2:number;
+  fileid1:number;
+  fileid2:number;
 
   userjson = {
     "email": this.email,
@@ -172,6 +174,27 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  filejson1 = {
+    "contentDesc": "content desc",
+    "suggesetedReviewPlatform": "suggested review platform 1",
+    "notes": "if you were a good note taker, you would fill out good notes"
+  };
+  filejson2 = {
+    "contentDesc": "content desc2",
+    "suggesetedReviewPlatform": "suggested review platform 12",
+    "notes": "if you were a bad note taker, you would fill out bad notes"
+  };
+  postFile() {
+    this.serverService.postFile(this.userid, this.caseid1, this.deviceid1, this.dmid1, this.imgid1, this.filejson1).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
+    this.serverService.postFile(this.userid, this.caseid2, this.deviceid2, this.dmid2, this.imgid2, this.filejson2).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
+  }
+
   getUser() { this.serverService.getUsers(this.email).subscribe(
     (response) => {
       let data = response.json(); 
@@ -242,15 +265,45 @@ export class LoginComponent implements OnInit {
   getImage() { 
     let data;
     this.serverService.getImages(this.userid, this.caseid1, this.deviceid1, this.dmid1).subscribe(
-      (response) => console.log(response),
+      (response) => {
+        let data = response.json();
+        this.imgid1 = data.images_list[0].id;
+      },
       (error) => console.log(error)
     );
     this.serverService.getImages(this.userid, this.caseid2, this.deviceid2, this.dmid2).subscribe(
-      (response) => console.log(response),
+      (response) => {
+        let data = response.json();
+        this.imgid2 = data.images_list[0].id;
+      },
       (error) => console.log(error)
     );
+
+    console.log(this.imgid1);
+    console.log(this.imgid2); 
   }
   
+  getFile() {
+    this.serverService.getFiles(this.userid, this.caseid1, this.deviceid1, this.dmid1, this.imgid1).subscribe(
+      (response) => {
+        let data = response.json();
+        // this.fileid1 = data.files_list[0].id;
+        console.log(data);
+      },
+      (error) => console.log(error)
+    );
+    this.serverService.getFiles(this.userid, this.caseid2, this.deviceid2, this.dmid2, this.imgid2).subscribe(
+      (response) => {
+        let data = response.json();
+        this.fileid2 = data.files_list[0].id;
+      },
+      (error) => console.log(error)
+    );
+
+    console.log(this.fileid1);
+    console.log(this.fileid2); 
+  }
+
   NUKE() {
     this.serverService.NUKE().subscribe(
       (response) => console.log(response),
