@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router'; 
-import { Response } from '@angular/http'; 
+import { Response, RequestOptions, Headers } from '@angular/http'; 
 
 import { MzToastService } from 'ng2-materialize';
 
@@ -22,6 +22,7 @@ import { FileMD } from '../filemd';
 })
 export class FilesComponent implements OnInit {
   files: File[] = [];
+  fileMDs: FileMD[] = [];
   caseId: number;
   userId: number;
   deviceId:number;
@@ -79,23 +80,50 @@ export class FilesComponent implements OnInit {
   }
 
   loadFiles() {
-    this.files = [];
-    this.serverService.getFiles(this.userId, this.caseId, this.deviceId, this.digitalMediaId, this.imageId).subscribe(
+    this.fileMDs = [];
+    this.serverService.getFileMDs(this.userId, this.caseId, this.deviceId, this.digitalMediaId, this.imageId).subscribe(
       (response)=>{
         let tempFileMD: FileMD;
         const data = response.json(); 
-        
+        for (let obj of data.files_list) {
+          tempFileMD = new FileMD(); 
+          tempFileMD.contentDesc = obj.contentDesc
+          tempFileMD.fileName = obj.fileName 
+          tempFileMD.notes = obj.notes
+          tempFileMD.size = obj.size
+          tempFileMD.suggestedReviewPlatform = obj.suggestedReviewPlatform
+          tempFileMD.id = obj.id
+          this.fileMDs.push(tempFileMD); 
+        }
       },
       (error)=>console.log(error)
     )
   }
 
-  postFile() {
-    this.serverService.postFile(this.userId, this.caseId, this.deviceId, this.digitalMediaId, this.imageId, this.newFile).subscribe(
-      (response) => this.loadFiles(),
-      (error)=> this.toastService.show('ERROR: Images not added', 4000)
-    )
-    this.newFile = new File(); 
+  postFile(event) {
+    let fileList: FileList = event.target.files;
+    console.log(fileList)
+    console.log(event)
+    if(fileList.length > 0) {
+        let formData:FormData = new FormData();
+        formData.append('file', fileList[0]);
+        formData.append('contentDesc', this.newFile.contentDesc);
+        formData.append('suggestedReviewPlatform', this.newFile.suggestedReviewPlatform); 
+        formData.append('notes', this.newFile.notes); 
+        let headers = new Headers();
+        /** No need to include Content-Type in Angular 4 */
+        // headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        console.log(fileList[0])
+        console.log(formData)
+        console.log(options)
+        this.serverService.postFile(this.userId, this.caseId, this.deviceId, this.digitalMediaId, this.imageId, formData, options).subscribe(
+          (response) => this.loadFiles(),
+          (error)=> this.toastService.show('ERROR: File not added', 4000)
+        )
+    }
+    
   }
 
 }

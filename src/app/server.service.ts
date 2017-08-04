@@ -63,6 +63,8 @@ export class ServerService {
     return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img', json);
   }
 
+
+  // TODO GET IT
   getFile(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any, fileId: any) {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file?fileId=' + fileId); 
   }
@@ -71,8 +73,8 @@ export class ServerService {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file');
   }
 
-  postFile(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any, json: any) {
-    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file', json);
+  postFile(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any, formData: any, options: any) {
+    return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file', formData, options);
   }
 
   getFileMDs(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any) {

@@ -184,16 +184,16 @@ export class LoginComponent implements OnInit {
     "suggesetedReviewPlatform": "suggested review platform 12",
     "notes": "if you were a bad note taker, you would fill out bad notes"
   };
-  postFile() {
-    this.serverService.postFile(this.userid, this.caseid1, this.deviceid1, this.dmid1, this.imgid1, this.filejson1).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );
-    this.serverService.postFile(this.userid, this.caseid2, this.deviceid2, this.dmid2, this.imgid2, this.filejson2).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );
-  }
+  // postFile() {
+  //   this.serverService.postFile(this.userid, this.caseid1, this.deviceid1, this.dmid1, this.imgid1, this.filejson1).subscribe(
+  //     (response) => console.log(response),
+  //     (error) => console.log(error)
+  //   );
+  //   this.serverService.postFile(this.userid, this.caseid2, this.deviceid2, this.dmid2, this.imgid2, this.filejson2).subscribe(
+  //     (response) => console.log(response),
+  //     (error) => console.log(error)
+  //   );
+  // }
 
   getUser() { 
     this.serverService.getUsers(this.email).subscribe(

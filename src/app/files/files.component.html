@@ -1,8 +1,14 @@
 <div class="row">
   <div class="valign-wrapper">
     <ul>
-      <li *ngFor="let file of files">
-        <app-file [file] = "file"></app-file>
+      <li *ngFor="let fileMD of fileMDs">
+        <app-file 
+          [fileMD] = "fileMD"
+          [caseId]="caseId"
+          [userId]="userId"
+          [deviceId]="deviceId"
+          [digitalMediaId]="digitalMediaId"
+          [imageId]="imageId"></app-file>
       </li>
     </ul>
   </div>
@@ -16,9 +22,9 @@
     <mz-modal-content>
       <mz-input-container class="col s6">
         <input mz-input
-          [(ngModel)]="newFile.currentDesc"
-          [label]="'Current Description'"
-          id="input-currentDesc"
+          [(ngModel)]="newFile.contentDesc"
+          [label]="'Content Description'"
+          id="input-contentDesc"
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s12">
@@ -35,9 +41,12 @@
           id="input-notes"
           type="text">
       </mz-input-container>
+      <mz-input-container class="col s12">
+        <input type="file" (change)="postFile($event)" placeholder="Upload file" accept="*">
+      </mz-input-container>
     </mz-modal-content>
     <mz-modal-footer>
-        <button mz-button [flat]="true" mz-modal-close (click)="postFile()">Add</button>
+        <button mz-button [flat]="true" mz-modal-close (click)="postFile()">Upload</button>
         <button mz-button [flat]="true" mz-modal-close>Cancel</button>
     </mz-modal-footer>
 </mz-modal>

@@ -1,7 +1,7 @@
 <mz-card
   [hoverable]="true">
   <mz-card-title>
-    File name (created by BE)
+    {{fileMD.id}}
     <i mz-icon
       [align]="'left'"
       [icon]="'laptop'"
@@ -10,10 +10,10 @@
   </mz-card-title>
 
   <mz-card-content>
-    <p>Description: {{file.currentDesc}}</p>
-    Notes: {{file.notes}}
+    <p>Description: {{fileMD.currentDesc}}</p>
+    Notes: {{fileMD.notes}}
   </mz-card-content>
   <mz-card-action>
-    <a>View Detailed information</a>
+    <a (click)="download()">Download</a>
   </mz-card-action>
 </mz-card>>

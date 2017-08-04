@@ -21,7 +21,7 @@ export class CasesComponent implements OnInit {
   newCase = new Case(); 
 
   // Need dynamic way of holding userId 
-  userId = 1;
+  userId = 3;
 
 
   constructor(private serverService: ServerService,

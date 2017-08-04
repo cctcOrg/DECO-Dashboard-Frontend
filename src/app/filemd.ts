@@ -4,4 +4,5 @@ export class FileMD {
     contentDesc: string;
     suggestedReviewPlatform: string;
     notes: string;
+    id: number;
 }
