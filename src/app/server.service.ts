@@ -4,7 +4,7 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 @Injectable()
 export class ServerService {
   url = 'http://129.65.100.50:5000';
-  // url = 'http://ec2-54-153-120-156.us-west-1.compute.amazonaws.com:80';
+  // url = 'http://ec2-34-212-218-147.us-west-2.compute.amazonaws.com:80';
   constructor(private http: Http) { }
 
   getUsers(email: string) {
@@ -16,7 +16,7 @@ export class ServerService {
   }
 
   getCase(userId: any, caseId) {
-    return this.http.get(this.url + '/evd/' + userId + '/case?id=' + caseId); 
+    return this.http.get(this.url + '/evd/' + userId + '/case?caseId=' + caseId); 
   }
   
   getCases(userId: any) {
@@ -73,6 +73,10 @@ export class ServerService {
 
   postFile(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any, json: any) {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file', json);
+  }
+
+  getFileMDs(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any) {
+    return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/filemd');
   }
 
   NUKE() {

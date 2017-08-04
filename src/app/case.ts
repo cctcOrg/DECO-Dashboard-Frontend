@@ -1,5 +1,5 @@
 export class Case {
-    caseId: number; 
+    id: number; 
     dateReceived: string;
     caseNumber: number;
     caseDescription: string;

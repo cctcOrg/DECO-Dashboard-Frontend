@@ -9,7 +9,10 @@ import { DigitalMedia } from '../digital-media';
 export class DigitalMediaComponent implements OnInit {
 
   @Input() digitalMedia: DigitalMedia;
-
+  @Input() caseId: number;
+  @Input() userId: number;
+  @Input() deviceId: number;
+  
   constructor() { }
 
   ngOnInit() {

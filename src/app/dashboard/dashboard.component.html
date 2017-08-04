@@ -25,26 +25,51 @@
         </mz-collapsible-item>
         <mz-collapsible-item *ngIf="deviceView">
             <mz-collapsible-item-header>
-                
+                {{ deviceView.id}}
             </mz-collapsible-item-header>
             <mz-collapsible-item-body>
-                
+                <h6>Device Description</h6> {{deviceView.deviceDescription}}
+                <h6>Make</h6> {{ deviceView.make }} 
+                <h6>Model</h6> {{ deviceView.model }} 
+                <h6>Serial Number</h6> {{ deviceView.serialNumber }} 
+                <h6>Device Status</h6> {{ deviceView.deviceStatus }} 
+                <h6>Shutdown Method</h6> {{ deviceView.shutDownMethod }} 
+                <h6>System DateTime</h6> {{ deviceView.systemDateTime }} 
+                <h6>Local DataTime</h6> {{ deviceView.localDateTime }} 
+                <h6>Type of Collection</h6> {{ deviceView.typeOfCollection }} 
+                <h6>Media Status</h6> {{ deviceView.mediaStatus }} 
             </mz-collapsible-item-body>
         </mz-collapsible-item>
         <mz-collapsible-item *ngIf="digitalMediaView">
             <mz-collapsible-item-header>
-                
+                {{digitalMediaView.serialNumber}}
             </mz-collapsible-item-header>
             <mz-collapsible-item-body>
-                
+                <h6>Storage ID</h6> {{ digitalMediaView.storageId }}
+                <h6>Make</h6> {{ digitalMediaView.make }}
+                <h6>Model</h6> {{ digitalMediaView.model }}
+                <h6>Serial Number </h6> {{ digitalMediaView.serialNumber}}
+                <h6>Capacity</h6>{{digitalMediaView.capacity}}
+                <h6>Device ID</h6>{{digitalMediaView.deviceId}}
             </mz-collapsible-item-body>
         </mz-collapsible-item>
         <mz-collapsible-item *ngIf="imageView">
             <mz-collapsible-item-header>
-                
+                {{imageView.primaryStorageMediaName}}
             </mz-collapsible-item-header>
             <mz-collapsible-item-body>
-                
+                <h6>User Id</h6> {{imageView.userId}}
+                <h6>Media Id</h6> {{imageView.mediaId}}
+                <h6>Write Block Method</h6> {{imageView.writeBlockMethod}}
+                <h6>Imaging Tools</h6> {{imageView.imagingTools}}
+                <h6>Format</h6>{{imageView.format}}
+                <h6>Primary Storage Media Id</h6>{{imageView.primaryStorageMediaId}}
+                <h6>Primary Storage Media Name</h6>{{imageView.primaryStorageMediaName}}
+                <h6>Backup Storage Media Id</h6>{{imageView.backupStorageMediaId}}
+                <h6>Backup Storage Media Name</h6>{{imageView.backupStorageMediaName}}
+                <h6>Post Collection</h6>{{imageView.postCollection}}
+                <h6>Size</h6>{{imageView.size}}
+                <h6>Notes</h6>{{imageView.notes}}
             </mz-collapsible-item-body>
         </mz-collapsible-item>
     </mz-collapsible>

@@ -1,4 +1,5 @@
 export class Device {
+    id?: number;
     deviceDescription: string;
     make: string;
     model: string;

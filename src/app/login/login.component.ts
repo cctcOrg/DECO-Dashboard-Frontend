@@ -195,36 +195,40 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  getUser() { this.serverService.getUsers(this.email).subscribe(
-    (response) => {
-      let data = response.json(); 
-      this.userid = data.id; 
-      console.log(this.userid); 
-  
-    },
-    (error) => console.log(error)
-    );}
+  getUser() { 
+    this.serverService.getUsers(this.email).subscribe(
+      (response) => {
+        let data = response.json(); 
+        this.userid = data.id; 
+        console.log(this.userid); 
+    
+      },
+      (error) => console.log(error)
+      );
+  }
   getCase() { 
-    console.log(this.userid); 
     this.serverService.getCases(this.userid).subscribe(
       (response) => {
         let data = response.json();
+        console.log(data);
         this.caseid1 = data.case_summary_list[0].id;
         this.caseid2 = data.case_summary_list[1].id;
+        console.log(this.caseid1); 
+        console.log(this.caseid2); 
       },
       (error) => console.log(error)
       
     );
-    console.log(this.caseid2); 
-    console.log(this.caseid1); 
+    
   }
   getDevice() { 
     let data;
     this.serverService.getDevices(this.userid, this.caseid1).subscribe(
       (response) => {
         data = response.json(); 
-        console.log(data.device_list[0].id); 
+        console.log(data);
         this.deviceid1 = data.device_list[0].id; 
+        console.log(this.deviceid1); 
       },
       (error) => console.log(error)
     );
@@ -232,11 +236,10 @@ export class LoginComponent implements OnInit {
       (response) => {
         data = response.json(); 
         this.deviceid2 = data.device_list[0].id; 
+        console.log(this.deviceid2); 
       },
       (error) => console.log(error)
     );
-    console.log(this.deviceid1); 
-    console.log(this.deviceid2); 
 
   }
   getDigitalMedia() { 
@@ -246,6 +249,7 @@ export class LoginComponent implements OnInit {
         data = response.json(); 
         console.log(data); 
         this.dmid1 = data.digital_media_list[0].id;
+        console.log(this.dmid1); 
       },
       (error) => console.log(error)
     );
@@ -255,18 +259,18 @@ export class LoginComponent implements OnInit {
         data = response.json(); 
         console.log(data); 
         this.dmid2 = data.digital_media_list[0].id;
+        console.log(this.dmid2); 
       },
       (error) => console.log(error)
     );
 
-    console.log(this.dmid1); 
-    console.log(this.dmid2); 
   }
   getImage() { 
     let data;
     this.serverService.getImages(this.userid, this.caseid1, this.deviceid1, this.dmid1).subscribe(
       (response) => {
         let data = response.json();
+        console.log(data); 
         this.imgid1 = data.images_list[0].id;
       },
       (error) => console.log(error)
@@ -279,8 +283,6 @@ export class LoginComponent implements OnInit {
       (error) => console.log(error)
     );
 
-    console.log(this.imgid1);
-    console.log(this.imgid2); 
   }
   
   getFile() {
@@ -289,6 +291,7 @@ export class LoginComponent implements OnInit {
         let data = response.json();
         // this.fileid1 = data.files_list[0].id;
         console.log(data);
+        console.log(this.fileid1);
       },
       (error) => console.log(error)
     );
@@ -296,12 +299,11 @@ export class LoginComponent implements OnInit {
       (response) => {
         let data = response.json();
         this.fileid2 = data.files_list[0].id;
+        console.log(this.fileid2); 
       },
       (error) => console.log(error)
     );
 
-    console.log(this.fileid1);
-    console.log(this.fileid2); 
   }
 
   NUKE() {

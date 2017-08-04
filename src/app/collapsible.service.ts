@@ -26,15 +26,39 @@ export class CollapsibleService {
     removeAllCollapsible() {
         console.log("removed");
         this.caseSource.next(new Case());
-        this.deviceSource.next(null);
-        this.digitalMediaSource.next(null);
-        this.imageSource.next(null);
+        this.deviceSource.next(new Device());
+        this.digitalMediaSource.next(new DigitalMedia());
+        this.imageSource.next(new Image());
+    }
+
+    removeAfterCasesCollapsible() {
+        this.deviceSource.next(new Device());
+        this.digitalMediaSource.next(new DigitalMedia());
+        this.imageSource.next(new Image());
+    }
+
+    removeAfterDevicesCollapsible() {
+        this.digitalMediaSource.next(new DigitalMedia());
+        this.imageSource.next(new Image());
+    }
+
+    removeAfterDigitalMediaCollapsible() {
+        this.imageSource.next(new Image());
     }
 
     addCaseCollapsible(Case:Case) {
         this.caseSource.next(Case); 
-        this.deviceSource.next(null);
-        this.digitalMediaSource.next(null);
-        this.imageSource.next(null);
+    }
+
+    addDeviceCollapsible(Device: Device) {
+        this.deviceSource.next(Device); 
+    }
+
+    addDigitalMediaCollapsible(DigitalMedia: DigitalMedia) {
+        this.digitalMediaSource.next(DigitalMedia);
+    }
+
+    addImageCollapsible(Image: Image) {
+        this.imageSource.next(Image); 
     }
 }

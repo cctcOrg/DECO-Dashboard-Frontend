@@ -3,9 +3,8 @@
     <ul>
       <li *ngFor="let device of devices">
         <app-device 
-          [make]="device.make" 
-          [model]="device.model"
-          [serial]="device.serial"></app-device>
+          [device]="device"
+          [case]="case"></app-device>
       </li>
     </ul>
   </div>
@@ -19,7 +18,7 @@
     <mz-modal-content>
       <mz-input-container class="col s6">
         <input mz-input
-          [(ngModel)]="newDevice.deviceDesc"
+          [(ngModel)]="newDevice.deviceDescription"
           [label]="'Device description'"
           id="input-deviceDesc"
           type="text">              
@@ -55,9 +54,9 @@
       </mz-input-container>
       <mz-input-container class="col s12">
         <input mz-input
-          [(ngModel)]="newDevice.shutDownStatus"
-          [label]="'Shutdown Status'"
-          id="input-shutdownStatus"
+          [(ngModel)]="newDevice.shutDownMethod"
+          [label]="'Shutdown Method'"
+          id="input-shutdownMethod"
           type="text">
       </mz-input-container>   
       <div class="col s12">

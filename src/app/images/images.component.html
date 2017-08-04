@@ -2,7 +2,12 @@
   <div class="valign-wrapper">
     <ul>
       <li *ngFor="let image of images">
-        <app-image [image] = "image"></app-image>
+        <app-image 
+          [image] = "image"
+          [caseId]="caseId"
+          [userId]="userId"
+          [deviceId]="deviceId"
+          [digitalMediaId]= "digitalMediaId">    </app-image>
       </li>
     </ul>
   </div>

@@ -15,6 +15,7 @@
     Serial Number: {{digitalMedia.serialNumber}}
   </mz-card-content>
   <mz-card-action>
-    <a>View Detailed information</a>
+    <a [routerLink]="['/images']"
+       [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMedia.id }">View Detailed information</a>
   </mz-card-action>
 </mz-card>>

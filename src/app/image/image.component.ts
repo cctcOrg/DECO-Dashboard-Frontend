@@ -9,7 +9,11 @@ import { Image } from '../image';
 export class ImageComponent implements OnInit {
 
   @Input() image: Image;
-
+  @Input() caseId: number;
+  @Input() userId: number;
+  @Input() deviceId: number;
+  @Input() digitalMediaId: number;
+  
   constructor() { }
 
   ngOnInit() {

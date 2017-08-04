@@ -1,10 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Response } from '@angular/http'; 
+
+import { MzToastService } from 'ng2-materialize';
+
 import { ServerService } from '../server.service';
 import { BreadcrumbService } from '../breadcrumb.service';
-import { MzToastService } from 'ng2-materialize';
-import { Case } from '../case';
 import { CollapsibleService } from '../collapsible.service';
+
+import { Case } from '../case';
 
 @Component({
   selector: 'app-cases',
@@ -58,7 +61,7 @@ export class CasesComponent implements OnInit {
         
         for (let obj of data.case_summary_list) {
           tempCase = new Case(); 
-          tempCase.caseId = obj.caseId; 
+          tempCase.id = obj.id; 
           tempCase.caseDescription = obj.caseDescription; 
           tempCase.caseNumber = obj.caseNumber;
           tempCase.collectionLocation = obj.collectionLocation; 

@@ -2,7 +2,7 @@
   [routerLink] = "['/digital-medias']"
   [hoverable]="true">
   <mz-card-title>
-    Make: {{make}}
+    Make: {{device.make}}
     <i mz-icon
       [align]="'left'"
       [icon]="'laptop'"
@@ -11,11 +11,12 @@
   </mz-card-title>
 
   <mz-card-content>
-    <p>Model : {{model}}    </p>
-    {{serial}}
+    <p>Model : {{device.model}}    </p>
+    {{device.serial}}
 
   </mz-card-content>
   <mz-card-action>
-    <a>View Detailed information</a>
+    <a [routerLink]="['/digital-medias']" 
+      [queryParams]="{ caseId: case.id, userId: case.userId, deviceId: device.id }">View Detailed information</a>
   </mz-card-action>
 </mz-card>

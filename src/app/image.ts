@@ -1,4 +1,5 @@
 export class Image {
+    id?: number;
     userId: number;
     mediaId: number;
     writeBlockMethod: string;
@@ -10,6 +11,6 @@ export class Image {
     backupStorageMediaName: string;
     postCollection: string;
     size: number;
-    Notes: string;
+    notes: string;
     dmId: number;
 }

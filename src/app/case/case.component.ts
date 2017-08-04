@@ -18,7 +18,6 @@ export class CaseComponent implements OnInit {
   @Output() caseEvent = new EventEmitter();
 
   ngOnInit() {
-
   }
 
   viewDevices() {

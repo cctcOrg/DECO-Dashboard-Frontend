@@ -16,6 +16,7 @@
 
   </mz-card-content>
   <mz-card-action>
-    <a>View Detailed information</a>
+    <a [routerLink]="['/files']"
+       [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMediaId, imageId: image.id }">View Detailed information</a>
   </mz-card-action>
 </mz-card>

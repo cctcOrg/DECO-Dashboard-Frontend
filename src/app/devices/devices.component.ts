@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { BreadcrumbService } from '../breadcrumb.service';
-import { MzToastService } from 'ng2-materialize';
-import { ServerService } from '../server.service'; 
-import { Device } from '../device';
-import { CollapsibleService } from '../collapsible.service'; 
-import { Case } from '../case';
 import { ActivatedRoute, Router } from '@angular/router'; 
 import { Response } from '@angular/http'; 
+
+import { MzToastService } from 'ng2-materialize';
+
+import { BreadcrumbService } from '../breadcrumb.service';
+import { ServerService } from '../server.service'; 
+import { CollapsibleService } from '../collapsible.service'; 
+
+import { Device } from '../device';
+import { Case } from '../case';
 
 @Component({
   selector: 'app-devices',
@@ -28,27 +31,44 @@ export class DevicesComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.breadcrumbs.viewDevices();
-
-    this.loadDevices();
+    setTimeout( () => {
+      this.breadcrumbs.viewCases();
+    });
   }
 
   ngAfterViewInit() {
+    Promise.resolve(null).then( () => this.collapsible.removeAfterCasesCollapsible() );
+
     this.route.queryParams.subscribe(
       params => setTimeout( () => { 
       this.caseId = params['caseId'];
       this.userId = params['userId'];
-      this.getCase(); 
-      this.collapsible.addCaseCollapsible(this.case); }, 0),
+      console.log(this.caseId + " " + this.userId); 
+      this.getCase();
+      this.loadDevices(); }, 0),
     error => this.case = null);
 
-    console.log(this.case); 
+   
   }
-
+// TODO : work with the collapsible
   getCase() {
     this.serverService.getCase(this.userId, this.caseId).subscribe(
       (response: Response) => {
-        console.log(response); 
+        let data = response.json();
+        // console.log(data); 
+        this.case.id = this.caseId;
+        this.case.userId = this.userId;
+        this.case.caseDescription = data.caseDescription;
+        this.case.caseNumber = data.caseNumber;
+        this.case.collectionLocation = data.collectionLocation;
+        this.case.dateReceived = data.dateReceived;
+        this.case.examinerFirstName = data.examinerFirstName;
+        this.case.examinerLastName = data.examinerLastName;
+        this.case.labId = data.labId;
+        this.case.suspectFirstName = data.suspectFirstName;
+        this.case.suspectLastName = data.suspectLastName;
+        this.collapsible.addCaseCollapsible(this.case);
+        console.log(this.case.id + " " + this.userId)
       },
       (error) => console.log(error)
     );
@@ -56,7 +76,7 @@ export class DevicesComponent implements OnInit {
 
   postDevice() {
     console.log(this.newDevice);
-    this.serverService.postCase(this.case.userId, this.newDevice).subscribe(
+    this.serverService.postDevice(this.userId, this.caseId, this.newDevice).subscribe(
       (response) => this.loadDevices(), 
       (error) => this.toastService.show('ERROR: Device not added', 4000)
     );
@@ -64,15 +84,29 @@ export class DevicesComponent implements OnInit {
 
   loadDevices() {
     this.devices = [];
-    this.serverService.getDevices(this.case.userId, this.caseId).subscribe(
+    this.serverService.getDevices(this.userId, this.caseId).subscribe(
       (response: Response) => {
         let tempDevice: Device;
         const data = response.json();
         console.log(data); 
         
-        // for (let obj of data.case_summary_list) {
-        //   //
-        // }
+        for (let obj of data.device_list) {
+          tempDevice = new Device();
+
+          tempDevice.id = obj.id;
+          tempDevice.caseId = obj.caseId;
+          tempDevice.deviceDescription = obj.deviceDescription;
+          tempDevice.deviceStatus = obj.deviceStatus;
+          tempDevice.localDateTime = obj.localDateTime;
+          tempDevice.make = obj.make;
+          tempDevice.mediaStatus = obj.mediaStatus;
+          tempDevice.model = obj.model;
+          tempDevice.serialNumber = obj.serialNumber;
+          tempDevice.shutDownMethod = obj.shutDownMethod;
+          tempDevice.systemDateTime = obj.systemDateTime;
+          tempDevice.typeOfCollection = obj.typeOfCollection;
+          this.devices.push(tempDevice);
+        }
 
       },
       (error) => console.log(error)

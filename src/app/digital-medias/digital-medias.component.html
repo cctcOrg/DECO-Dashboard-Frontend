@@ -3,7 +3,10 @@
     <ul>
       <li *ngFor="let digitalMedia of digitalMedias">
         <app-digital-media 
-          [digitalMedia] = "digitalMedia"></app-digital-media>
+          [digitalMedia] = "digitalMedia"
+          [caseId]="caseId"
+          [userId]="userId"
+          [deviceId]="deviceId"></app-digital-media>
       </li>
     </ul>
   </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Device } from '../device';
+import { Case } from '../case';
 
 @Component({
   selector: 'app-device',
@@ -7,9 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DeviceComponent implements OnInit {
 
-  @Input() make:string;
-  @Input() model:string;
-  @Input() serial:number;
+  @Input() case:Case;
+  @Input() device:Device;
 
   constructor() { }
 
