@@ -32,7 +32,7 @@ export class DevicesComponent implements OnInit {
 
   ngOnInit() {
     setTimeout( () => {
-      this.breadcrumbs.viewCases();
+      this.breadcrumbs.viewDevices();
     });
   }
 
