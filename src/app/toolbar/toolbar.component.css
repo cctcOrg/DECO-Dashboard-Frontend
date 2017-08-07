@@ -1,5 +1,5 @@
 #header {
-    background:#e57373;
+    background: transparent;
 }
 
 #body {
@@ -13,13 +13,21 @@
 }
 
 #toolbar {
-    padding: 10px;
+    padding: 0px;
     white-space: nowrap;
     overflow:hidden;
     background: #e57373;
 }
 
 a {
-    background:#e57373;
+    background: transparent;
+}
+
+breadcrumb {
+    background: transparent;
+}
+
+btn-sidenav {
+    background: #e57373;
 }
 
