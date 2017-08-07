@@ -9,7 +9,8 @@
   </div>
 </div>
 
-<button mz-button [float]="true" id="fab" (click)="fixedFooterModal.open()"><div class="valign-wrapper"><i mz-icon [icon]="'add'"></i></div></button>
+ <div class="valign-wrapper right"> <a class="btn-floating btn-large waves-effect waves-light red"(click)="fixedFooterModal.open()" ><i class="material-icons">add</i></a></div>
+<!--<button mz-button [float]="true" id="fab" (click)="fixedFooterModal.open()"><div class="valign-wrapper"><i mz-icon [icon]="'add'"></i></div></button>-->
 <mz-modal #fixedFooterModal [fixedFooter]="true">
     <mz-modal-header>
         Case Information
