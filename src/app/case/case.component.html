@@ -1,4 +1,7 @@
 <mz-card
+  [routerLink]="['/devices']" 
+  [queryParams]="{ caseId: case.id, userId: case.userId }"
+  (click)="updateCaseId(case.id)"
   [hoverable]="true">
   <mz-card-title>
     {{case.caseNumber}}
@@ -16,6 +19,7 @@
   </mz-card-content>
   <mz-card-action>
     <a [routerLink]="['/devices']" 
-      [queryParams]="{ caseId: case.id, userId: case.userId }">View Detailed information</a>
+      [queryParams]="{ caseId: case.id, userId: case.userId }"
+      (click)="updateCaseId(case.id)">View Detailed information</a>
   </mz-card-action>
 </mz-card>

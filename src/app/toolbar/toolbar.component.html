@@ -48,11 +48,11 @@
         <nav class="z-length-0">
             <div>
               <!--<a *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb">{{breadcrumb}}</a>-->
-              <a *ngIf="caseView" class="breadcrumb" [routerLink]="['/cases']">Cases</a>
-              <a *ngIf="deviceView" class="breadcrumb" [routerLink]="['/devices']" >Devices</a>
-              <a *ngIf="digitalMediaView" class="breadcrumb" [routerLink]="['/digital-medias']">Digital Media</a>
-              <a *ngIf="imageView" class="breadcrumb" [routerLink]="['/images']">Images</a>
-              <a *ngIf="fileView" class="breadcrumb" [routerLink]="['/files']">Files</a>
+              <a *ngIf="caseView" class="breadcrumb" [routerLink]="['/cases']" [queryParams]="{ userId: userId }">Cases</a>
+              <a *ngIf="deviceView" class="breadcrumb" [routerLink]="['/devices']" [queryParams]="{ caseId: caseId, userId: userId }">Devices</a>
+              <a *ngIf="digitalMediaView" class="breadcrumb" [routerLink]="['/digital-medias']" [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId }">Digital Media</a>
+              <a *ngIf="imageView" class="breadcrumb" [routerLink]="['/images']" [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMediaId }">Images</a>
+              <a *ngIf="fileView" class="breadcrumb" [routerLink]="['/files']" [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMediaId, imageId: imageId }">Files</a>
             </div>
 
         </nav>

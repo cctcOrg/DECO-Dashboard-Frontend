@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BreadcrumbService } from '../breadcrumb.service';
+
 import { DigitalMedia } from '../digital-media';
 
 @Component({
@@ -13,9 +15,12 @@ export class DigitalMediaComponent implements OnInit {
   @Input() userId: number;
   @Input() deviceId: number;
   
-  constructor() { }
+  constructor(private breadcrumbs: BreadcrumbService) { }
 
   ngOnInit() {
   }
 
+  updateDigitalMediaId(digitalMediaId: number) {
+    this.breadcrumbs.setDigitalMediaId(digitalMediaId);
+  }
 }

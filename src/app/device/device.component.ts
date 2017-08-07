@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BreadcrumbService } from '../breadcrumb.service'
+
 import { Device } from '../device';
 import { Case } from '../case';
 
@@ -12,9 +14,14 @@ export class DeviceComponent implements OnInit {
   @Input() case:Case;
   @Input() device:Device;
 
-  constructor() { }
+  constructor(private breadcrumbs: BreadcrumbService) { }
 
   ngOnInit() {
+
+  }
+
+  updateDeviceId(deviceId: number) {
+    this.breadcrumbs.setDeviceId(deviceId);
   }
 
 }

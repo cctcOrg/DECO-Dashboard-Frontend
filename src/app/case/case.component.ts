@@ -36,4 +36,8 @@ export class CaseComponent implements OnInit {
     // get the event 
     this.breadcrumbs.viewDevices(); 
   }
+
+  updateCaseId(caseId:number) {
+    this.breadcrumbs.setCaseId(caseId);
+  }
 }

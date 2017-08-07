@@ -1,5 +1,7 @@
 <mz-card
   [routerLink] = "['/images']"
+  [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMedia.id }"
+  (click) = "updateDigitalMediaId(digitalMedia.id)"
   [hoverable]="true">
   <mz-card-title>
     {{digitalMedia.make}}
@@ -16,6 +18,7 @@
   </mz-card-content>
   <mz-card-action>
     <a [routerLink]="['/images']"
-       [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMedia.id }">View Detailed information</a>
+       [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMedia.id }"
+       (click) = "updateDigitalMediaId(digitalMedia.id)">View Detailed information</a>
   </mz-card-action>
 </mz-card>>
