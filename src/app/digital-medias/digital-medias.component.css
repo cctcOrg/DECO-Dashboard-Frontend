@@ -3,3 +3,8 @@
     bottom: 5px;
     position: fixed;
 }
+
+ul#digitalMedia li {
+    display: inline-block;
+    margin: 10px;
+}

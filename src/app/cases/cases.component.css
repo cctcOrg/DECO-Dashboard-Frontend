@@ -3,3 +3,17 @@
     bottom: 5px;
     position: fixed;
 }
+
+/*
+ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+*/
+
+ul#case li {
+    display: inline-block;
+    margin: 10px;
+}
+

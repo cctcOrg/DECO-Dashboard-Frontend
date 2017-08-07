@@ -3,3 +3,8 @@
     bottom: 5px;
     position: fixed;
 }
+
+ul#image li {
+    display: inline-block;
+    margin: 10px;
+}
