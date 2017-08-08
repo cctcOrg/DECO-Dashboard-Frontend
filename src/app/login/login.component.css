@@ -12,3 +12,11 @@
     text-align: center;
     margin: 5% auto;
 }
+
+#email {
+    font-size: 18px;
+}
+
+#pwd {
+    font-size: 18px;
+}
