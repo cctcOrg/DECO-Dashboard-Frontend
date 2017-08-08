@@ -5,45 +5,56 @@
           [id]="'sidenav'"
           [collapseButtonId]="'btn-sidenav'"
           [backgroundClass]="'true'"
-          [edge]="'left'">
+          [edge]="'left'"
+          style="text-decoration: none">
 
           <div id="header">
             <mz-sidenav-header>
-              <div class="user-view">
-                <div class="black-text name">{{name}}</div>
-                <div class="black-text email">{{name}}@email.com</div>
+              <div class="background">
+              </div>
+              
+              <div class="user-view" style="margin-left:10px">
+                <div class="black-text name">{{name}}Alex Jones</div>
+                <div class="black-text email">{{name}}alexjones@infowars.com</div>
               </div>
             </mz-sidenav-header>
           </div>
 
+          <!-- Sidenav links -->
           <div id="main">
             <mz-sidenav-link>
-              <a>Cases</a>
+              <a class="waves-effect" [routerLink]="['cases']">
+                <i class="material-icons">work</i>Cases
+              </a>
             </mz-sidenav-link>
-
-            <mz-sidenav-link [active]="true">
-              <a>Account Info</a>
+              
+            <mz-sidenav-link>
+              <a class="waves-effect" [routerLink]="['cases']">
+                <i class="material-icons">account_box</i>Account Information
+              </a>
             </mz-sidenav-link>
           </div>
+
+          <li><div class="divider"></div></li>
           
           <div id="footer">
             <footer class="page-footer">
-              <div class="container">
-                <div class="row">
-                  <mz-sidenav-link [active]="true">
-                    <a>Settings</a>
-                  </mz-sidenav-link>
-                </div>
-                <div class="row">
-                  <mz-sidenav-link [active]="true">
-                    <a>Log Out</a>
-                  </mz-sidenav-link>
-                </div>
-              </div>
+                <mz-sidenav-link>
+                  <a class="waves-effect">
+                    <i class="material-icons">settings</i>Settings
+                  </a>
+                </mz-sidenav-link>
+                
+                <mz-sidenav-link>
+                  <a class="waves-effect">
+                    <i class="material-icons">forward</i>Log Out
+                  </a>
+                </mz-sidenav-link>
             </footer>
           </div>
-        </mz-sidenav>  
-        <button mz-button [flat]="'true'" id="btn-sidenav"><i class="medium material-icons">menu</i></button>
+        </mz-sidenav>
+
+        <button mz-button [flat]="'true'" id="btn-sidenav"><i class="material-icons">menu</i></button>
       </div>
 
         <nav class="z-length-0" id="breadcrumb">
@@ -55,7 +66,6 @@
               <a *ngIf="imageView" class="breadcrumb" [routerLink]="['/images']" [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMediaId }">Images</a>
               <a *ngIf="fileView" class="breadcrumb" [routerLink]="['/files']" [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMediaId, imageId: imageId }">Files</a>
             </div>
-
         </nav>
 
       <div class="col s1">
