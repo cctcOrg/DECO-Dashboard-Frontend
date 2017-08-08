@@ -35,6 +35,7 @@ export class DigitalMediasComponent implements OnInit {
 
   ngOnInit() {
     this.breadcrumbs.viewDigitalMedias();
+    this.collapsible.removeAfterDevicesCollapsible();
   }
 
   ngAfterViewInit() {
@@ -47,7 +48,7 @@ export class DigitalMediasComponent implements OnInit {
       console.log(this.caseId + " " + this.userId + " " + this.deviceId); 
       this.getDevice();
       this.loadDigitalMedias();
-       }, 500),
+       }, 0),
     error => this.device = null);
   }
   

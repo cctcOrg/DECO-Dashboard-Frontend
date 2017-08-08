@@ -36,6 +36,7 @@ export class ImagesComponent implements OnInit {
 
   ngOnInit() {
     this.breadcrumbs.viewImages();
+    this.collapsible.removeAfterDigitalMediaCollapsible();
   }
 
   ngAfterViewInit() {
@@ -48,7 +49,7 @@ export class ImagesComponent implements OnInit {
 
       this.getDigitalMedia();
       this.loadImages();
-       }, 500),
+       }, 0),
     error => this.digitalMedia = null);
   }
 

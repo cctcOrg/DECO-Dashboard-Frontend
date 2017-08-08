@@ -53,7 +53,7 @@ export class FilesComponent implements OnInit {
       this.imageId = params['imageId'];
       this.getImage();
       this.loadFiles();
-       }, 500),
+       }, 0),
     error => this.image = null);
   }
 
