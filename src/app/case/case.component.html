@@ -7,14 +7,14 @@
     {{case.caseNumber}}
     <i mz-icon
       [align]="'left'"
-      [icon]="'laptop'"
+      [icon]="'work'"
       [size]="'medium'">
     </i>
   </mz-card-title>
 
   <mz-card-content>
-    <p>Suspect Name : {{case.suspectFirstName}}    </p>
-    {{case.caseDescription}}
+    <ul><b>Suspect Name:</b> {{case.suspectFirstName}}</ul>
+    <ul><b>Description:</b>{{case.caseDescription}}</ul>
 
   </mz-card-content>
   <mz-card-action>
