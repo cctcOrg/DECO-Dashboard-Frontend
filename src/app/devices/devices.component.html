@@ -11,10 +11,8 @@
 </div>
 
 <div id="fab"> 
-  <a class="btn-floating btn-large waves-effect waves-light red" id="(click)=fixedFooterModal.open()"><i class="material-icons">add</i></a>
+  <a class="btn-floating btn-large waves-effect waves-light red" (click)="fixedFooterModal.open()"><i class="material-icons">add</i></a>
 </div>
-
-<button mz-button [float]="true" id="fab"><div class="valign-wrapper" (click)="fixedFooterModal.open()"><i mz-icon [icon]="'add'"></i></div></button>
 
 <mz-modal #fixedFooterModal [fixedFooter]="true">
     <mz-modal-header>
