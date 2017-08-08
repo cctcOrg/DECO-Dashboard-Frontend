@@ -15,18 +15,10 @@ import { CollapsibleService } from '../collapsible.service';
 export class DashboardComponent implements OnInit {
   isHomePage = true;
 
-  caseView:Case;
-  deviceView:Device;
-  digitalMediaView:DigitalMedia;
-  imageView:Image;
-
-  constructor(private collapsible: CollapsibleService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.collapsible.currentCase.subscribe(caseView => this.caseView = caseView); 
-    this.collapsible.currentDevice.subscribe(deviceView => this.deviceView = deviceView);
-    this.collapsible.currentDigitalMedia.subscribe(digitalMediaView => this.digitalMediaView = digitalMediaView);
-    this.collapsible.currentImage.subscribe(imageView => this.imageView = imageView);
+  
   }
 
   
