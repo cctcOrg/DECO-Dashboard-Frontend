@@ -6,3 +6,9 @@
     overflow: auto;
     overflow-x: hidden;
 }
+
+#loginForm {
+    width: 40%;
+    text-align: center;
+    margin: 5% auto;
+}
