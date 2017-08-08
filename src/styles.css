@@ -12,3 +12,9 @@ main {
     overflow: auto;
     overflow-x: hidden;
 }
+
+#fab {
+    right: 1%;
+    bottom: 9%;
+    position: fixed;
+}
