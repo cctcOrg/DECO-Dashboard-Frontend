@@ -36,6 +36,6 @@ export class FileComponent implements OnInit {
   openLink(response) {
     var blob = new Blob([response], { type: '*' });
     let url= window.URL.createObjectURL(blob);
-    window.open(url);
+    window.open(response.url);
   }
 }
