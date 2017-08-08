@@ -20,7 +20,7 @@
             </mz-sidenav-header>
           </div>
 
-          <!-- Sidenav links -->
+          <!-- Main sidenav links -->
           <div id="main">
             <mz-sidenav-link>
               <a class="waves-effect" [routerLink]="['cases']">
@@ -37,6 +37,7 @@
 
           <li><div class="divider"></div></li>
           
+          <!-- Footer sidenav links -->
           <div id="footer">
             <footer class="page-footer">
                 <mz-sidenav-link>
@@ -54,7 +55,8 @@
           </div>
         </mz-sidenav>
 
-        <button mz-button [flat]="'true'" id="btn-sidenav"><i class="material-icons">menu</i></button>
+        <a class="btn-flat btn-large" id="btn-sidenav"><i class="material-icons">menu</i></a>
+        <!--<button mz-button class="btn-large" [flat]="'true'" id="btn-sidenav"><i class="material-icons">menu</i></button>-->
       </div>
 
         <nav class="z-length-0" id="breadcrumb">
