@@ -59,7 +59,7 @@
         <!--<button mz-button class="btn-large" [flat]="'true'" id="btn-sidenav"><i class="material-icons">menu</i></button>-->
       </div>
 
-        <nav class="z-length-0" id="breadcrumb">
+        <nav class="nav-wrapper" class="z-depth-0" id="breadcrumb">
             <div>
               <!--<a *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb">{{breadcrumb}}</a>-->
               <a *ngIf="caseView" class="breadcrumb" [routerLink]="['/cases']" [queryParams]="{ userId: userId }">Cases</a>

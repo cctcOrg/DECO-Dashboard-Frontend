@@ -23,8 +23,9 @@ a {
     background: transparent;
 }
 
-breadcrumb {
-    background: transparent;
+#breadcrumb {
+    background-color: #e57373;
+    
 }
 
 btn-sidenav {
