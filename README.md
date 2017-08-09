@@ -1,20 +1,19 @@
-# forensic-dashboard-frontend
+# CCTC Forensic Case Dashboard Frontend
 
-Forensic Dashboard frontend fore digital forensics in Angular 4.
+Forensic Case Dashboard frontend for digital forensics examiners. Written in Angular 4.
 
 # Setup
 
-1. Clone the repo, cd into the repo.
+1. Clone the repository and cd into it.
 
-2. Install npm through node
+2. Install [npm](https://www.npmjs.com/package/npm) through [node](https://nodejs.org/en/).
 
-3. Install angular-cli
-       sudo npm install -g @angular/cli
+3. [Install angular-cli](https://cli.angular.io/). `sudo npm install -g @angular/cli`
        
 4. Install required dependencies
-       npm install (in main repo folder)
+       `sudo npm install` (in main repo folder)
 
-5. Launch with ng serve, server will run at localhost:4200 by default.
+5. Launch with `ng serve`. Server will run at localhost:4200 by default.
 
 
 
