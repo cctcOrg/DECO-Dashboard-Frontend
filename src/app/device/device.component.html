@@ -11,11 +11,16 @@
   </mz-card-title>
 
   <mz-card-content>
-    <p>Model : {{device.model}}    </p>
-    {{device.serial}}
+    <p><b>Model:</b> {{device.model}}</p>
+    <p><b>Serial Number:</b> {{device.serialNumber}}</p>
 
   </mz-card-content>
   <mz-card-action>
-      <a (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)">Digital Media</a>
+    <!--a [routerLink]="['/digital-medias']" 
+      [queryParams]="{ caseId: case.id, userId: case.userId, deviceId: device.id }"
+      (click)="updateDeviceId(device.id)">View Detailed information</a-->
+      <a (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)">All Digital Medias
+        <!--router-outlet></router-outlet-->
+      </a>
   </mz-card-action>
 </mz-card>

@@ -19,6 +19,8 @@
     <!--a [routerLink]="['/devices']" 
       [queryParams]="{ caseId: case.id, userId: case.userId }"
       (click)="updateCaseId(case.id)">View Detailed information</a-->
-      <a (click)="updateCaseId(case.id);routeToDevice(case.id)"> Device</a>
+      <a (click)="updateCaseId(case.id);routeToDevice(case.id)"> All Devices
+        <!--router-outlet></router-outlet-->
+      </a>
   </mz-card-action>
 </mz-card>
