@@ -1,3 +1,8 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { DashboardComponent } from './../dashboard/dashboard.component';
+import { LoginService } from './login.service';
+import { AccountService } from './../account/account.service';
+import { User } from './../user';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {ServerService} from '../server.service';
 
@@ -9,7 +14,10 @@ import {ServerService} from '../server.service';
 export class LoginComponent implements OnInit {
 
   isLogin = true;
-  constructor(private serverService: ServerService) { }
+  user: User;
+  userId: number;
+  constructor(private serverService: ServerService, private loginService: LoginService,
+              private router: Router, private route: ActivatedRoute) { }
 
   @Output() loginEvent = new EventEmitter();
 
@@ -19,7 +27,7 @@ export class LoginComponent implements OnInit {
   temp_login() {
     this.loginEvent.emit(null);
   }
-  email = "chianglin@email.com";
+  email: string = "";
   userid: number;
   caseid1: number;
   caseid2: number; 
@@ -32,15 +40,19 @@ export class LoginComponent implements OnInit {
   fileid1:number;
   fileid2:number;
 
-  userjson = {
-    "email": this.email,
-    "firstName": "Jonathan",
-    "lastName": "Chianglin"};
-  postUser() { 
-    this.serverService.postUser(this.userjson).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );}
+  onLogin() { 
+        this.isLogin = false; 
+        console.log(this.email);
+        this.serverService.getUsers(this.email).subscribe(
+            (response) => {
+                let data = response.json();
+                this.userId = +data.id;
+                //this.user = new User(this.userId, data.email, data.firstName, data.lastName)
+                this.router.navigate(['/dashboard', this.userId, 'cases']);
+            },
+            (error) => console.log(error)
+      );
+}
 
   casejson = {
           "dateReceived": "2017-7-7 04:20",

@@ -8,7 +8,7 @@ import {User} from '../user';
 })
 export class AccInfoComponent implements OnInit {
 
-  email = "";
+  /*email = "";
   first = "";
   last = "";
    
@@ -17,7 +17,7 @@ export class AccInfoComponent implements OnInit {
      email: this.email,
      firstName: this.first,
      lastName: this.last
-  };
+  };*/
 
   constructor() { }
 

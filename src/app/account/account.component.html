@@ -26,7 +26,7 @@
               [label]="'Email (and your login)'"
               id="input-caseNumber"
               [(ngModel)]="email"
-              type="number">
+              type="text">
           </mz-input-container>
           <div class="col s12">
             <mz-input-container class="col s12">
@@ -36,11 +36,11 @@
                 type="text">              
             </mz-input-container>
           </div>
-          <ng-template #createdAcc><app-acc-info></app-acc-info></ng-template>
+          <!--ng-template #createdAcc><app-acc-info></app-acc-info></ng-template-->
 
         </mz-modal-content>
         <mz-modal-footer>
-          <button mz-button *ngIf="currMakingAcc; else createdAcc"  [flat]="true" mz-modal-close (click)="finishMakingAcc()">Create Account</button>
+          <button mz-button *ngIf="currMakingAcc; else createdAcc"  [flat]="true" mz-modal-close (click)="setAccount()">Create Account</button>
             
           <button mz-button [flat]="true" mz-modal-close>Cancel</button>
         </mz-modal-footer>

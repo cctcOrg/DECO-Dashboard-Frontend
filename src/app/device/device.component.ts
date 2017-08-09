@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { BreadcrumbService } from '../breadcrumb.service'
 
@@ -14,7 +15,8 @@ export class DeviceComponent implements OnInit {
   @Input() case:Case;
   @Input() device:Device;
 
-  constructor(private breadcrumbs: BreadcrumbService) { }
+  constructor(private breadcrumbs: BreadcrumbService, private route: Router,
+              private router: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -22,6 +24,9 @@ export class DeviceComponent implements OnInit {
 
   updateDeviceId(deviceId: number) {
     this.breadcrumbs.setDeviceId(deviceId);
+  }
+  routeToDigitalMedia(deviceId: number) {
+    this.route.navigate([deviceId, 'digital-medias'], {relativeTo: this.router});
   }
 
 }

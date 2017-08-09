@@ -1,5 +1,8 @@
+import { ImagesService } from './images.service';
+import { CasesService } from './../cases/cases.service';
+import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; 
+import { ActivatedRoute, Router, Params } from '@angular/router'; 
 import { Response } from '@angular/http'; 
 
 import { MzToastService } from 'ng2-materialize';
@@ -24,6 +27,7 @@ export class ImagesComponent implements OnInit {
   userId: number;
   deviceId:number;
   digitalMediaId: number;
+  paramSub: Subscription;
 
   digitalMedia = new DigitalMedia(); 
   newImage = new Image();
@@ -32,15 +36,28 @@ export class ImagesComponent implements OnInit {
               private breadcrumbs: BreadcrumbService,
               private toastService: MzToastService,
               private collapsible: CollapsibleService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private casesService: CasesService,
+              private imagesService: ImagesService) { }
 
   ngOnInit() {
     this.breadcrumbs.viewImages();
     this.collapsible.removeAfterDigitalMediaCollapsible();
+    this.paramSub = this.route.params.subscribe(
+      (params: Params) => {
+        this.caseId = params['caseId'];
+        this.userId = this.casesService.getUserId(); 
+        this.deviceId = params['deviceId'];
+        this.digitalMediaId = params['dmId'];
+        this.imagesService.setDmId(this.digitalMediaId);
+
+        this.getDigitalMedia();
+        this.loadImages();
+      }
+    );
   }
 
   ngAfterViewInit() {
-    this.route.queryParams.subscribe(
+    /*this.route.queryParams.subscribe(
       params => setTimeout( () => { 
       this.caseId = params['caseId'];
       this.userId = params['userId'];
@@ -49,8 +66,8 @@ export class ImagesComponent implements OnInit {
 
       this.getDigitalMedia();
       this.loadImages();
-       }, 0),
-    error => this.digitalMedia = null);
+       }, 500),
+    error => this.digitalMedia = null);*/
   }
 
   getDigitalMedia() {

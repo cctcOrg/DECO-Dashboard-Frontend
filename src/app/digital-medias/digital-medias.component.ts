@@ -1,5 +1,8 @@
+import { DigitalMediasService } from './digital-medias.service';
+import { CasesService } from './../cases/cases.service';
+import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; 
+import { ActivatedRoute, Router, Params } from '@angular/router'; 
 import { Response } from '@angular/http'; 
 
 import { MzToastService } from 'ng2-materialize';
@@ -22,6 +25,7 @@ export class DigitalMediasComponent implements OnInit {
   caseId: number;
   userId: number;
   deviceId:number; 
+  paramsSub: Subscription;
 
   device: Device = new Device();
   newDigitalMedia = new DigitalMedia();
@@ -30,16 +34,28 @@ export class DigitalMediasComponent implements OnInit {
               private breadcrumbs: BreadcrumbService,
               private toastService: MzToastService,
               private collapsible: CollapsibleService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private casesService: CasesService,
+              private digitalMediasService: DigitalMediasService) { }
 
 
   ngOnInit() {
     this.breadcrumbs.viewDigitalMedias();
-    this.collapsible.removeAfterDevicesCollapsible();
+    this.paramsSub = this.route.params.subscribe(
+      ( params: Params ) => {
+        this.caseId = +params['caseId'];
+        this.userId = this.casesService.getUserId();
+        this.deviceId = +params['deviceId'];
+        this.digitalMediasService.setDeviceId(this.deviceId);
+
+        console.log("case id = " + this.caseId + " userId = " + this.userId + " deviceId = " + this.deviceId); 
+        this.getDevice();
+        this.loadDigitalMedias();
+      }
+    );
   }
 
   ngAfterViewInit() {
-    this.route.queryParams.subscribe(
+    /*this.route.queryParams.subscribe(
       params => setTimeout( () => { 
       this.caseId = params['caseId'];
       this.userId = params['userId'];
@@ -48,8 +64,8 @@ export class DigitalMediasComponent implements OnInit {
       console.log(this.caseId + " " + this.userId + " " + this.deviceId); 
       this.getDevice();
       this.loadDigitalMedias();
-       }, 0),
-    error => this.device = null);
+       }, 500),
+    error => this.device = null);*/
   }
   
   getDevice() {

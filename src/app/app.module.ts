@@ -1,3 +1,9 @@
+import { ImagesService } from './images/images.service';
+import { DigitalMediasService } from './digital-medias/digital-medias.service';
+import { DevicesService } from './devices/devices.service';
+import { CasesService } from './cases/cases.service';
+import { LoginService } from './login/login.service';
+import { AccountService } from './account/account.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CasesComponent } from './cases/cases.component';
 import { SettingsComponent } from './settings/settings.component';
 
-import { routing } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AccountComponent } from './account/account.component';
 import { DeviceComponent } from './device/device.component';
 import { DevicesComponent } from './devices/devices.component';
@@ -62,9 +68,11 @@ import { CollapsibleComponent } from './collapsible/collapsible.component';
     TreeModule,
     MaterializeModule.forRoot(),
     ReactiveFormsModule,
-    routing
+    AppRoutingModule
   ],
-  providers: [ServerService, BreadcrumbService, CollapsibleService], 
+  providers: [ServerService, BreadcrumbService, CollapsibleService, 
+              AccountService, LoginService, CasesService,
+              DevicesService, DigitalMediasService, ImagesService], 
   bootstrap: [AppComponent],
   exports: [ ReactiveFormsModule ]
 })

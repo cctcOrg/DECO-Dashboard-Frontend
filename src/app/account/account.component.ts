@@ -1,3 +1,4 @@
+import { AccountService } from './account.service';
 import { Component, OnInit } from '@angular/core';
 import {User} from '../user';
 
@@ -9,25 +10,19 @@ import {User} from '../user';
 })
 export class AccountComponent implements OnInit {
 
-  currMakingAcc = true;
-  email = "";
-  first = "";
-  last = "";
+  currMakingAcc: boolean = true;
 
+  email: string = "";
+  first: string = "";
+  last: string = "";
 
-  newUser: User = {
-     email: this.email,
-     firstName: this.first,
-     lastName: this.last
-  };
-
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
   }
-  
-  finishMakingAcc() {
-     this.currMakingAcc = false;
+
+  setAccount() {
+    this.accountService.postNewUser(this.email, this.first, this.last);
   }
 
 }

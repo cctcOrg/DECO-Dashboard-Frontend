@@ -1,5 +1,7 @@
+import { Subscription } from 'rxjs/Subscription';
+import { CasesService } from './../cases/cases.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; 
+import { ActivatedRoute, Router, Params } from '@angular/router'; 
 import { Response, RequestOptions, Headers } from '@angular/http'; 
 
 import { MzToastService } from 'ng2-materialize';
@@ -28,6 +30,7 @@ export class FilesComponent implements OnInit {
   deviceId:number;
   digitalMediaId: number;
   imageId: number;
+  paramSub: Subscription;
 
   image = new Image();
   newFile = new File();
@@ -37,14 +40,25 @@ export class FilesComponent implements OnInit {
               private breadcrumbs: BreadcrumbService,
               private toastService: MzToastService,
               private collapsible: CollapsibleService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private casesService: CasesService) { }
 
   ngOnInit() {
     this.breadcrumbs.viewFiles();
+    this.paramSub = this.route.params.subscribe(
+      (params: Params) => {
+        this.caseId = params['caseId'];
+        this.userId = this.casesService.getUserId();
+        this.deviceId = params['deviceId'];
+        this.digitalMediaId = params['dmId'];
+        this.imageId = params['imageId'];
+        this.getImage();
+        this.loadFiles();
+      }
+    );
   }
 
   ngAfterViewInit() {
-    this.route.queryParams.subscribe(
+    /*this.route.queryParams.subscribe(
       params => setTimeout( () => { 
       this.caseId = params['caseId'];
       this.userId = params['userId'];
@@ -53,8 +67,8 @@ export class FilesComponent implements OnInit {
       this.imageId = params['imageId'];
       this.getImage();
       this.loadFiles();
-       }, 0),
-    error => this.image = null);
+       }, 500),
+    error => this.image = null);*/
   }
 
   getImage() {

@@ -17,8 +17,11 @@
     Serial Number: {{digitalMedia.serialNumber}}
   </mz-card-content>
   <mz-card-action>
-    <a [routerLink]="['/images']"
+    <!--a [routerLink]="['/images']"
        [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMedia.id }"
-       (click) = "updateDigitalMediaId(digitalMedia.id)">View Detailed information</a>
+       (click) = "updateDigitalMediaId(digitalMedia.id)">View Detailed information</a-->
+    <a (click)="updateDigitalMediaId(digitalMedia.id);routeToImages(digitalMedia.id)">To images
+      <!--router-outlet></router-outlet-->
+    </a>
   </mz-card-action>
 </mz-card>

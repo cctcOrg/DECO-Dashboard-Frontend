@@ -1,3 +1,6 @@
+import { CasesService } from './cases.service';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Response } from '@angular/http'; 
 
@@ -21,20 +24,26 @@ export class CasesComponent implements OnInit {
   newCase = new Case(); 
 
   // Need dynamic way of holding userId 
-  userId = 3;
+  userId: number;
+  sub: any;
+  paramSubscription: Subscription;
 
 
   constructor(private serverService: ServerService,
               private toastService: MzToastService,
               private breadcrumbs: BreadcrumbService,
-              private collapsible: CollapsibleService) { }
+              private collapsible: CollapsibleService,
+              private casesService: CasesService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     setTimeout( () => {
       this.breadcrumbs.viewCases();
     });
-
+    this.userId = this.casesService.getUserId();
+    console.log("after param subscription " + this.userId);
     this.loadCases();
+
   }
 
   ngAfterViewInit() {

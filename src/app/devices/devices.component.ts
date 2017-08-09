@@ -1,5 +1,8 @@
+import { DevicesService } from './devices.service';
+import { CasesService } from './../cases/cases.service';
+import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'; 
+import { ActivatedRoute, Router, Params } from '@angular/router'; 
 import { Response } from '@angular/http'; 
 
 import { MzToastService } from 'ng2-materialize';
@@ -20,6 +23,7 @@ export class DevicesComponent implements OnInit {
   caseId: number;
   userId: number;
   devices: Device[] = [];
+  paramSub: Subscription;
 
   case: Case = new Case(); 
   newDevice = new Device();
@@ -28,25 +32,38 @@ export class DevicesComponent implements OnInit {
               private breadcrumbs: BreadcrumbService,
               private toastService: MzToastService,
               private collapsible: CollapsibleService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private casesService: CasesService,
+              private deviceService: DevicesService) { }
 
   ngOnInit() {
     setTimeout( () => {
       this.breadcrumbs.viewDevices();
     });
+    this.paramSub = this.route.params.
+      subscribe(
+        (params: Params) => {
+          this.caseId = +params['caseId'];
+          this.deviceService.setCaseId(this.caseId);
+          this.userId = this.casesService.getUserId();
+          console.log(this.userId + " " + this.caseId);
+          this.getCase();
+          this.loadDevices();
+        }
+      );
+
   }
 
   ngAfterViewInit() {
     Promise.resolve(null).then( () => this.collapsible.removeAfterCasesCollapsible() );
 
-    this.route.queryParams.subscribe(
+/*    this.route.queryParams.subscribe(
       params => setTimeout( () => { 
-      this.caseId = params['caseId'];
-      this.userId = params['userId'];
+      this.caseId = +params['caseId'];
+      this.userId = +params['userId'];
       console.log(this.caseId + " " + this.userId); 
       this.getCase();
       this.loadDevices(); }, 0),
-    error => this.case = null);
+    error => this.case = null);*/
 
    
   }

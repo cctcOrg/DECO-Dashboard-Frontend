@@ -3,37 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<!-- login page is broken --!>
-<!--<div *ngIf="isNotLoggedIn;else main">
-
-  <div class="jumbotron">
-       <h1>Forensic Dashboard</h1>
-   </div>
-
- 
-  <form>
-    <div class="form-group">
-      <label for="email">Email address:</label>
-      <input type="email" class="form-control" id="email">
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd">
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox"> Remember me</label>
-    </div>
-    
-    <button type="primary" (click)="temp_login();" class="btn btn-primary">Submit</button>
-
-  </form>
- 
-</div> !-->
-<app-login *ngIf="isLoginPage; else main" (loginEvent)="temp_login()"></app-login>
-
-<ng-template #main>
-      <app-dashboard></app-dashboard>
-</ng-template>
+<router-outlet></router-outlet>
 
 
 

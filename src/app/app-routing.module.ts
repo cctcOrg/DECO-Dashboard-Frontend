@@ -1,3 +1,6 @@
+import { CaseComponent } from './case/case.component';
+import { NgModule } from '@angular/core';
+import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -8,14 +11,36 @@ import { DigitalMediasComponent } from './digital-medias/digital-medias.componen
 import { ImagesComponent } from './images/images.component';
 import { FilesComponent } from './files/files.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/cases', pathMatch: 'full'},
-  { path: 'cases',  component: CasesComponent },
-  { path: 'devices', component: DevicesComponent },
-  { path: 'digital-medias', component: DigitalMediasComponent},
-  { path: 'images', component: ImagesComponent},
-  { path: 'files', component: FilesComponent},
-  { path: 'settings', component: SettingsComponent }
+const appRoutes: Routes = [
+  //{ path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', component: LoginComponent },
+  { path: 'dashboard/:userId', component: DashboardComponent, children: [
+    { path: 'cases', children: [
+      { path: '', pathMatch: 'full', component: CasesComponent },
+      { path: ':caseId/devices', children: [
+        { path: '', pathMatch: 'full', component: DevicesComponent }, 
+        { path: ':deviceId/digital-medias', children: [
+          { path: '', pathMatch: 'full', component: DigitalMediasComponent },
+          { path: ':dmId/images', children:[
+            {path: '', pathMatch: 'full', component: ImagesComponent },
+            { path: ':imageId/file', component: FilesComponent },
+          ]}
+        ]}
+      ]},
+    ] },
+    /*{ path: 'digital-medias', component: DigitalMediasComponent},
+    { path: 'images', component: ImagesComponent},
+    { path: 'files', component: FilesComponent},
+    { path: 'settings', component: SettingsComponent }*/
+  ]},
 ];
 
-export const routing = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [
+    RouterModule.forRoot(appRoutes)
+  ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {
+
+}

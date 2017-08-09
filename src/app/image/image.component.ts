@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { BreadcrumbService } from '../breadcrumb.service';
 
@@ -16,13 +17,17 @@ export class ImageComponent implements OnInit {
   @Input() deviceId: number;
   @Input() digitalMediaId: number;
   
-  constructor(private breadcrumbs: BreadcrumbService) { }
+  constructor(private breadcrumbs: BreadcrumbService, private route: Router,
+              private router: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   updateImageId(imageId: number) {
     this.breadcrumbs.setImageId(imageId);
+  }
+  routeToFiles(imageId: number) {
+    this.route.navigate([imageId, 'file'], {relativeTo: this.router});
   }
 
 }
