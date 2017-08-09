@@ -1,9 +1,3 @@
-#fab {
-    right: 1%;
-    bottom: 9%;
-    position: fixed;
-}
-
 ul#file li {
     display: inline-block;
     margin: 10px;
@@ -14,5 +8,5 @@ ul#file li {
 }
 
 #purple {
-    background-color: #9C27B0;
+    background: #9C27B0;
 }

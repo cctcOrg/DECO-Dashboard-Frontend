@@ -1,9 +1,3 @@
-#fab {
-    right: 1%;
-    bottom: 9%;
-    position: fixed;
-}
-
 ul#device li {
     display: inline-block;
     margin: 10px;
@@ -11,4 +5,8 @@ ul#device li {
 
 .row {
     margin-left: 5px;
+}
+
+#orange {
+    background: #FF9800;
 }

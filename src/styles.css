@@ -13,12 +13,31 @@ main {
     overflow-x: hidden;
 }
 
+a:hover {
+ cursor:pointer;
+}
+
 #fab {
-    right: 1%;
-    bottom: 9%;
+    right: 20px;
+    top: 36px;
     position: fixed;
+    z-index: 100;
+}
+
+i.icon-black {
+    color: black;
 }
 
 #theme {
     background: #2196F3;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    flex: 1 0 auto;
+    overflow: auto;
+    overflow-x: hidden;
+    background-color: #2196F3;
 }

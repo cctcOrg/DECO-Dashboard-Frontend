@@ -1,8 +1,9 @@
 <mz-card
   (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)"
   [hoverable]="true">
+  
   <mz-card-title>
-    Make: {{device.make}}
+    {{device.make}}
     <i mz-icon
       [align]="'left'"
       [icon]="'laptop'"
@@ -13,8 +14,8 @@
   <mz-card-content>
     <p><b>Model:</b> {{device.model}}</p>
     <p><b>Serial Number:</b> {{device.serialNumber}}</p>
-
   </mz-card-content>
+
   <mz-card-action>
     <!--a [routerLink]="['/digital-medias']" 
       [queryParams]="{ caseId: case.id, userId: case.userId, deviceId: device.id }"
@@ -22,5 +23,12 @@
       <a (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)">All Digital Medias
         <!--router-outlet></router-outlet-->
       </a>
+
+    <!-- More options button -->
+    <a class="btn-floating btn-flat tooltipped" 
+      data-position="bottom" 
+      data-delay="25" 
+      data-tooltip="More">
+      <i class="small material-icons icon-black">more_vert</i></a>
   </mz-card-action>
 </mz-card>

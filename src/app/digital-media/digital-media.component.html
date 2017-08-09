@@ -16,5 +16,12 @@
   </mz-card-content>
   <mz-card-action>
     <a (click)="updateDigitalMediaId(digitalMedia.id);routeToImages(digitalMedia.id)">All Images</a>
+
+    <!-- More options button -->
+    <a class="btn-floating btn-flat tooltipped" 
+      data-position="bottom" 
+      data-delay="25" 
+      data-tooltip="More">
+      <i class="small material-icons icon-black">more_vert</i></a>
   </mz-card-action>
 </mz-card>
