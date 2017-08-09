@@ -2,50 +2,53 @@
 <nav>
   <div class="nav-wrapper" style="padding-left: 7%; background: #2196F3;">
     <p class="brand-logo"><i class="material-icons">cloud</i>Forensic Dashboard</p>
+    <!-- Create account button -->
+    <app-account></app-account>
   </div>
 </nav>
 
-<div class="col-md-3 text-center" style="text-align:center"> 
-  <form name="test">
-    <!-- Email input -->
-    <div class="form-group">
-      <mz-input-container class="col s12">
-      <input mz-input 
-        type="email" 
-        class="form-control" 
-        id="login"
-        name="email"
-        [(ngModel)]="email"
-        [dataError]="'Email is invalid'"
-        [dataSuccess]="'Email is valid'"  
-        [label]="'Email Address'">
-        </mz-input-container>
-    </div>
-
-    <!-- Password input -->
-    <div class="form-group">
-      <mz-input-container class="col s12">
-        <input mz-input type="password" 
+<div class="text-center" style="text-align:center">
+  <div id="loginForm"> 
+    <form name="test">
+      <!-- Email input -->
+      <div class="form-group">
+        <mz-input-container class="col s12">
+        <input mz-input 
+          type="email" 
           class="form-control" 
-          id="pwd"
-          [label]="'Password'">
-      </mz-input-container>
-    </div>
+          id="login"
+          name="email"
+          [(ngModel)]="email"
+          [dataError]="'Email is invalid'"
+          [dataSuccess]="'Email is valid'"  
+          [label]="'Email Address'">
+          </mz-input-container>
+      </div>
 
-    <!-- Remember me checkbox -->
-    <mz-checkbox-container>
-      <input mz-checkbox
-        [label]="'Remember Me'"
-        id="checkbox-id"
-        type="checkbox">
-    
-    <!-- Login button -->
-    </mz-checkbox-container>
-    <a class="btn" id="orange" (click)="onLogin()">Login</a>
+      <!-- Password input -->
+      <div class="form-group">
+        <mz-input-container class="col s12">
+          <input mz-input type="password" 
+            class="form-control" 
+            id="pwd"
+            [label]="'Password'">
+        </mz-input-container>
+      </div>
 
-    <!-- Create account button -->
-    <app-account></app-account>
-  </form>
+      <!-- Remember me checkbox -->
+      <mz-checkbox-container>
+        <input mz-checkbox
+          [label]="'Remember Me'"
+          id="checkbox-id"
+          type="checkbox">
+      
+      <!-- Login button -->
+      </mz-checkbox-container>
+      <a class="btn" id="orange" (click)="onLogin()">Login</a>
+    </form>
+    <br>
+
+  </div>
 </div>
 
 <!-- Footer -->
