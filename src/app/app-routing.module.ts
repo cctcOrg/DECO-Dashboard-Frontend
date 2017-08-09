@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CaseComponent } from './case/case.component';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
@@ -33,6 +34,9 @@ const appRoutes: Routes = [
     { path: 'files', component: FilesComponent},
     { path: 'settings', component: SettingsComponent }*/
   ]},
+  { path: 'not-found', component: PageNotFoundComponent},
+  { path: '**', redirectTo: '/not-found'}
+
 ];
 
 @NgModule({

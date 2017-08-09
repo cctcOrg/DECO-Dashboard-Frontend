@@ -37,6 +37,7 @@ import { FilesComponent } from './files/files.component';
 import { DigitalMediaComponent } from './digital-media/digital-media.component'; 
 import { AccInfoComponent } from './acc-info/acc-info.component';
 import { CollapsibleComponent } from './collapsible/collapsible.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { CollapsibleComponent } from './collapsible/collapsible.component';
     ImageComponent,
     FileComponent,
     AccInfoComponent,
-    CollapsibleComponent
+    CollapsibleComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
