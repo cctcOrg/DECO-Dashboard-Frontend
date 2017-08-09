@@ -18,3 +18,7 @@ main {
     bottom: 9%;
     position: fixed;
 }
+
+#theme {
+    background: #2196F3;
+}

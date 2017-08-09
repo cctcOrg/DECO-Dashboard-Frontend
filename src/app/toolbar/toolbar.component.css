@@ -16,7 +16,7 @@
     padding: 0px;
     white-space: nowrap;
     overflow: hidden;
-    background: #e57373;
+    background: #2196F3;
 }
 
 a {
@@ -24,12 +24,12 @@ a {
 }
 
 #breadcrumb {
-    background-color: #e57373;
+    background-color: #2196F3;
     
 }
 
 btn-sidenav {
-    background: #e57373;
+    background: #2196F3;
 }
 
 a:link {

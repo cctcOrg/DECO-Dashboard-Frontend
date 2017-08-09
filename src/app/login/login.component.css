@@ -7,6 +7,10 @@
     overflow-x: hidden;
 }
 
+#footColor {
+    background: #2196F3;
+}
+
 #loginForm {
     width: 40%;
     text-align: center;
