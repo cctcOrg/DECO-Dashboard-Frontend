@@ -1,7 +1,5 @@
 <mz-card
-  [routerLink] = "['/files']"
-  [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMediaId, imageId: image.id }"
-  (click)="updateImageId(image.id)"
+  (click)="updateImageId(image.id);routeToFiles(image.id)"
   [hoverable]="true">
   <mz-card-title>
     {{image.primaryStorageMediaName}}
@@ -18,11 +16,6 @@
 
   </mz-card-content>
   <mz-card-action>
-    <!--a [routerLink]="['/files']"
-       [queryParams]="{ caseId: caseId, userId: userId, deviceId: deviceId, digitalMediaId: digitalMediaId, imageId: image.id }"
-       (click)="updateImageId(image.id)">View Detailed information</a-->
-    <a (click)="updateImageId(image.id);routeToFiles(image.id)">Go To files</a>
-      <!--router-outlet></router-outlet-->
-    
+    <a (click)="updateImageId(image.id);routeToFiles(image.id)">Files</a>
   </mz-card-action>
 </mz-card>

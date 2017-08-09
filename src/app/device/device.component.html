@@ -1,7 +1,5 @@
 <mz-card
-  [routerLink] = "['/digital-medias']"
-  [queryParams]="{ caseId: case.id, userId: case.userId, deviceId: device.id }"
-  (click)="updateDeviceId(device.id)"
+  (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)"
   [hoverable]="true">
   <mz-card-title>
     Make: {{device.make}}
@@ -18,11 +16,6 @@
 
   </mz-card-content>
   <mz-card-action>
-    <!--a [routerLink]="['/digital-medias']" 
-      [queryParams]="{ caseId: case.id, userId: case.userId, deviceId: device.id }"
-      (click)="updateDeviceId(device.id)">View Detailed information</a-->
-      <a (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)">Digital Media
-        <!--router-outlet></router-outlet-->
-      </a>
+      <a (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)">Digital Media</a>
   </mz-card-action>
 </mz-card>
