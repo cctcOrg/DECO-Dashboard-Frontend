@@ -15,5 +15,9 @@ Forensic Case Dashboard frontend for digital forensics examiners. Written in Ang
 
 5. Launch with `ng serve`. Server will run at localhost:4200 by default.
 
+# Design Libraries Used
+* [MaterializeCSS](http://materializecss.com/)
+* [ng2-materialize](https://sherweb.github.io/ng2-materialize/button/)
+
 
 
