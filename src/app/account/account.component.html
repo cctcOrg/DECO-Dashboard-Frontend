@@ -1,50 +1,50 @@
 
 
-      <button mz-button id="theme" [flat]="true" class="white-text" (click)="fixedAccModal.open()">Create Account</button>
+<button mz-button id="theme" [flat]="true" class="white-text" (click)="fixedAccModal.open()">Create Account</button>
 
-      <mz-modal #fixedAccModal [fixedFooter]="true">
-        <mz-modal-header>
-          Create Your Account
-        </mz-modal-header>
-        <mz-modal-content>
-          <mz-input-container class="col s6">
-            <input mz-input
-              [label]="'First Name'"
-              id="input-firstname"
-              [(ngModel)]="first"
-              type="text">              
-          </mz-input-container>
-          <mz-input-container class="col s6">
-            <input mz-input
-              [label]="'Last Name'"
-              id="input-lastname"
-              [(ngModel)]="last"
-              type="text">              
-          </mz-input-container>
-          <mz-input-container class="col s12">
-            <input mz-input
-              [label]="'Email (and your login)'"
-              id="input-caseNumber"
-              [(ngModel)]="email"
-              type="text">
-          </mz-input-container>
-          <div class="col s12">
-            <mz-input-container class="col s12">
-              <input mz-input
-                [label]="'Password'"
-                id="input-desc"
-                type="text">              
-            </mz-input-container>
-          </div>
-          <!--ng-template #createdAcc><app-acc-info></app-acc-info></ng-template-->
+<mz-modal #fixedAccModal [fixedFooter]="true">
+  <mz-modal-header>
+    Create Your Account
+  </mz-modal-header>
+  <mz-modal-content>
+    <mz-input-container class="col s6">
+      <input mz-input
+        [label]="'First Name'"
+        id="input-firstname"
+        [(ngModel)]="first"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input
+        [label]="'Last Name'"
+        id="input-lastname"
+        [(ngModel)]="last"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s12">
+      <input mz-input
+        [label]="'Email (and your login)'"
+        id="input-caseNumber"
+        [(ngModel)]="email"
+        type="text">
+    </mz-input-container>
+    <div class="col s12">
+      <mz-input-container class="col s12">
+        <input mz-input
+          [label]="'Password'"
+          id="input-desc"
+          type="text">              
+      </mz-input-container>
+    </div>
+    <!-- <ng-template #createdAcc><app-acc-info></app-acc-info></ng-template> -->
 
-        </mz-modal-content>
-        <mz-modal-footer>
-          <button mz-button *ngIf="currMakingAcc; else createdAcc"  [flat]="true" mz-modal-close (click)="setAccount()">Create Account</button>
-            
-          <button mz-button [flat]="true" mz-modal-close>Cancel</button>
-        </mz-modal-footer>
-      </mz-modal>
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button *ngIf="currMakingAcc; else createdAcc"  [flat]="true" mz-modal-close (click)="setAccount()">Create Account</button>
+      
+    <button mz-button [flat]="true" mz-modal-close>Cancel</button>
+  </mz-modal-footer>
+</mz-modal>
 
 
 
