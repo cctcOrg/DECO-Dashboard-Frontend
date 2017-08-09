@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth-guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CaseComponent } from './case/case.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,7 @@ import { FilesComponent } from './files/files.component';
 const appRoutes: Routes = [
   //{ path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '', component: LoginComponent },
-  { path: 'dashboard/:userId', component: DashboardComponent, children: [
+  { path: 'dashboard/:userId',canActivate: [AuthGuard], component: DashboardComponent, children: [
     { path: 'cases', children: [
       { path: '', pathMatch: 'full', component: CasesComponent },
       { path: ':caseId/devices', children: [

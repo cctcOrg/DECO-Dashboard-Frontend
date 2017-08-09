@@ -1,32 +1,35 @@
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { ServerService } from './../server.service';
-import { AccountService } from './../account/account.service';
-import { User } from './../user';
-import { Injectable, EventEmitter } from '@angular/core';
-
-
 
 @Injectable()
 export class LoginService {
-
+    constructor(private serverService: ServerService,
+        private router: Router) { }
+    isLogin: boolean = false;
     userId: number;
-    user: User;
-    constructor(private serverService: ServerService) {}
-    userJson: any;
 
-    getUser(email: string) {
+    login(email: string) {
+        this.isLogin = true;
         console.log(email);
         this.serverService.getUsers(email).subscribe(
             (response) => {
                 let data = response.json();
                 this.userId = +data.id;
-                this.user = new User(this.userId, data.email, data.firstName, data.lastName)
-                console.log(this.userId);
-                return this.userId;
+                //this.user = new User(this.userId, data.email, data.firstName, data.lastName)
+                this.router.navigate(['/dashboard', this.userId, 'cases']);
             },
             (error) => console.log(error)
         );
-        //console.log('before return userId = ' + this.userId);
-        //console.log(this.user.id);
-        //return this.userId;
+    }
+    isAuthenticated() {
+        const promise = new Promise(
+            (resolve, reject) => {
+                setTimeout(() => {
+                    resolve(this.isLogin);
+                }, 0)
+            }
+        );
+        return promise;
     }
 }
