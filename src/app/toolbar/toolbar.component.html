@@ -1,11 +1,12 @@
   <div class="row" id="toolbar">
     <div class="valign-wrapper"> 
       <div class="col s1">
-        <mz-sidenav
+        <mz-sidenav #nav
           [id]="'sidenav'"
           [collapseButtonId]="'btn-sidenav'"
           [backgroundClass]="'true'"
           [edge]="'left'"
+          [closeOnClick]="true"
           style="text-decoration: none">
 
           <div id="header">
@@ -35,7 +36,7 @@
             </mz-sidenav-link>
           </div>
 
-          <li><div class="divider"></div></li>
+          <li><div class="d ivider"></div></li>
           
           <!-- Footer sidenav links -->
           <div id="footer">
