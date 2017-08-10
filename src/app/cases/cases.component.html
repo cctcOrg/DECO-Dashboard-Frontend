@@ -22,6 +22,7 @@
         <input mz-input
           [(ngModel)]="newCase.suspectFirstName"
           [label]="'Suspect First Name'"
+          [validate]="'true'"
           id="input-firstname"
           type="text">              
         </mz-input-container>
@@ -29,6 +30,7 @@
         <input mz-input
           [(ngModel)]="newCase.suspectLastName"
           [label]="'Suspect Last Name'"
+          [validate]="'true'"
           id="input-lastname"
           type="text">              
       </mz-input-container>
@@ -36,6 +38,7 @@
         <input mz-input
           [(ngModel)]="newCase.caseNumber"
           [label]="'Case Number'"
+          [validate]="'true'"
           id="input-caseNumber"
           placeholder=""
           type="number">
@@ -52,6 +55,7 @@
         <input mz-input
           [(ngModel)]="newCase.caseDescription"
           [label]="'Case Description'"
+          [validate]="'true'"
           id="input-desc"
           type="text">              
       </mz-input-container>
@@ -59,6 +63,7 @@
         <input mz-input
           [(ngModel)]="newCase.examinerFirstName"
           [label]="'Examiner First Name'"
+          [validate]="'true'"
           id="input-ex-firstname"
           type="text">              
       </mz-input-container>
@@ -66,6 +71,7 @@
         <input mz-input
           [(ngModel)]="newCase.examinerLastName"
           [label]="'Examiner Last Name'"
+          [validate]="'true'"
           id="input-ex-lastname"
           type="text">              
       </mz-input-container>
@@ -73,6 +79,7 @@
         <input mz-input
           [(ngModel)]="newCase.collectionLocation"
           [label]="'Collection Location'"
+          [validate]="'true'"
           id="input-loc"
           type="text">              
       </mz-input-container>
@@ -80,6 +87,7 @@
         <input mz-input
           [(ngModel)]="newCase.labId"
           [label]="'Lab ID'"
+
           id="input-labid"
           placeholder=""
           type="number">
@@ -88,6 +96,7 @@
         <input mz-input
           [(ngModel)]="newCase.userId"
           [label]="'User ID'"
+    
           id="input-userid"
           placeholder=""
           type="number">

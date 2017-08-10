@@ -6,7 +6,7 @@
   </mz-modal-header>
   <mz-modal-content>
     <mz-input-container class="col s6">
-      <input mz-input
+      <input mz-input 
         [label]="'First Name'"
         id="input-firstname"
         [(ngModel)]="first"
@@ -20,15 +20,16 @@
         type="text">              
     </mz-input-container>
     <mz-input-container class="col s12">
-      <input mz-input
+      <input mz-input 
+        [validate]="'true'"
         [label]="'Email (and your login)'"
         id="input-caseNumber"
         [(ngModel)]="email"
-        type="text">
+        type="email">
     </mz-input-container>
     <div class="col s12">
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input 
           [label]="'Password'"
           id="input-desc"
           type="text">              

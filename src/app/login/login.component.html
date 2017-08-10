@@ -13,23 +13,27 @@
       <!-- Email input -->
       <div class="form-group">
         <mz-input-container class="col s12">
-        <input mz-input 
+        <input mz-input mz-validation required
           type="email" 
           class="form-control" 
           id="login"
           name="email"
+          [validate]="'true'"
+          pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
           [(ngModel)]="email"
-          [dataError]="'Email is invalid'"
-          [dataSuccess]="'Email is valid'"  
           [label]="'Email Address'">
           </mz-input-container>
+          
+
       </div>
 
       <!-- Password input -->
       <div class="form-group">
         <mz-input-container class="col s12">
-          <input mz-input type="password" 
+          <input mz-input 
+            type="password" 
             class="form-control" 
+            [validate]="'true'"
             id="pwd"
             [label]="'Password'">
         </mz-input-container>
@@ -39,6 +43,7 @@
       <mz-checkbox-container>
         <input mz-checkbox
           [label]="'Remember Me'"
+          
           id="checkbox-id"
           type="checkbox">
       

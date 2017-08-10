@@ -26,6 +26,7 @@
       <mz-input-container class="col s6">
         <input mz-input
           [(ngModel)]="newFile.contentDesc"
+          [validate]="'true'"
           [label]="'Content Description'"
           id="input-contentDesc"
           type="text">              
@@ -34,6 +35,7 @@
         <input mz-input
           [(ngModel)]="newFile.suggestedReviewPlatform"
           [label]="'Suggested Review Platform'"
+          [validate]="'true'"
           id="input-suggestedReviewPlatform"
           type="text">
       </mz-input-container>
@@ -41,6 +43,7 @@
         <input mz-input
           [(ngModel)]="newFile.notes"
           [label]="'Additional Notes'"
+          [validate]="'true'"
           id="input-notes"
           type="text">
       </mz-input-container>

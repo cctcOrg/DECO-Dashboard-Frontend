@@ -23,12 +23,14 @@
         <input mz-input
           [(ngModel)]="newDevice.deviceDescription"
           [label]="'Device description'"
+          [validate]="'true'"
           id="input-deviceDesc"
           type="text">              
         </mz-input-container>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newDevice.make"
+          [validate]="'true'"
           [label]="'Make'"
           id="input-make"
           type="text">              
@@ -37,6 +39,7 @@
         <input mz-input
           [(ngModel)]="newDevice.model"
           [label]="'Model'"
+          [validate]="'true'"
           id="input-model"
           placeholder=""
           type="number">
@@ -45,6 +48,7 @@
         <input mz-input
           [(ngModel)]="newDevice.serialNumber"
           [label]="'Serial Number'"
+          [validate]="'true'"
           id="input-serialNumber"
           type="number">
       </mz-input-container>
@@ -52,6 +56,7 @@
         <input mz-input
           [(ngModel)]="newDevice.deviceStatus"
           [label]="'Device Status'"
+          [validate]="'true'"
           id="input-deviceStatus"
           type="text">
       </mz-input-container>
@@ -59,6 +64,7 @@
         <input mz-input
           [(ngModel)]="newDevice.shutDownMethod"
           [label]="'Shutdown Method'"
+          [validate]="'true'"
           id="input-shutdownMethod"
           type="text">
       </mz-input-container>   
@@ -74,7 +80,7 @@
         Local Date and Time
         <div class="input-field inline">
           <mz-input-container class="col s12">              
-            <input [(ngModel)]="newDevice.localDateTime" id="localDate" type="datetime-local">
+            <input [(ngModel)]="newDevice.localDateTime" id="localDate" type="datetime-local" >
           </mz-input-container>
         </div>
       </div> 
@@ -82,6 +88,7 @@
         <input mz-input
           [(ngModel)]="newDevice.typeOfCollection"
           [label]="'Type of Collection'"
+          [validate]="'true'"
           id="input-collectionType"
           type="text">              
       </mz-input-container>
@@ -89,6 +96,7 @@
         <input mz-input
           [(ngModel)]="newDevice.mediaStatus"
           [label]="'Media Status'"
+          [validate]="'true'"
           id="input-mediaStatus"
           type="text">              
       </mz-input-container>
@@ -96,6 +104,7 @@
         <input mz-input
           [(ngModel)]="newDevice.caseId"
           [label]="'Case ID'"
+          [validate]="'true'"
           id="input-caseid"
           placeholder=""
           type="number">
