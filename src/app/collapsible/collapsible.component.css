@@ -4,7 +4,13 @@ ul {
 
 b {
     text-align: center;
-
     padding-left: 16px;
-    
 }  
+
+#top {
+    margin-top: 28px;
+}
+
+div {
+    margin-top: -18px;
+}
