@@ -23,9 +23,6 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateImageId(imageId: number) {
-    this.breadcrumbs.setImageId(imageId);
-  }
   routeToFiles(imageId: number) {
     this.route.navigate([imageId, 'file'], {relativeTo: this.router});
   }
