@@ -13,14 +13,12 @@ import {ServerService} from '../server.service';
 })
 export class LoginComponent implements OnInit {
 
-  userId: number;
-  constructor(private serverService: ServerService, private loginService: LoginService,
-              private router: Router, private route: ActivatedRoute) { }
+  email: string = "";
+  constructor(private loginService: LoginService) { }
 
 
   ngOnInit() {
   }
-  email: string = "";
 
   onLogin() { 
     this.loginService.login(this.email);

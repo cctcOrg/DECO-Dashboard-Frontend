@@ -17,12 +17,7 @@
   </mz-card-content>
 
   <mz-card-action>
-    <!--a [routerLink]="['/digital-medias']" 
-      [queryParams]="{ caseId: case.id, userId: case.userId, deviceId: device.id }"
-      (click)="updateDeviceId(device.id)">View Detailed information</a-->
-      <a (click)="routeToDigitalMedia(device.id)">All Digital Medias
-        <!--router-outlet></router-outlet-->
-      </a>
+      <a (click)="routeToDigitalMedia(device.id)">All Digital Media</a>
 
     <!-- More options button -->
     <a class="btn-floating btn-flat tooltipped" 
