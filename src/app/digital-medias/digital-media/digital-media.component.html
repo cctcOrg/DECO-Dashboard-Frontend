@@ -1,5 +1,5 @@
 <mz-card
-  (click) = "updateDigitalMediaId(digitalMedia.id);routeToImages(digitalMedia.id)"
+  (click) = "routeToImages(digitalMedia.id)"
   [hoverable]="true">
   <mz-card-title>
     {{digitalMedia.make}}
@@ -15,7 +15,7 @@
     <p><b>Serial Number:</b> {{digitalMedia.serialNumber}}</p>
   </mz-card-content>
   <mz-card-action>
-    <a (click)="updateDigitalMediaId(digitalMedia.id);routeToImages(digitalMedia.id)">All Images</a>
+    <a (click)="routeToImages(digitalMedia.id)">All Images</a>
 
     <!-- More options button -->
     <a class="btn-floating btn-flat tooltipped" 

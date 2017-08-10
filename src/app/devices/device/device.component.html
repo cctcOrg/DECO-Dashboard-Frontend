@@ -1,5 +1,5 @@
 <mz-card
-  (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)"
+  (click)="routeToDigitalMedia(device.id)"
   [hoverable]="true">
   
   <mz-card-title>
@@ -20,7 +20,7 @@
     <!--a [routerLink]="['/digital-medias']" 
       [queryParams]="{ caseId: case.id, userId: case.userId, deviceId: device.id }"
       (click)="updateDeviceId(device.id)">View Detailed information</a-->
-      <a (click)="updateDeviceId(device.id);routeToDigitalMedia(device.id)">All Digital Medias
+      <a (click)="routeToDigitalMedia(device.id)">All Digital Medias
         <!--router-outlet></router-outlet-->
       </a>
 

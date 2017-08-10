@@ -22,9 +22,6 @@ export class DigitalMediaComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateDigitalMediaId(digitalMediaId: number) {
-    this.breadcrumbs.setDigitalMediaId(digitalMediaId);
-  }
   routeToImages(digitalMediaId: number) {
     this.route.navigate([digitalMediaId, 'images'], {relativeTo: this.router});
   }

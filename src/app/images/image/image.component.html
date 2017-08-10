@@ -1,5 +1,5 @@
 <mz-card
-  (click)="updateImageId(image.id);routeToFiles(image.id)"
+  (click)="routeToFiles(image.id)"
   [hoverable]="true">
   <mz-card-title>
     {{image.primaryStorageMediaName}}
@@ -17,7 +17,7 @@
 
   </mz-card-content>
   <mz-card-action>
-    <a (click)="updateImageId(image.id);routeToFiles(image.id)">All Files</a>
+    <a (click)="routeToFiles(image.id)">All Files</a>
   
     <!-- More options button -->
     <a class="btn-floating btn-flat tooltipped" 

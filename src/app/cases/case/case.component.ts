@@ -22,26 +22,6 @@ export class CaseComponent implements OnInit {
   ngOnInit() {
   }
 
-  viewDevices() {
-    this.breadcrumbs.viewDevices();
-  }
-
-  viewCase() {
-    this.caseEvent.emit(null);
-  }
-
-  viewMenu() {
-    this.caseEvent.emit(null);
-  }
-
-  displayDevice() {
-    // get the event 
-    this.breadcrumbs.viewDevices(); 
-  }
-
-  updateCaseId(caseId:number) {
-    this.breadcrumbs.setCaseId(caseId);
-  }
   routeToDevice(caseId: number) {
     this.router.navigate([caseId, 'devices'], {relativeTo: this.route});
   }

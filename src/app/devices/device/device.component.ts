@@ -21,10 +21,7 @@ export class DeviceComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  updateDeviceId(deviceId: number) {
-    this.breadcrumbs.setDeviceId(deviceId);
-  }
+  
   routeToDigitalMedia(deviceId: number) {
     this.route.navigate([deviceId, 'digital-medias'], {relativeTo: this.router});
   }

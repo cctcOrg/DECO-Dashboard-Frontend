@@ -39,12 +39,6 @@ export class ToolbarComponent implements OnInit {
     this.breadcrumbs.currentDigitalMedia.subscribe(digitalMediaView => this.digitalMediaView = digitalMediaView);
     this.breadcrumbs.currentImage.subscribe(imageView => this.imageView = imageView);
     this.breadcrumbs.currentFile.subscribe(fileView => this.fileView = fileView);
-
-    this.breadcrumbs.currentCaseId.subscribe(caseId => this.caseId = caseId);
-    this.breadcrumbs.currentDeviceId.subscribe(deviceId => this.deviceId = deviceId);
-    this.breadcrumbs.currentDigitalMediaId.subscribe(digitalMediaId => this.digitalMediaId = digitalMediaId);
-    this.breadcrumbs.currentImageId.subscribe(imageId => this.imageId = imageId);
-    this.breadcrumbs.currentFileId.subscribe(fileId => this.fileId = fileId);
   }
 
   breadCrumbCases() {

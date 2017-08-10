@@ -1,5 +1,5 @@
 <mz-card
-  (click)="updateCaseId(case.id);routeToDevice(case.id)"
+  (click)="routeToDevice(case.id)"
   [hoverable]="true">
   
   <mz-card-title>
@@ -18,7 +18,7 @@
 
   <mz-card-action>
     <!-- Link to all devices -->
-    <a (click)="updateCaseId(case.id);routeToDevice(case.id)"> All Devices</a>
+    <a (click)="routeToDevice(case.id)"> All Devices</a>
     
     <!-- More options button -->
     <a class="btn-floating btn-flat tooltipped" 
