@@ -1,11 +1,11 @@
 <div class="row">  
-    <div class="container">
+    <div class="container" *ngIf="caseView">
     <mz-collapsible
         [mode]="'expandable'"
         [onClose]="closeFunctionCallback"
         [onOpen]="openFunctionCallback"
         [popout]="false">
-        <mz-collapsible-item *ngIf="caseView">
+        <mz-collapsible-item>
             <mz-collapsible-item-header>
                 Case {{caseView.caseNumber}} : {{  caseView.suspectFirstName }} {{ caseView.suspectLastName}} 
             </mz-collapsible-item-header>
@@ -22,7 +22,18 @@
                     </ul>
             </mz-collapsible-item-body>
         </mz-collapsible-item>
-        <mz-collapsible-item *ngIf="deviceView">
+    </mz-collapsible>
+    </div>
+</div>
+
+<div class="row">  
+    <div class="container" *ngIf="deviceView">
+    <mz-collapsible
+        [mode]="'expandable'"
+        [onClose]="closeFunctionCallback"
+        [onOpen]="openFunctionCallback"
+        [popout]="false">
+        <mz-collapsible-item>
             <mz-collapsible-item-header>
                 Device Description : {{  deviceView.deviceDescription }} 
             </mz-collapsible-item-header>
@@ -41,7 +52,14 @@
                 </ul>
             </mz-collapsible-item-body>
         </mz-collapsible-item>
-        <mz-collapsible-item *ngIf="digitalMediaView">
+    </mz-collapsible>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container" *ngIf="digitalMediaView">
+        <mz-collapsible>
+                <mz-collapsible-item *ngIf="digitalMediaView">
             <mz-collapsible-item-header>
                 Digital Media : {{ digitalMediaView.make}} {{ digitalMediaView.model}} 
             </mz-collapsible-item-header>
@@ -56,7 +74,18 @@
                 </ul>
             </mz-collapsible-item-body>
         </mz-collapsible-item>
-        <mz-collapsible-item *ngIf="imageView">
+        </mz-collapsible>
+    </div>
+</div>
+
+<div class="row">
+    <div class="container" *ngIf="imageView">
+        <mz-collapsible
+        [mode]="'expandable'"
+        [onClose]="closeFunctionCallback"
+        [onOpen]="openFunctionCallback"
+        [popout]="false">
+            <mz-collapsible-item *ngIf="imageView">
             <mz-collapsible-item-header>
                 Image : {{ imageView.primaryStorageMediaName}} 
             </mz-collapsible-item-header>
