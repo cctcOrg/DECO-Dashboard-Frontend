@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { BreadcrumbService } from '../breadcrumb.service';
-import { CollapsibleService } from '../collapsible.service'; 
-import { Case } from '../case'; 
+import { BreadcrumbService } from '../../breadcrumb.service';
+import { CollapsibleService } from '../../collapsible.service'; 
+import { Case } from '../../case'; 
 
 @Component({
   selector: 'app-case',

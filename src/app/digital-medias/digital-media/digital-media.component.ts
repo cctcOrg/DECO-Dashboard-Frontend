@@ -1,8 +1,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { BreadcrumbService } from '../breadcrumb.service';
+import { BreadcrumbService } from '../../breadcrumb.service';
 
-import { DigitalMedia } from '../digital-media';
+import { DigitalMedia } from '../../digital-media';
 
 @Component({
   selector: 'app-digital-media',

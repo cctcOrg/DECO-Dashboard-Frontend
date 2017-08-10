@@ -1,8 +1,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { BreadcrumbService } from '../breadcrumb.service';
+import { BreadcrumbService } from '../../breadcrumb.service';
 
-import { Image } from '../image';
+import { Image } from '../../image';
 
 @Component({
   selector: 'app-image',

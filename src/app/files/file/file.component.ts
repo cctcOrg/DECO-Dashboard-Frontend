@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import 'rxjs/Rx' ;
 
-import { ServerService } from '../server.service'; 
-import { FileMD } from '../filemd';
+import { ServerService } from '../../server.service'; 
+import { FileMD } from '../../filemd';
 
 @Component({
   selector: 'app-file',

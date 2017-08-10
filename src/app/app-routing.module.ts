@@ -1,6 +1,6 @@
 import { AuthGuard } from './auth-guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CaseComponent } from './case/case.component';
+import { CaseComponent } from './cases/case/case.component';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
