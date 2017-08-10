@@ -20,7 +20,7 @@
     </mz-modal-header>
     <mz-modal-content>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newDevice.deviceDescription"
           [label]="'Device description'"
           [validate]="'true'"
@@ -29,14 +29,14 @@
         </mz-input-container>
       <mz-input-container class="col s6">
         <input mz-input mz-validation required
-          [(ngModel)]="newDevice.make"
+          [(ngModel)]="newDevice.make" 
           [validate]="'true'"
           [label]="'Make'"
           id="input-make"
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newDevice.model"
           [label]="'Model'"
           [validate]="'true'"
@@ -45,7 +45,7 @@
           type="number">
       </mz-input-container>
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newDevice.serialNumber"
           [label]="'Serial Number'"
           [validate]="'true'"
@@ -53,7 +53,7 @@
           type="number">
       </mz-input-container>
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newDevice.deviceStatus"
           [label]="'Device Status'"
           [validate]="'true'"
@@ -61,7 +61,7 @@
           type="text">
       </mz-input-container>
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newDevice.shutDownMethod"
           [label]="'Shutdown Method'"
           [validate]="'true'"

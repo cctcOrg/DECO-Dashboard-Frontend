@@ -19,7 +19,7 @@
     </mz-modal-header>
     <mz-modal-content>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.suspectFirstName"
           [label]="'Suspect First Name'"
           [validate]="'true'"
@@ -27,7 +27,7 @@
           type="text">              
         </mz-input-container>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.suspectLastName"
           [label]="'Suspect Last Name'"
           [validate]="'true'"
@@ -35,7 +35,7 @@
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.caseNumber"
           [label]="'Case Number'"
           [validate]="'true'"
@@ -52,7 +52,7 @@
         </div>
       </div> 
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.caseDescription"
           [label]="'Case Description'"
           [validate]="'true'"
@@ -60,7 +60,7 @@
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.examinerFirstName"
           [label]="'Examiner First Name'"
           [validate]="'true'"
@@ -68,7 +68,7 @@
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.examinerLastName"
           [label]="'Examiner Last Name'"
           [validate]="'true'"
@@ -76,7 +76,7 @@
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s12">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.collectionLocation"
           [label]="'Collection Location'"
           [validate]="'true'"
@@ -84,7 +84,7 @@
           type="text">              
       </mz-input-container>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.labId"
           [label]="'Lab ID'"
 
@@ -93,7 +93,7 @@
           type="number">
       </mz-input-container>
       <mz-input-container class="col s6">
-        <input mz-input
+        <input mz-input mz-validation required
           [(ngModel)]="newCase.userId"
           [label]="'User ID'"
     
