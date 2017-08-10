@@ -9,6 +9,16 @@ import { File } from './file';
 
 @Injectable()
 export class CollapsibleService {
+    private activeCaseBoolean = new BehaviorSubject<boolean>(null);
+    private activeDeviceBoolean = new BehaviorSubject<boolean>(null);
+    private activeDigitalMediaBoolean = new BehaviorSubject<boolean>(null);
+    private activeImageBoolean = new BehaviorSubject<boolean>(null);
+   
+    activeCase = this.activeCaseBoolean.asObservable();
+    activeDevice = this.activeDeviceBoolean.asObservable();
+    activeDigitalMedia = this.activeDigitalMediaBoolean.asObservable();
+    activeImage = this.activeImageBoolean.asObservable();
+
     private caseSource = new BehaviorSubject<Case>(null);
     currentCase = this.caseSource.asObservable();  
 
@@ -21,7 +31,8 @@ export class CollapsibleService {
     private imageSource = new BehaviorSubject<Image>(null);
     currentImage = this.imageSource.asObservable();  
 
-    constructor() {}
+    constructor() {
+    }
 
     removeAllCollapsible() {
         console.log("removed");
@@ -47,18 +58,34 @@ export class CollapsibleService {
     }
 
     addCaseCollapsible(Case:Case) {
-        this.caseSource.next(Case); 
+        this.caseSource.next(Case);
+        
+        this.activeCaseBoolean.next(true);
     }
 
     addDeviceCollapsible(Device: Device) {
-        this.deviceSource.next(Device); 
+        this.deviceSource.next(Device);
+        
+        this.activeCaseBoolean.next(false);
+        this.activeDeviceBoolean.next(true);
+
+        console.log("BOOLEAN: " + this.activeCaseBoolean.getValue())
     }
 
     addDigitalMediaCollapsible(DigitalMedia: DigitalMedia) {
         this.digitalMediaSource.next(DigitalMedia);
+
+        this.activeCaseBoolean.next(false);
+        this.activeDeviceBoolean.next(false);
+        this.activeDigitalMediaBoolean.next(true);
     }
 
     addImageCollapsible(Image: Image) {
         this.imageSource.next(Image); 
+
+        this.activeCaseBoolean.next(false);
+        this.activeDeviceBoolean.next(false);
+        this.activeDigitalMediaBoolean.next(false);
+        this.activeImageBoolean.next(true);
     }
 }

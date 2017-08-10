@@ -18,6 +18,13 @@ export class CollapsibleComponent implements OnInit {
   deviceView:Device;
   digitalMediaView:DigitalMedia;
   imageView:Image;
+
+  // Specifies what collapsibles are open and closed programmatically
+  activeCase: boolean;
+  activeDevice: boolean;
+  activeDigitalMedia: boolean;
+  activeImage: boolean;
+
   constructor(private collapsible: CollapsibleService) { }
 
   ngOnInit() {
@@ -25,6 +32,11 @@ export class CollapsibleComponent implements OnInit {
     this.collapsible.currentDevice.subscribe(deviceView => this.deviceView = deviceView);
     this.collapsible.currentDigitalMedia.subscribe(digitalMediaView => this.digitalMediaView = digitalMediaView);
     this.collapsible.currentImage.subscribe(imageView => this.imageView = imageView);
+
+    this.collapsible.activeCase.subscribe(activeCase => this.activeCase = activeCase); 
+    this.collapsible.activeDevice.subscribe(activeDevice => this.activeDevice = activeDevice);
+    this.collapsible.activeDigitalMedia.subscribe(activeDigitalMedia => this.activeDigitalMedia = activeDigitalMedia);
+    this.collapsible.activeImage.subscribe(activeImage => this.activeImage = activeImage);
 
     console.log(this.caseView)
     console.log(this.deviceView)

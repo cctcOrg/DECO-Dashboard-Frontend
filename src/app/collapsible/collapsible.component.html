@@ -5,7 +5,7 @@
         [onClose]="closeFunctionCallback"
         [onOpen]="openFunctionCallback"
         [popout]="false">
-        <mz-collapsible-item>
+        <mz-collapsible-item [active]="true">
             <mz-collapsible-item-header>
                 Case {{caseView.caseNumber}} : {{  caseView.suspectFirstName }} {{ caseView.suspectLastName}} 
             </mz-collapsible-item-header>
@@ -59,7 +59,7 @@
 <div class="row">
     <div class="container" *ngIf="digitalMediaView">
         <mz-collapsible>
-                <mz-collapsible-item *ngIf="digitalMediaView">
+                <mz-collapsible-item>
             <mz-collapsible-item-header>
                 Digital Media : {{ digitalMediaView.make}} {{ digitalMediaView.model}} 
             </mz-collapsible-item-header>
@@ -85,7 +85,7 @@
         [onClose]="closeFunctionCallback"
         [onOpen]="openFunctionCallback"
         [popout]="false">
-            <mz-collapsible-item *ngIf="imageView">
+            <mz-collapsible-item>
             <mz-collapsible-item-header>
                 Image : {{ imageView.primaryStorageMediaName}} 
             </mz-collapsible-item-header>
