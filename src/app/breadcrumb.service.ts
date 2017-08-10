@@ -1,9 +1,16 @@
+/*
+Breadcrumb Service
+
+displays or removes breadcrumbs in toolbar
+
+*/
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 
 export class BreadcrumbService {
+    //Breadcrumb booleans
     private caseSource = new BehaviorSubject<boolean>(true)
     currentCase = this.caseSource.asObservable();
 
@@ -21,6 +28,7 @@ export class BreadcrumbService {
 
     constructor() {}
 
+    //Displays Case breadcrumb and removes all other breadcrumbs
     viewCases() {
         this.caseSource.next(true);
         this.deviceSource.next(false);
@@ -29,6 +37,7 @@ export class BreadcrumbService {
         this.fileSource.next(false);
     }
 
+    //Displays Case, Device breadcrumbs and removes all other breadcrumbs    
     viewDevices() {
         this.caseSource.next(true);
         this.deviceSource.next(true);
@@ -37,6 +46,7 @@ export class BreadcrumbService {
         this.fileSource.next(false);
     }
 
+    //Displays Case, Device, DigitalMedia breadcrumbs and removes all other breadcrumbs    
     viewDigitalMedias() {
         this.caseSource.next(true);
         this.deviceSource.next(true);
@@ -45,6 +55,7 @@ export class BreadcrumbService {
         this.fileSource.next(false);
     }
 
+    //Displays Case, Device, DigitalMedia, Image breadcrumbs and removes File breadcrumb    
     viewImages() {
         this.caseSource.next(true);
         this.deviceSource.next(true);
@@ -53,6 +64,7 @@ export class BreadcrumbService {
         this.fileSource.next(false);
     }
 
+    //Displays all breadcrumbs
     viewFiles() {
         this.caseSource.next(true);
         this.deviceSource.next(true);
