@@ -40,14 +40,16 @@ export class DigitalMediasComponent implements OnInit {
 
   ngOnInit() {
     this.breadcrumbs.viewDigitalMedias();
+    // grabs info from ActivatedRoute and stores the deviceID
+    // by calling the DigitalMediasService.
     this.paramsSub = this.route.params.subscribe(
       ( params: Params ) => {
         this.caseId = +params['caseId'];
         this.userId = this.casesService.getUserId();
         this.deviceId = +params['deviceId'];
         this.digitalMediasService.setDeviceId(this.deviceId);
-
-        console.log("case id = " + this.caseId + " userId = " + this.userId + " deviceId = " + this.deviceId); 
+        // displays current devices in a collapsible menu and 
+        // and loads any Digital Media relative to the parent device in a card.
         this.getDevice();
         this.loadDigitalMedias();
       }
@@ -55,17 +57,6 @@ export class DigitalMediasComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    /*this.route.queryParams.subscribe(
-      params => setTimeout( () => { 
-      this.caseId = params['caseId'];
-      this.userId = params['userId'];
-      this.deviceId = params['deviceId'];
-      console.log(params); 
-      console.log(this.caseId + " " + this.userId + " " + this.deviceId); 
-      this.getDevice();
-      this.loadDigitalMedias();
-       }, 500),
-    error => this.device = null);*/
   }
   
   getDevice() {

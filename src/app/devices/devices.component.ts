@@ -39,6 +39,8 @@ export class DevicesComponent implements OnInit {
     setTimeout( () => {
       this.breadcrumbs.viewDevices();
     });
+    // grabs information from the current Activated Route and saves the caseId
+    // by calling the DeviceService.
     this.paramSub = this.route.params.
       subscribe(
         (params: Params) => {
@@ -46,6 +48,8 @@ export class DevicesComponent implements OnInit {
           this.deviceService.setCaseId(this.caseId);
           this.userId = this.casesService.getUserId();
           console.log(this.userId + " " + this.caseId);
+          // Displays the case associated with this device in a drop down
+          // and any devices relative to the case. 
           this.getCase();
           this.loadDevices();
         }
@@ -55,17 +59,6 @@ export class DevicesComponent implements OnInit {
 
   ngAfterViewInit() {
     Promise.resolve(null).then( () => this.collapsible.removeAfterCasesCollapsible() );
-
-/*    this.route.queryParams.subscribe(
-      params => setTimeout( () => { 
-      this.caseId = +params['caseId'];
-      this.userId = +params['userId'];
-      console.log(this.caseId + " " + this.userId); 
-      this.getCase();
-      this.loadDevices(); }, 0),
-    error => this.case = null);*/
-
-   
   }
 // TODO : work with the collapsible
   getCase() {

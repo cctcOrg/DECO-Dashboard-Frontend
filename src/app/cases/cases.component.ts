@@ -40,10 +40,11 @@ export class CasesComponent implements OnInit {
     setTimeout( () => {
       this.breadcrumbs.viewCases();
     });
+    // I ran into a strange problem where I coudln't grab the userId from the router's
+    // parameter list, hence the need to create a cases.service to store the userId.
     this.userId = this.casesService.getUserId();
-    console.log("after param subscription " + this.userId);
+    // display any cases as cards.
     this.loadCases();
-
   }
 
   ngAfterViewInit() {

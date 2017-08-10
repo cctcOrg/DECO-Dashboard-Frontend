@@ -1,4 +1,6 @@
 
+// like the other services, the ImagesService is a way to keep track
+// of the digital media ID
 export class ImagesService {
     dmId: number;
 

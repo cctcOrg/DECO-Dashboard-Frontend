@@ -44,6 +44,7 @@ export class FilesComponent implements OnInit {
 
   ngOnInit() {
     this.breadcrumbs.viewFiles();
+    // grab info from the ActivatedRoute
     this.paramSub = this.route.params.subscribe(
       (params: Params) => {
         this.caseId = params['caseId'];
@@ -51,6 +52,8 @@ export class FilesComponent implements OnInit {
         this.deviceId = params['deviceId'];
         this.digitalMediaId = params['dmId'];
         this.imageId = params['imageId'];
+        // display the associated Image as a collapsible and any relavent
+        // files as cards. 
         this.getImage();
         this.loadFiles();
       }
@@ -58,17 +61,6 @@ export class FilesComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    /*this.route.queryParams.subscribe(
-      params => setTimeout( () => { 
-      this.caseId = params['caseId'];
-      this.userId = params['userId'];
-      this.deviceId = params['deviceId'];
-      this.digitalMediaId = params['digitalMediaId'];
-      this.imageId = params['imageId'];
-      this.getImage();
-      this.loadFiles();
-       }, 500),
-    error => this.image = null);*/
   }
 
   getImage() {

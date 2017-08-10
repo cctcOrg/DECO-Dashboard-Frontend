@@ -42,6 +42,8 @@ export class ImagesComponent implements OnInit {
   ngOnInit() {
     this.breadcrumbs.viewImages();
     this.collapsible.removeAfterDigitalMediaCollapsible();
+    // grab info from ActivateRoute and store the new digitalMediaId
+    // in the ImagesService.
     this.paramSub = this.route.params.subscribe(
       (params: Params) => {
         this.caseId = params['caseId'];
@@ -49,7 +51,8 @@ export class ImagesComponent implements OnInit {
         this.deviceId = params['deviceId'];
         this.digitalMediaId = params['dmId'];
         this.imagesService.setDmId(this.digitalMediaId);
-
+        // display the DigitalMedia relevant to these images in a collapsible
+        // and display all images as cards.
         this.getDigitalMedia();
         this.loadImages();
       }
@@ -57,17 +60,6 @@ export class ImagesComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    /*this.route.queryParams.subscribe(
-      params => setTimeout( () => { 
-      this.caseId = params['caseId'];
-      this.userId = params['userId'];
-      this.deviceId = params['deviceId'];
-      this.digitalMediaId = params['digitalMediaId'];
-
-      this.getDigitalMedia();
-      this.loadImages();
-       }, 500),
-    error => this.digitalMedia = null);*/
   }
 
   getDigitalMedia() {

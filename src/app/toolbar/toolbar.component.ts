@@ -1,3 +1,4 @@
+import { LoginService } from './../login/login.service';
 import { ImagesService } from './../images/images.service';
 import { DigitalMediasService } from './../digital-medias/digital-medias.service';
 import { DevicesService } from './../devices/devices.service';
@@ -31,7 +32,7 @@ export class ToolbarComponent implements OnInit {
   constructor(private breadcrumbs: BreadcrumbService, private casesService: CasesService,
               private route: Router, private router: ActivatedRoute,
               private devicesService: DevicesService, private digitalMediasService: DigitalMediasService,
-              private imagesServices: ImagesService) { }
+              private imagesServices: ImagesService, private loginService: LoginService) { }
   
   ngOnInit() {
     this.breadcrumbs.currentCase.subscribe(caseView => this.caseView = caseView);
@@ -68,5 +69,10 @@ export class ToolbarComponent implements OnInit {
                         this.deviceId, 'digital-medias', this.digitalMediaId,
                         'images']);
     }, 0);
+  }
+
+  onLogout() {
+    this.loginService.isLogin = false;
+    this.route.navigate(['/']);
   }
 }
