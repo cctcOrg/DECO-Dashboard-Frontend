@@ -1,0 +1,9 @@
+a:hover {
+   cursor: pointer;
+   text-decoration: none;
+ }
+
+.icon-size {
+   font-size: 16px;
+   margin-right: 2px;
+}

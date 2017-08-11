@@ -27,6 +27,7 @@ export class ServerService {
     return this.http.post(this.url + '/evd/user', json);
   }
 
+  // Case methods
   getCase(userId: any, caseId) {
     return this.http.get(this.url + '/evd/' + userId + '/case?caseId=' + caseId); 
   }
@@ -39,6 +40,7 @@ export class ServerService {
     return this.http.post(this.url + '/evd/' + userId+ '/case', json);
   }
 
+  // Device methods
   getDevice(userId: any, caseId:any, deviceId: any) {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev?deviceId=' + deviceId); 
   }
@@ -51,6 +53,7 @@ export class ServerService {
     return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev', json);
   }
 
+  // Digital media methods
   getDigitalMedia(userId: any, caseId: any, deviceId: any, dmId: any) {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm?dmId=' + dmId); 
   }
@@ -63,6 +66,7 @@ export class ServerService {
     return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm', json);
   }
 
+  // Image methods
   getImage(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any) {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img?imgId=' + imgId );
   }
@@ -75,6 +79,7 @@ export class ServerService {
     return this.http.post(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img', json);
   }
 
+  // TODO: Get File to work
   getFile(userId: any, caseId: any, deviceId: any, dmId: any, imgId: any, fileId: any) {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/file?fileId=' + fileId); 
   }
@@ -91,6 +96,7 @@ export class ServerService {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/filemd');
   }
 
+  // TODO: DELETE THIS WHEN IN DELPOYING FOR PRODUCTION! Clear database for development purposes
   NUKE() {
     return this.http.delete(this.url+'/evd/nuke'); 
   }

@@ -9,30 +9,20 @@ import { File } from './file';
 
 @Injectable()
 export class CollapsibleService {
-    private activeCaseBoolean = new BehaviorSubject<boolean>(null);
-    private activeDeviceBoolean = new BehaviorSubject<boolean>(null);
-    private activeDigitalMediaBoolean = new BehaviorSubject<boolean>(null);
-    private activeImageBoolean = new BehaviorSubject<boolean>(null);
-   
-    activeCase = this.activeCaseBoolean.asObservable();
-    activeDevice = this.activeDeviceBoolean.asObservable();
-    activeDigitalMedia = this.activeDigitalMediaBoolean.asObservable();
-    activeImage = this.activeImageBoolean.asObservable();
-
     private caseSource = new BehaviorSubject<Case>(null);
-    currentCase = this.caseSource.asObservable();  
-
     private deviceSource = new BehaviorSubject<Device>(null);
-    currentDevice = this.deviceSource.asObservable();  
-
-    private digitalMediaSource = new BehaviorSubject<DigitalMedia>(null);
-    currentDigitalMedia = this.digitalMediaSource.asObservable();  
-
+    private digitalMediaSource = new BehaviorSubject<DigitalMedia>(null);    
     private imageSource = new BehaviorSubject<Image>(null);
+
+    currentCase = this.caseSource.asObservable();  
+    currentDevice = this.deviceSource.asObservable();  
+    currentDigitalMedia = this.digitalMediaSource.asObservable();  
     currentImage = this.imageSource.asObservable();  
 
     constructor() { }
 
+    // Lines 24 to 47 are a brute force way of removing collapsibles.
+    // Would be good to condense it and make it more dynamic.
     removeAllCollapsible() {
         console.log("Removing collapsibles...");
 
@@ -57,35 +47,19 @@ export class CollapsibleService {
         this.imageSource.next(null);
     }
 
-    addCaseCollapsible(Case:Case) {
+    addCaseCollapsible(Case: Case) {
         this.caseSource.next(Case);
-        
-        this.activeCaseBoolean.next(true);
     }
 
     addDeviceCollapsible(Device: Device) {
         this.deviceSource.next(Device);
-        
-        this.activeCaseBoolean.next(false);
-        this.activeDeviceBoolean.next(true);
-
-        console.log("BOOLEAN: " + this.activeCaseBoolean.getValue())
     }
 
     addDigitalMediaCollapsible(DigitalMedia: DigitalMedia) {
         this.digitalMediaSource.next(DigitalMedia);
-
-        this.activeCaseBoolean.next(false);
-        this.activeDeviceBoolean.next(false);
-        this.activeDigitalMediaBoolean.next(true);
     }
 
     addImageCollapsible(Image: Image) {
-        this.imageSource.next(Image); 
-
-        this.activeCaseBoolean.next(false);
-        this.activeDeviceBoolean.next(false);
-        this.activeDigitalMediaBoolean.next(false);
-        this.activeImageBoolean.next(true);
+        this.imageSource.next(Image);
     }
 }
