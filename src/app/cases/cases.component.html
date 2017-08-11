@@ -91,16 +91,7 @@
           id="input-labid"
           placeholder=""
           type="number">
-      </mz-input-container>
-      <mz-input-container class="col s6">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.userId"
-          [label]="'User ID'"
-    
-          id="input-userid"
-          placeholder=""
-          type="number">
-      </mz-input-container>        
+      </mz-input-container>    
     </mz-modal-content>
     <mz-modal-footer>
         <button mz-button [flat]="true" mz-modal-close (click)="postCase()">Add</button>
