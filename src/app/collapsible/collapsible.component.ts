@@ -22,6 +22,8 @@ export class CollapsibleComponent implements OnInit {
 
   constructor(private collapsible: CollapsibleService) { }
 
+  // Subscribe the component's object (case, device, digital media, and image)
+  // to the service's object 
   ngOnInit() {
     this.collapsible.currentCase.subscribe(caseView => this.caseView = caseView); 
     this.collapsible.currentDevice.subscribe(deviceView => this.deviceView = deviceView);

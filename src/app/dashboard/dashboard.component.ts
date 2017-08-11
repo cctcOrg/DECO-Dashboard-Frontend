@@ -21,11 +21,6 @@ export class DashboardComponent implements OnInit {
   curId: number;
   paramSub: Subscription;
 
-  caseView:Case;
-  deviceView:Device;
-  digitalMediaView:DigitalMedia;
-  imageView:Image;
-
   constructor(private collapsible: CollapsibleService, private route: ActivatedRoute,
               private casesService: CasesService) { }
 
@@ -38,12 +33,5 @@ export class DashboardComponent implements OnInit {
           console.log("dashboard id " + this.curId);
         }
       );
-    this.collapsible.currentCase.subscribe(caseView => this.caseView = caseView); 
-    this.collapsible.currentDevice.subscribe(deviceView => this.deviceView = deviceView);
-    this.collapsible.currentDigitalMedia.subscribe(digitalMediaView => this.digitalMediaView = digitalMediaView);
-    this.collapsible.currentImage.subscribe(imageView => this.imageView = imageView);
   }
-
-  
-
 }
