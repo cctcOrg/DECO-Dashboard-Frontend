@@ -1,9 +1,8 @@
 <mz-card
-  (click)="routeToDevice(case.id)"
   [hoverable]="true">
   
   <mz-card-title>
-    {{case.caseNumber}}
+    {{currentCase.caseNumber}}
     <i mz-icon
       [align]="'left'"
       [icon]="'work'"
@@ -12,14 +11,14 @@
   </mz-card-title>
 
   <mz-card-content>
-    <ul><b>Suspect Name:</b> {{case.suspectFirstName}} {{case.suspectLastName}}</ul>
-    <ul><b>Description:</b> {{case.caseDescription}}</ul>
-    <ul><b>Date Received:</b> {{case.dateReceived[0]}}</ul>
+    <ul><b>Suspect Name:</b> {{currentCase.suspectFirstName}} {{currentCase.suspectLastName}}</ul>
+    <ul><b>Description:</b> {{currentCase.caseDescription}}</ul>
+    <ul><b>Date Received:</b> {{currentCase.dateReceived[0]}}</ul>
   </mz-card-content>
 
   <mz-card-action>
     <!-- Link to all devices -->
-    <a (click)="routeToDevice(case.id)" style="text-decoration: none"> All Devices</a>
+    <a (click)="routeToDevice()" style="text-decoration: none"> All Devices</a>
     
     <!-- More options button -->
     <a mz-button mz-tooltip id="btn-more-options-dropdown" class="tooltipped float" 
@@ -40,13 +39,109 @@
       [dropdownButtonId]="'btn-more-options-dropdown'"
       [hover]="false"
       [stopPropagation]="true">
-      <mz-dropdown-item><a href="#!"><span style="font-size: 12px;">
+      <mz-dropdown-item><a (click)="formModal.open()"><span style="font-size: 12px;">
         <i class="material-icons icon-size">mode_edit</i>
         Edit</span></a></mz-dropdown-item>
       <mz-dropdown-divider></mz-dropdown-divider>
-      <mz-dropdown-item><a (click)=formModal.open()><div style="color: #F44336; font-size: 12px;">
+      <mz-dropdown-item><a><div style="color: #F44336; font-size: 12px;">
         <i class="material-icons icon-size">delete</i>
         Delete</div></a></mz-dropdown-item>
     </mz-dropdown>
   </mz-card-action>
 </mz-card>
+
+<!-- Modal that pops up when user selects edit in dropdown menu -->
+<mz-modal #formModal [fixedFooter]="true">
+  <mz-modal-header>
+      <h3>Edit Case</h3>
+  </mz-modal-header>
+  <mz-modal-content>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.suspectFirstName"
+        [label]="'Suspect First Name'"
+        [validate]="'true'"
+        id="input-firstname"
+        type="text">              
+      </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.suspectLastName"
+        [label]="'Suspect Last Name'"
+        [validate]="'true'"
+        id="input-lastname"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s12">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.caseNumber"
+        [label]="'Case Number'"
+        [validate]="'true'"
+        id="input-caseNumber"
+        placeholder=""
+        type="number">
+    </mz-input-container>
+    <div class="col s12">
+      Date Received
+      <div class="input-field inline">
+        <mz-input-container class="col s12">              
+          <input [(ngModel)]="currentCase.dateReceived" id="datereceived" type="datetime-local">
+        </mz-input-container>
+      </div>
+    </div> 
+    <mz-input-container class="col s12">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.caseDescription"
+        [label]="'Case Description'"
+        [validate]="'true'"
+        id="input-desc"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.examinerFirstName"
+        [label]="'Examiner First Name'"
+        [validate]="'true'"
+        id="input-ex-firstname"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.examinerLastName"
+        [label]="'Examiner Last Name'"
+        [validate]="'true'"
+        id="input-ex-lastname"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s12">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.collectionLocation"
+        [label]="'Collection Location'"
+        [validate]="'true'"
+        id="input-loc"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.labId"
+        [label]="'Lab ID'"
+
+        id="input-labid"
+        placeholder=""
+        type="number">
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="currentCase.userId"
+        [label]="'User ID'"
+  
+        id="input-userid"
+        placeholder=""
+        type="number">
+    </mz-input-container>        
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close style="color: #F44336">Cancel</button>
+    <button mz-button [flat]="true" mz-modal-close style="color: #4CAF50" (click)="putCase()">Modify</button>
+  </mz-modal-footer>
+</mz-modal>
