@@ -23,7 +23,6 @@ export class CasesComponent implements OnInit {
   caseSelected = false; 
   newCase = new Case(); 
 
-  // Need dynamic way of holding userId 
   userId: number;
   sub: any;
   paramSubscription: Subscription;
@@ -43,24 +42,25 @@ export class CasesComponent implements OnInit {
     // I ran into a strange problem where I coudln't grab the userId from the router's
     // parameter list, hence the need to create a cases.service to store the userId.
     this.userId = this.casesService.getUserId();
-    // display any cases as cards.
+    // Display any cases as cards.
     this.loadCases();
   }
 
   ngAfterViewInit() {
     Promise.resolve(null).then( () => this.collapsible.removeAllCollapsible() );
-
   }
 
+  // Bound to Add Case button
+  // Called when user click Add Case 
   postCase() {    
-    console.log(this.newCase); 
-    
     this.serverService.postCase(this.userId, this.newCase).subscribe(
       (response) => this.loadCases(), 
       (error) => this.toastService.show('ERROR: Case not added', 4000)
     );
   }
 
+  // Loads all cases from the back-end given the user ID
+  // Will load the Case component multiple times
   loadCases() {
     this.cases = []; 
     this.serverService.getCases(this.userId).subscribe(
@@ -69,6 +69,7 @@ export class CasesComponent implements OnInit {
         const data = response.json();
         console.log(data); 
         
+        // Janky object-mapping
         for (let obj of data.case_summary_list) {
           tempCase = new Case(); 
           tempCase.id = obj.id; 
