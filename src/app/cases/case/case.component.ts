@@ -1,3 +1,4 @@
+import { MzToastService } from 'ng2-materialize';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
@@ -13,19 +14,20 @@ import { Case } from '../../case';
   styleUrls: ['./case.component.css']
 })
 export class CaseComponent implements OnInit {
-  // Need dynamic way of holding userId 
-  userId: number;
-  caseId: number;
-  sub: any;
-  paramSubscription: Subscription;
-
+  // The current case taken from the cases component
   @Input() currentCase: Case;
   
+  // Need dynamic way of holding userId 
+  sub: any;
+  paramSubscription: Subscription;
+  
   constructor(private serverService: ServerService,
+              private toastService: MzToastService,
               private breadcrumbs: BreadcrumbService,
               private collapsibles: CollapsibleService,
               private route: ActivatedRoute, private router: Router) { }
 
+  // Tell the parent cases component to run its loadCases()
   @Output() caseEvent = new EventEmitter();
 
   ngOnInit() {
@@ -35,26 +37,11 @@ export class CaseComponent implements OnInit {
     this.router.navigate([this.currentCase.id, 'devices'], {relativeTo: this.route});
   }
 
-  /*loadCurrentCase() { 
-    this.serverService.getCase(this.userId, this.caseId).subscribe(
-      (response: Response) => {
-        const data =;
-        const jsonData = JSON.parse(JSON.stringify(data));
-        console.log(jsonData); 
-        
-        this.currentCase.id = jsonData.id; 
-        this.currentCase.caseDescription = jsonData.caseDescription; 
-        this.currentCase.caseNumber = jsonData.caseNumber;
-        this.currentCase.collectionLocation = jsonData.collectionLocation; 
-        this.currentCase.examinerFirstName = jsonData.examinerFirstName;
-        this.currentCase.examinerLastName = jsonData.examinerLastName;
-        this.currentCase.suspectFirstName = jsonData.suspectFirstName;
-        this.currentCase.suspectLastName = jsonData.suspectLastName;
-        this.currentCase.labId = jsonData.labId;
-        this.currentCase.userId = jsonData.userId;
-        this.currentCase.dateReceived = jsonData.dateReceived;
-      },
-      (error) => console.log(error)
+  // Modify case, tell parent component to reload all case cards
+  putCase() {
+    this.serverService.putCase(this.currentCase.userId, this.currentCase.id, this.currentCase).subscribe(
+      (response) => this.caseEvent.emit(), 
+      (error) => this.toastService.show('ERROR: Case not added', 4000)
     );
-  }*/
+  }
 }

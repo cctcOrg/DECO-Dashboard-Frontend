@@ -35,9 +35,13 @@ export class ServerService {
   getCases(userId: any) {
     return this.http.get(this.url + '/evd/' + userId + '/case'); 
   }
-
   postCase(userId: any, json: any) {
-    return this.http.post(this.url + '/evd/' + userId+ '/case', json);
+
+    return this.http.post(this.url + '/evd/' + userId + '/case', json);
+  }
+
+  putCase(userId: any, caseId: any, json: any) {
+    return this.http.put(this.url + '/evd/' + userId + '/case?caseId=' + caseId, json); 
   }
 
   // Device methods

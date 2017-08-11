@@ -15,6 +15,7 @@ export class AccountComponent implements OnInit {
   email: string = "";
   first: string = "";
   last: string = "";
+  passwordHash: string = "";
 
   constructor(private accountService: AccountService) { }
 
@@ -22,7 +23,7 @@ export class AccountComponent implements OnInit {
   }
 
   setAccount() {
-    this.accountService.postNewUser(this.email, this.first, this.last);
+    this.accountService.postNewUser(this.email, this.first, this.last, this.passwordHash);
   }
 
 }

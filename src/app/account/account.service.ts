@@ -33,12 +33,13 @@ export class AccountService {
 
     constructor(private serverService: ServerService) {}
 
-    userJson : any;
-    postNewUser(email: string, first: string, last:string ) {
+    userJson: any;
+    postNewUser(email: string, first: string, last: string, passwordHash: string) {
         this.userJson = {
             "email": email,
             "firstName": first,
-            "lastName": last 
+            "lastName": last,
+            "passwordHash": passwordHash
         };
         this.serverService.postUser(this.userJson).subscribe(
             (response) => console.log(response),

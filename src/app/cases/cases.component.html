@@ -3,6 +3,7 @@
     <ul id="case">
       <li *ngFor="let case of cases">
         <app-case
+          (caseEvent)="loadCases()"
           [currentCase]="case"></app-case>
       </li>
     </ul>
