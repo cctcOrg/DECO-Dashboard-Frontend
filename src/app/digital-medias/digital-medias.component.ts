@@ -40,6 +40,10 @@ export class DigitalMediasComponent implements OnInit {
 
   ngOnInit() {
     this.breadcrumbs.viewDigitalMedias();
+
+    // Update collapsible, removing all collapsibles after devices
+    Promise.resolve(null).then( () => this.collapsible.removeAfterDevicesCollapsible() );
+    
     // grabs info from ActivatedRoute and stores the deviceID
     // by calling the DigitalMediasService.
     this.paramsSub = this.route.params.subscribe(

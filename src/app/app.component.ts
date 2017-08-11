@@ -2,8 +2,6 @@ import { Component, Input } from '@angular/core';
 import {ServerService} from './server.service';
 import {trigger, state, style, transition, animate} from '@angular/animations';
 
-
-
 @Component({
   selector: 'app-root',
   
@@ -23,7 +21,6 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
   ]
 })
 
-
 export class AppComponent {
   title = 'Hello User';
   desc = '';
@@ -36,9 +33,7 @@ export class AppComponent {
   isLoginPage = true;
   isCasePage = false;
     
-  constructor(private serverService: ServerService) {
-
-  }
+  constructor(private serverService: ServerService) { }
   
   menuState:string = 'out';
 
@@ -62,7 +57,6 @@ export class AppComponent {
     this.menuState = this.menuState === 'out' ? 'in' : 'out';
   }
   
-
   onSubmit() {
     this.clicked = true;
     const json = {

@@ -31,11 +31,11 @@ export class CollapsibleService {
     private imageSource = new BehaviorSubject<Image>(null);
     currentImage = this.imageSource.asObservable();  
 
-    constructor() {
-    }
+    constructor() { }
 
     removeAllCollapsible() {
-        console.log("removed");
+        console.log("Removing collapsibles...");
+
         this.caseSource.next(null);
         this.deviceSource.next(null);
         this.digitalMediaSource.next(null);
