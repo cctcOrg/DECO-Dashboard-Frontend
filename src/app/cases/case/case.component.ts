@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Response } from '@angular/http'; 
 import { BreadcrumbService } from '../../breadcrumb.service';
 import { CollapsibleService } from '../../collapsible.service'; 
 import { ServerService } from '../../server.service';
@@ -12,15 +13,13 @@ import { Case } from '../../case';
   styleUrls: ['./case.component.css']
 })
 export class CaseComponent implements OnInit {
-
-  currentCase = new Case(); 
-
   // Need dynamic way of holding userId 
   userId: number;
+  caseId: number;
   sub: any;
   paramSubscription: Subscription;
 
-  @Input() case: Case;
+  @Input() currentCase: Case;
   
   constructor(private serverService: ServerService,
               private breadcrumbs: BreadcrumbService,
@@ -32,34 +31,28 @@ export class CaseComponent implements OnInit {
   ngOnInit() {
   }
 
-  routeToDevice(caseId: number) {
-    this.router.navigate([caseId, 'devices'], {relativeTo: this.route});
+  routeToDevice() {
+    this.router.navigate([this.currentCase.id, 'devices'], {relativeTo: this.route});
   }
 
-  /*loadCases() { 
-    this.serverService.getCase(this.userId).subscribe(
+  /*loadCurrentCase() { 
+    this.serverService.getCase(this.userId, this.caseId).subscribe(
       (response: Response) => {
-        let tempCase: Case;
-        const data = response.json();
-        console.log(data); 
+        const data =;
+        const jsonData = JSON.parse(JSON.stringify(data));
+        console.log(jsonData); 
         
-        for (let obj of data.case_summary_list) {
-          tempCase = new Case(); 
-          tempCase.id = obj.id; 
-          tempCase.caseDescription = obj.caseDescription; 
-          tempCase.caseNumber = obj.caseNumber;
-          tempCase.collectionLocation = obj.collectionLocation; 
-          tempCase.examinerFirstName = obj.examinerFirstName;
-          tempCase.examinerLastName = obj.examinerLastName;
-          tempCase.suspectFirstName = obj.suspectFirstName;
-          tempCase.suspectLastName = obj.suspectLastName;
-          tempCase.labId = obj.labId;
-          tempCase.userId = obj.userId;
-          tempCase.dateReceived = obj.dateReceived; 
-          console.log(tempCase); 
-          this.cases.push(tempCase); 
-        }
-
+        this.currentCase.id = jsonData.id; 
+        this.currentCase.caseDescription = jsonData.caseDescription; 
+        this.currentCase.caseNumber = jsonData.caseNumber;
+        this.currentCase.collectionLocation = jsonData.collectionLocation; 
+        this.currentCase.examinerFirstName = jsonData.examinerFirstName;
+        this.currentCase.examinerLastName = jsonData.examinerLastName;
+        this.currentCase.suspectFirstName = jsonData.suspectFirstName;
+        this.currentCase.suspectLastName = jsonData.suspectLastName;
+        this.currentCase.labId = jsonData.labId;
+        this.currentCase.userId = jsonData.userId;
+        this.currentCase.dateReceived = jsonData.dateReceived;
       },
       (error) => console.log(error)
     );
