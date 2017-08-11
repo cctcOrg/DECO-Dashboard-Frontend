@@ -22,6 +22,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Bound to Create Account button 
   setAccount() {
     this.accountService.postNewUser(this.email, this.first, this.last, this.passwordHash);
   }

@@ -8,17 +8,6 @@ import {User} from '../user';
 })
 export class AccInfoComponent implements OnInit {
 
-  /*email = "";
-  first = "";
-  last = "";
-   
-
-  newUser: User = {
-     email: this.email,
-     firstName: this.first,
-     lastName: this.last
-  };*/
-
   constructor() { }
 
   ngOnInit() {

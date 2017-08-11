@@ -5,36 +5,18 @@ import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
 export class AccountService {
-    //userToPost = new EventEmitter<User>();
     
     currMakingAcc = true;
-    /*
-    email: string = "test1";
-    first: string = "test2";
-    last: string = "test3";*/
-
-    //newUser: User;
-
-    /*
-    finishAccount() {
-        this.currMakingAcc = false;
-    }
-    makeUser(email: string, first: string, last:string ) {
-        this.email = email;
-        this.first = first;
-        this.last = last;
-        this.newUser = {
-            email: this.email,
-            firstName: this.first,
-            lastName: this.last
-        };
-        this.userToPost.emit(this.newUser);
-    }*/
+    userJson : any;
 
     constructor(private serverService: ServerService) {}
 
+<<<<<<< HEAD
     userJson: any;
     postNewUser(email: string, first: string, last: string, passwordHash: string) {
+=======
+    postNewUser(email: string, first: string, last:string ) {
+>>>>>>> b884441f233749fa99c47957fa454bec56c08c8f
         this.userJson = {
             "email": email,
             "firstName": first,
