@@ -37,7 +37,6 @@ export class DigitalMediasComponent implements OnInit {
               private route: ActivatedRoute, private casesService: CasesService,
               private digitalMediasService: DigitalMediasService) { }
 
-
   ngOnInit() {
     this.breadcrumbs.viewDigitalMedias();
 

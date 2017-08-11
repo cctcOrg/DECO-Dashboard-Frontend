@@ -7,23 +7,142 @@
     <i mz-icon
       [align]="'left'"
       [icon]="'work'"
-      [size]="'medium'">
+      [size]="'small'">
     </i>
   </mz-card-title>
 
   <mz-card-content>
     <ul><b>Suspect Name:</b> {{case.suspectFirstName}} {{case.suspectLastName}}</ul>
     <ul><b>Description:</b> {{case.caseDescription}}</ul>
+    <ul><b>Date Received:</b> {{case.dateReceived[0]}}</ul>
   </mz-card-content>
 
   <mz-card-action>
     <!-- Link to all devices -->
-    <a (click)="routeToDevice(case.id)"> All Devices</a>
+    <a (click)="routeToDevice(case.id)" style="text-decoration: none"> All Devices</a>
     
     <!-- More options button -->
-    <a class="btn-floating btn-flat tooltipped" 
-      data-position="bottom" 
-      data-delay="25" data-tooltip="More">
-      <i class="small material-icons icon-black">more_vert</i></a>
+    <a mz-button mz-tooltip id="btn-more-options-dropdown" class="tooltipped float" 
+      [tooltip]="'More'"
+      [position]="'bottom'" 
+      [delay]="100"
+      [flat]="true">
+      <i class="small material-icons icon-black">more_vert</i>
+    </a>
+
+    <!-- Dropdown menu that appears after clicking on more options button -->
+    <!-- Set constrainWidth to false so that the icon and text appear on same line -->
+    <mz-dropdown
+      [id]="'more-options'"
+      [align]="'left'"
+      [belowOrigin]="false"
+      [constrainWidth]="false"
+      [dropdownButtonId]="'btn-more-options-dropdown'"
+      [hover]="false"
+      [stopPropagation]="true">
+      <mz-dropdown-item><a href="#!"><span style="font-size: 12px;">
+        <i class="material-icons icon-size">mode_edit</i>
+        Edit</span></a></mz-dropdown-item>
+      <mz-dropdown-divider></mz-dropdown-divider>
+      <mz-dropdown-item><a (click)=formModal.open()><div style="color: #F44336; font-size: 12px;">
+        <i class="material-icons icon-size">delete</i>
+        Delete</div></a></mz-dropdown-item>
+    </mz-dropdown>
   </mz-card-action>
 </mz-card>
+
+<!-- Modal that pops up when user selects edit in dropdown menu -->
+<mz-modal #formModal [fixedFooter]="true">
+  <mz-modal-header>
+      Case Information
+  </mz-modal-header>
+  <mz-modal-content>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.suspectFirstName"
+        [label]="'Suspect First Name'"
+        [validate]="'true'"
+        id="input-firstname"
+        type="text">              
+      </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.suspectLastName"
+        [label]="'Suspect Last Name'"
+        [validate]="'true'"
+        id="input-lastname"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s12">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.caseNumber"
+        [label]="'Case Number'"
+        [validate]="'true'"
+        id="input-caseNumber"
+        placeholder=""
+        type="number">
+    </mz-input-container>
+    <div class="col s12">
+      Date Received
+      <div class="input-field inline">
+        <mz-input-container class="col s12">              
+          <input [(ngModel)]="newCase.dateReceived" id="datereceived" type="datetime-local">
+        </mz-input-container>
+      </div>
+    </div> 
+    <mz-input-container class="col s12">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.caseDescription"
+        [label]="'Case Description'"
+        [validate]="'true'"
+        id="input-desc"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.examinerFirstName"
+        [label]="'Examiner First Name'"
+        [validate]="'true'"
+        id="input-ex-firstname"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.examinerLastName"
+        [label]="'Examiner Last Name'"
+        [validate]="'true'"
+        id="input-ex-lastname"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s12">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.collectionLocation"
+        [label]="'Collection Location'"
+        [validate]="'true'"
+        id="input-loc"
+        type="text">              
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.labId"
+        [label]="'Lab ID'"
+
+        id="input-labid"
+        placeholder=""
+        type="number">
+    </mz-input-container>
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]="newCase.userId"
+        [label]="'User ID'"
+  
+        id="input-userid"
+        placeholder=""
+        type="number">
+    </mz-input-container>        
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close (click)="postCase()">Add</button>
+    <button mz-button [flat]="true" mz-modal-close>Cancel</button>
+  </mz-modal-footer>
+</mz-modal>

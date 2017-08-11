@@ -13,10 +13,6 @@ main {
     overflow-x: hidden;
 }
 
-a:hover {
- cursor:pointer;
-}
-
 #fab {
     right: 20px;
     top: 36px;

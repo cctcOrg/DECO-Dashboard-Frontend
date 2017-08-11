@@ -49,7 +49,6 @@ export class CasesComponent implements OnInit {
 
   ngAfterViewInit() {
     Promise.resolve(null).then( () => this.collapsible.removeAllCollapsible() );
-
   }
 
   postCase() {    
