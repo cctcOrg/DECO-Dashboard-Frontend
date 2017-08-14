@@ -7,6 +7,7 @@ import { BreadcrumbService } from '../../breadcrumb.service';
 import { CollapsibleService } from '../../collapsible.service'; 
 import { ServerService } from '../../server.service';
 import { Case } from '../../case'; 
+import { User } from "../../user";
 
 @Component({
   selector: 'app-case',
@@ -17,10 +18,6 @@ export class CaseComponent implements OnInit {
   // The current case taken from the cases component
   @Input() currentCase: Case;
   
-  // Need dynamic way of holding userId 
-  sub: any;
-  paramSubscription: Subscription;
-  
   constructor(private serverService: ServerService,
               private toastService: MzToastService,
               private breadcrumbs: BreadcrumbService,
@@ -28,11 +25,12 @@ export class CaseComponent implements OnInit {
               private route: ActivatedRoute, private router: Router) { }
 
   // Tell the parent cases component to run its loadCases()
-  @Output() caseEvent = new EventEmitter();
+  @Output() reloadCaseView = new EventEmitter();
 
   ngOnInit() {
   }
 
+  // Go to case's devices
   routeToDevice() {
     this.router.navigate([this.currentCase.id, 'devices'], {relativeTo: this.route});
   }
@@ -40,8 +38,23 @@ export class CaseComponent implements OnInit {
   // Modify case, tell parent component to reload all case cards
   putCase() {
     this.serverService.putCase(this.currentCase.userId, this.currentCase.id, this.currentCase).subscribe(
-      (response) => this.caseEvent.emit(), 
-      (error) => this.toastService.show('ERROR: Case not added', 4000)
+      // Reload cases
+      (response) => this.reloadCaseView.emit(), 
+      (error) => this.toastService.show('ERROR: Case not modified!', 4000)
+    );
+  }
+
+  // Remove the case. If there's any items under the case (device, digital media, etc), backend will through
+  deleteCase() {
+    var owner: User;
+
+    console.log("Deleting case...")
+    console.log("Calling deleteCase()...");
+    
+    this.serverService.deleteCase(this.currentCase.userId, this.currentCase.id).subscribe(
+        // Reload cases
+        (response) => this.reloadCaseView.emit(), 
+        (error) => this.toastService.show('ERROR: Case not deleted!', 4000)
     );
   }
 }

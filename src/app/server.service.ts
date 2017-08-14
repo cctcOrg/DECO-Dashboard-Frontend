@@ -19,6 +19,11 @@ export class ServerService {
     - The object-mapping is done in the component at the moment.
     Refer to the RESTful API's Specifications for more information.
   */
+  getAllUsers() {
+    return this.http.get(this.url + '/evd/user');
+  }
+
+  // Should rename to getUser()
   getUsers(email: string) {
     return this.http.get(this.url + '/evd/user?email=' + email); 
   }
@@ -36,12 +41,15 @@ export class ServerService {
     return this.http.get(this.url + '/evd/' + userId + '/case'); 
   }
   postCase(userId: any, json: any) {
-
     return this.http.post(this.url + '/evd/' + userId + '/case', json);
   }
 
   putCase(userId: any, caseId: any, json: any) {
     return this.http.put(this.url + '/evd/' + userId + '/case?caseId=' + caseId, json); 
+  }
+
+  deleteCase(userId: any, caseId: any) {
+    return this.http.delete(this.url + '/evd/' + userId + '/case?caseId=' + caseId);
   }
 
   // Device methods
