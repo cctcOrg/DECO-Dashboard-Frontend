@@ -11,12 +11,7 @@ export class AccountService {
 
     constructor(private serverService: ServerService) {}
 
-<<<<<<< HEAD
-    userJson: any;
     postNewUser(email: string, first: string, last: string, passwordHash: string) {
-=======
-    postNewUser(email: string, first: string, last:string ) {
->>>>>>> b884441f233749fa99c47957fa454bec56c08c8f
         this.userJson = {
             "email": email,
             "firstName": first,

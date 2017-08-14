@@ -62,6 +62,9 @@ export class CasesComponent implements OnInit {
   // Loads all cases from the back-end given the user ID
   // Will load the Case component multiple times
   loadCases() {
+    // Remove old values from POST so that fields are blank in new POST
+    this.newCase = new Case();
+
     this.cases = []; 
     this.serverService.getCases(this.userId).subscribe(
       (response: Response) => {
