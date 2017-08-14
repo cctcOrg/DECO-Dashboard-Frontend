@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
         (params: Params) => {
           this.curId = +params['userId'];
           this.casesService.setUserId(this.curId);
-          console.log("dashboard id " + this.curId);
         }
       );
   }

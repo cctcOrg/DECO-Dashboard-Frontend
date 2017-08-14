@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs/Observable';
+import { CanComponentDeactivate } from '../can-deactivate-guard.service';
 import { CasesService } from './cases.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, CanDeactivate } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Response } from '@angular/http'; 
 
@@ -17,11 +19,12 @@ import { Case } from '../case';
   templateUrl: './cases.component.html',
   styleUrls: ['./cases.component.css']
 })
-export class CasesComponent implements OnInit {
+export class CasesComponent implements OnInit, CanComponentDeactivate {
   cases: Case[] = [];
 
   caseSelected = false; 
   newCase = new Case(); 
+  savedChanges = false;
 
   userId: number;
   sub: any;
@@ -53,11 +56,25 @@ export class CasesComponent implements OnInit {
   // Bound to Add Case button
   // Called when user click Add Case 
   postCase() {    
+    this.savedChanges = true;
     this.serverService.postCase(this.userId, this.newCase).subscribe(
       (response) => this.loadCases(), 
       (error) => this.toastService.show('ERROR: Case not added', 4000)
     );
   }
+
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
+    console.log('in can deactivate case');
+    for(let temp in this.newCase) {
+      let value = this.newCase[temp];
+      if((value !== undefined) && !this.savedChanges) {
+        return confirm('You are currently editing a case, do you wish to discard')
+      }
+    }  
+    return true;
+  }
+   
 
   // Loads all cases from the back-end given the user ID
   // Will load the Case component multiple times

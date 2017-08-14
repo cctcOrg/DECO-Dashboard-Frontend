@@ -1,3 +1,5 @@
+import { CanComponentDeactivate } from './../can-deactivate-guard.service';
+import { Observable } from 'rxjs/Observable';
 import { DigitalMediasService } from './digital-medias.service';
 import { CasesService } from './../cases/cases.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,12 +22,13 @@ import { DigitalMedia } from '../digital-media';
   templateUrl: './digital-medias.component.html',
   styleUrls: ['./digital-medias.component.css']
 })
-export class DigitalMediasComponent implements OnInit {
+export class DigitalMediasComponent implements OnInit, CanComponentDeactivate  {
   digitalMedias: DigitalMedia[] = [];
   caseId: number;
   userId: number;
   deviceId:number; 
   paramsSub: Subscription;
+  savedChanges = false;
 
   device: Device = new Device();
   newDigitalMedia = new DigitalMedia();
@@ -61,6 +64,16 @@ export class DigitalMediasComponent implements OnInit {
 
   ngAfterViewInit() {
   }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
+    for(let temp in this.newDigitalMedia) {
+      let value = this.newDigitalMedia[temp];
+      if((value !== undefined) && !this.savedChanges) {
+        return confirm('You are currently editing digital media, do you wish to discard')
+      } 
+    }  
+    return true;
+  }
   
   getDevice() {
     this.serverService.getDevice(this.userId, this.caseId, this.deviceId).subscribe(
@@ -86,6 +99,7 @@ export class DigitalMediasComponent implements OnInit {
     );
   }
   postDigitalMedia() {
+    this.savedChanges = true;
     console.log(this.newDigitalMedia);
     this.serverService.postDigitalMedia(this.userId, this.caseId, this.deviceId, this.newDigitalMedia).subscribe(
       (response) => this.loadDigitalMedias(), 
@@ -94,6 +108,7 @@ export class DigitalMediasComponent implements OnInit {
   }
 
   loadDigitalMedias() {
+    this.newDigitalMedia = new DigitalMedia;
     this.digitalMedias = []
     this.serverService.getDigitalMedias(this.userId, this.caseId, this.deviceId).subscribe(
       (response: Response) => {

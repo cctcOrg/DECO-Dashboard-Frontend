@@ -1,3 +1,5 @@
+import { CanComponentDeactivate } from './../can-deactivate-guard.service';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { CasesService } from './../cases/cases.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +24,7 @@ import { FileMD } from '../filemd';
   templateUrl: './files.component.html',
   styleUrls: ['./files.component.css']
 })
-export class FilesComponent implements OnInit {
+export class FilesComponent implements OnInit, CanComponentDeactivate {
   files: File[] = [];
   fileMDs: FileMD[] = [];
   caseId: number;
@@ -31,6 +33,7 @@ export class FilesComponent implements OnInit {
   digitalMediaId: number;
   imageId: number;
   paramSub: Subscription;
+  savedChanges = false;
 
   image = new Image();
   newFile = new File();
@@ -63,6 +66,16 @@ export class FilesComponent implements OnInit {
   ngAfterViewInit() {
   }
 
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
+    for(let temp in this.newFile) {
+      let value = this.newFile[temp];
+      if((value !== undefined) && !this.savedChanges) {
+        return confirm('You are currently editing a file, do you wish to discard')
+      } 
+    }  
+    return true;
+  }
+
   getImage() {
     this.serverService.getImage(this.userId, this.caseId, this.deviceId, this.digitalMediaId, this.imageId).subscribe(
       (response) => {
@@ -86,6 +99,7 @@ export class FilesComponent implements OnInit {
   }
 
   loadFiles() {
+    this.newFile = new File;
     this.fileMDs = [];
     this.serverService.getFileMDs(this.userId, this.caseId, this.deviceId, this.digitalMediaId, this.imageId).subscribe(
       (response)=>{
@@ -107,6 +121,7 @@ export class FilesComponent implements OnInit {
   }
 
   postFile(event) {
+    this.savedChanges = true;
     let fileList: FileList = event.target.files;
     console.log(fileList)
     console.log(event)

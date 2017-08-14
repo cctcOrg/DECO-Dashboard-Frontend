@@ -1,8 +1,10 @@
+import { CanComponentDeactivate } from '../can-deactivate-guard.service';
+import { Observable } from 'rxjs/Observable';
 import { DevicesService } from './devices.service';
 import { CasesService } from './../cases/cases.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router'; 
+import { ActivatedRoute, Router, Params, CanDeactivate } from '@angular/router'; 
 import { Response } from '@angular/http'; 
 
 import { MzToastService } from 'ng2-materialize';
@@ -19,11 +21,12 @@ import { Case } from '../case';
   templateUrl: './devices.component.html',
   styleUrls: ['./devices.component.css']
 })
-export class DevicesComponent implements OnInit {
+export class DevicesComponent implements OnInit, CanComponentDeactivate {
   caseId: number;
   userId: number;
   devices: Device[] = [];
   paramSub: Subscription;
+  savedChanges = false;
 
   case: Case = new Case(); 
   newDevice = new Device();
@@ -60,6 +63,15 @@ export class DevicesComponent implements OnInit {
   ngAfterViewInit() {
     Promise.resolve(null).then( () => this.collapsible.removeAfterCasesCollapsible() );
   }
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
+    for(let temp in this.newDevice) {
+      let value = this.newDevice[temp];
+      if((value !== undefined) && !this.savedChanges) {
+        return confirm('You are currently editing a device, do you wish to discard')
+      } 
+    }  
+    return true;
+  }
 // TODO : work with the collapsible
   getCase() {
     this.serverService.getCase(this.userId, this.caseId).subscribe(
@@ -85,6 +97,7 @@ export class DevicesComponent implements OnInit {
   }
 
   postDevice() {
+    this.savedChanges = true;
     console.log(this.newDevice);
     this.serverService.postDevice(this.userId, this.caseId, this.newDevice).subscribe(
       (response) => this.loadDevices(), 
@@ -93,12 +106,13 @@ export class DevicesComponent implements OnInit {
   }
 
   loadDevices() {
+    this.newDevice = new Device;
     this.devices = [];
     this.serverService.getDevices(this.userId, this.caseId).subscribe(
       (response: Response) => {
         let tempDevice: Device;
         const data = response.json();
-        console.log(data); 
+        console.log(data);
         
         for (let obj of data.device_list) {
           tempDevice = new Device();

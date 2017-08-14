@@ -12,7 +12,7 @@ export class AccountService {
     constructor(private serverService: ServerService,
                 private toastService: MzToastService) {}
 
-    postNewUser(email: string, first: string, last: string, passwordHash: string) {
+    postNewUser(email: string, first: string, last:string, passwordHash:string) {
         this.userJson = {
             "email": email,
             "firstName": first,

@@ -1,3 +1,5 @@
+import { CanComponentDeactivate } from './../can-deactivate-guard.service';
+import { Observable } from 'rxjs/Observable';
 import { ImagesService } from './images.service';
 import { CasesService } from './../cases/cases.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -21,13 +23,14 @@ import { Image } from '../image';
   templateUrl: './images.component.html',
   styleUrls: ['./images.component.css']
 })
-export class ImagesComponent implements OnInit {
+export class ImagesComponent implements OnInit, CanComponentDeactivate {
   images: Image[] = [];
   caseId: number;
   userId: number;
   deviceId:number;
   digitalMediaId: number;
   paramSub: Subscription;
+  savedChanges = false;
 
   digitalMedia = new DigitalMedia(); 
   newImage = new Image();
@@ -61,6 +64,15 @@ export class ImagesComponent implements OnInit {
 
   ngAfterViewInit() {
   }
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
+    for(let temp in this.newImage) {
+      let value = this.newImage[temp];
+      if((value !== undefined) && !this.savedChanges) {
+        return confirm('You are currently editing an image, do you wish to discard')
+      } 
+    }  
+    return true;
+  }
 
   getDigitalMedia() {
     this.serverService.getDigitalMedia(this.userId, this.caseId, this.deviceId, this.digitalMediaId).subscribe(
@@ -81,6 +93,7 @@ export class ImagesComponent implements OnInit {
   }
 
   loadImages() {
+    this.newImage = new Image;
     this.images = [];
     this.serverService.getImages(this.userId, this.caseId, this.deviceId, this.digitalMediaId).subscribe(
       (response) => {
@@ -111,6 +124,7 @@ export class ImagesComponent implements OnInit {
 
 
   postImage() {
+    this.savedChanges = true;
     this.serverService.postImage(this.userId, this.caseId, this.deviceId, this.digitalMediaId, this.newImage).subscribe(
       (response)=> this.loadImages(),
       (error)=> this.toastService.show('ERROR: Images not added', 4000)

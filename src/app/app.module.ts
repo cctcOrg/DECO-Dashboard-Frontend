@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { AuthGuard } from './auth-guard.service';
 import { ImagesService } from './images/images.service';
 import { DigitalMediasService } from './digital-medias/digital-medias.service';
@@ -76,7 +77,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   providers: [ServerService, BreadcrumbService, CollapsibleService, 
               AccountService, LoginService, CasesService,
               DevicesService, DigitalMediasService, ImagesService,
-              AuthGuard], 
+              AuthGuard, CanDeactivateGuard], 
   bootstrap: [AppComponent],
   exports: [ ReactiveFormsModule ]
 })

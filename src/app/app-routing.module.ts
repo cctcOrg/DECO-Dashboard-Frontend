@@ -1,3 +1,4 @@
+import { CanDeactivateGuard } from './can-deactivate-guard.service';
 import { AuthGuard } from './auth-guard.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CaseComponent } from './cases/case/case.component';
@@ -22,20 +23,22 @@ import { FilesComponent } from './files/files.component';
  * adopted: cases->devices->digital-medias->images->files, where '->' indicates a parent to child relationship.
  * This means that you cant add device info before you've added a case, and cant add digital-media info
  * before adding a device and so on. Thus the routes reflect this type of relationship between components.
- * Additionally the 'canActivate: [AuthGuard] ensures that a only a logged in user can view the dashboard.
+ * The 'canActivate: [AuthGuard] ensures that a only a logged in user can view the dashboard.
+ * The 'canDeactivate: [CanDeactiveGuard] warns the user if they attempt to change routes while adding
+ * a new case/device/etc...
 **/
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'dashboard/:userId',canActivate: [AuthGuard], component: DashboardComponent, children: [
     { path: 'cases', children: [
-      { path: '', pathMatch: 'full', component: CasesComponent },
+      { path: '', pathMatch: 'full', canDeactivate: [CanDeactivateGuard], component: CasesComponent },
       { path: ':caseId/devices', children: [
-        { path: '', pathMatch: 'full', component: DevicesComponent }, 
+        { path: '', pathMatch: 'full', canDeactivate: [CanDeactivateGuard], component: DevicesComponent }, 
         { path: ':deviceId/digital-medias', children: [
-          { path: '', pathMatch: 'full', component: DigitalMediasComponent },
+          { path: '', pathMatch: 'full', canDeactivate: [CanDeactivateGuard], component: DigitalMediasComponent },
           { path: ':dmId/images', children:[
-            {path: '', pathMatch: 'full', component: ImagesComponent },
-            { path: ':imageId/file', component: FilesComponent },
+            {path: '', pathMatch: 'full', canDeactivate: [CanDeactivateGuard],component: ImagesComponent },
+            { path: ':imageId/file', canDeactivate: [CanDeactivateGuard], component: FilesComponent },
           ]}
         ]}
       ]},
