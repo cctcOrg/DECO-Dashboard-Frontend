@@ -19,7 +19,7 @@
 
 <mz-modal #fixedFooterModal [fixedFooter]="true">
     <mz-modal-header>
-        Image Information
+        <h3>Add Image</h3>
     </mz-modal-header>
     <mz-modal-content>
       <mz-input-container class="col s6">
@@ -94,7 +94,7 @@
       </mz-input-container>
     </mz-modal-content>
     <mz-modal-footer>
-        <button mz-button [flat]="true" mz-modal-close (click)="postImage()">Add</button>
         <button mz-button [flat]="true" mz-modal-close>Cancel</button>
+        <button mz-button [flat]="true" mz-modal-close (click)="postImage()">Add</button>
     </mz-modal-footer>
 </mz-modal>
