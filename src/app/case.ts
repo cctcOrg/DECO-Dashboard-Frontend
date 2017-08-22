@@ -1,13 +1,13 @@
 export class Case {
-    id: number; 
-    dateReceived: string;
-    caseNumber: number;
-    caseDescription: string;
-    suspectLastName: string;
-    suspectFirstName: string;
-    examinerLastName: string;
-    examinerFirstName: string;
-    collectionLocation: string;
-    labId: number;
-    userId: number;
+    id: number = undefined; 
+    dateReceived: string = undefined;
+    caseNumber: number = undefined;
+    caseDescription: string = undefined;
+    suspectLastName: string = undefined;
+    suspectFirstName: string = undefined;
+    examinerLastName: string = undefined;
+    examinerFirstName: string = undefined;
+    collectionLocation: string = undefined;
+    labId: number = undefined;
+    userId: number = undefined;
 }

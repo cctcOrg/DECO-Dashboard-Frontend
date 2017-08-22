@@ -25,10 +25,13 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
   caseSelected = false; 
   newCase = new Case(); 
   savedChanges = false;
-
+  caseComplete = false;
+  numFields: number = 9;
+  curFields: number = 0;
   userId: number;
   sub: any;
   paramSubscription: Subscription;
+  test: string;
 
 
   constructor(private serverService: ServerService,
@@ -56,9 +59,18 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
   // Bound to Add Case button
   // Called when user click Add Case 
   postCase() {    
+    for(let temp in this.newCase) {
+      console.log(temp);
+      if(temp !== "id" && temp !== "userId") {
+        let value = this.newCase[temp];
+        if(value === undefined) {
+          return confirm('case unfinished')
+        }
+      }
+    }  
     this.savedChanges = true;
     this.serverService.postCase(this.userId, this.newCase).subscribe(
-      (response) => this.loadCases(), 
+      (response) => this.loadCases(),
       (error) => this.toastService.show('ERROR: Case not added', 4000)
     );
   }
