@@ -16,9 +16,10 @@
 
 <mz-modal #fixedFooterModal [fixedFooter]="true">
     <mz-modal-header>
-        Case Information
+        Add Case
     </mz-modal-header>
     <mz-modal-content>
+      <span class="row col s6">
       <mz-input-container class="col s6">
         <input mz-input mz-validation required
           [(ngModel)]="newCase.suspectFirstName"
@@ -35,6 +36,7 @@
           id="input-lastname"
           type="text">              
       </mz-input-container>
+    </span>
       <mz-input-container class="col s12">
         <input mz-input mz-validation required
           [(ngModel)]="newCase.caseNumber"
@@ -60,6 +62,7 @@
           id="input-desc"
           type="text">              
       </mz-input-container>
+      <span class="row col s6">
       <mz-input-container class="col s6">
         <input mz-input mz-validation required
           [(ngModel)]="newCase.examinerFirstName"
@@ -76,6 +79,7 @@
           id="input-ex-lastname"
           type="text">              
       </mz-input-container>
+    </span>
       <mz-input-container class="col s12">
         <input mz-input mz-validation required
           [(ngModel)]="newCase.collectionLocation"
@@ -95,7 +99,7 @@
       </mz-input-container>    
     </mz-modal-content>
     <mz-modal-footer>
-        <button mz-button [flat]="true" mz-modal-close (click)="postCase()">Add</button>
-        <button mz-button [flat]="true" mz-modal-close>Cancel</button>
+        <button mz-button [flat]="true" style="color: #F44336" mz-modal-close>Cancel</button>
+        <button mz-button [flat]="true" style="color: #4CAF50" mz-modal-close (click)="postCase()">Add</button>
     </mz-modal-footer>
 </mz-modal>
