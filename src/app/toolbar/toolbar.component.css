@@ -23,9 +23,13 @@ a {
     background: transparent;
 }
 
-#breadcrumb {
-    background-color: #2196F3;
-    
+#blue {
+    background-color: #2095F3;
+}
+
+/* Remove spacing in front of a breadcrumb */
+.breadcrumb {
+    margin-left: -25px;
 }
 
 btn-sidenav {
