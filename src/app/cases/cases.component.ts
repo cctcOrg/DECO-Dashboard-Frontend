@@ -13,6 +13,7 @@ import { BreadcrumbService } from '../breadcrumb.service';
 import { CollapsibleService } from '../collapsible.service';
 
 import { Case } from '../case';
+import { FormField } from '../formField';
 
 @Component({
   selector: 'app-cases',
@@ -20,10 +21,25 @@ import { Case } from '../case';
   styleUrls: ['./cases.component.css']
 })
 export class CasesComponent implements OnInit, CanComponentDeactivate {
+  newCase = new Case(); 
   cases: Case[] = [];
+ 
+  form: FormField[] = [];
+  caseVariables: string[] = ["suspectFirstName", "suspectLastName",
+    "caseNumber", "dateReceived", "caseDescription", 
+    "examinerFirstName", "examinerLastName",
+    "collectionLocation", "labId"];
+  labels: String[] = ["Suspect First Name", "Suspect Last Name", "Case Number",
+    null, "Case Description", "Examiner First Name", "Examiner Last Name", 
+    "Collection Location", "Lab ID"];
+  ids: String[] = ["input-firstname", "input-lastname", "input-caseNumber", "datereceived",
+    "input-desc", "input-ex-firstname", "input-ex-lastname", "input-loc"];
+  types: String[] = ["text", "text", "number", "datetime-local", "text", "text",
+  "text", "text", "text", "number"];
+  fieldValue: any[] = ["", "", "", "", "", "", "", "", "", ""];
+
 
   caseSelected = false; 
-  newCase = new Case(); 
   savedChanges = false;
   caseComplete = false;
   numFields: number = 9;
@@ -32,7 +48,6 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
   sub: any;
   paramSubscription: Subscription;
   test: string;
-
 
   constructor(private serverService: ServerService,
               private toastService: MzToastService,
@@ -50,6 +65,8 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
     this.userId = this.casesService.getUserId();
     // Display any cases as cards.
     this.loadCases();
+
+    this.setForm();
   }
 
   ngAfterViewInit() {
@@ -59,12 +76,14 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
   // Bound to Add Case button
   // Called when user click Add Case 
   postCase() {    
+    this.setNewCase();
+    
+    console.log(this.newCase);
     for(let temp in this.newCase) {
-      console.log(temp);
       if(temp !== "id" && temp !== "userId") {
         let value = this.newCase[temp];
         if(value === undefined) {
-          return confirm('case unfinished')
+          return confirm('Case unfinished!')
         }
       }
     }  
@@ -81,13 +100,12 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
     for(let temp in this.newCase) {
       let value = this.newCase[temp];
       if((value !== undefined) && !this.savedChanges) {
-        return confirm('You are currently editing a case, do you wish to discard')
+        return confirm('You are currently editing a case, do you wish to discard?')
       }
     }  
     return true;
   }
    
-
   // Loads all cases from the back-end given the user ID
   // Will load the Case component multiple times
   loadCases() {
@@ -122,5 +140,30 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
       },
       (error) => console.log(error)
     );
+  }
+
+  setForm() {
+    // Create new form modal
+    for(var index = 0; index < this.caseVariables.length; index++) {
+      var field: FormField = new FormField();
+
+      // HTML does use field.variable
+      field.variable = this.caseVariables[index];
+      field.label = this.labels[index];
+      field.id = this.ids[index];
+      field.type = this.types[index];
+
+      // Push field to form
+      this.form.push(field);
+    }
+  }
+
+  // Initializes newCase with values from fieldValue
+  setNewCase() {
+    var index = 0;
+
+    for (index = 0; index < this.caseVariables.length; index++) {
+      this.newCase[this.caseVariables[index]] = this.fieldValue[index];
+    }
   }
 }

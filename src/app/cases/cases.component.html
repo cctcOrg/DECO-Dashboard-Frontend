@@ -15,91 +15,21 @@
 </div>
 
 <mz-modal #fixedFooterModal [fixedFooter]="true">
-    <mz-modal-header>
-        <h3>Add Case</h3>
-    </mz-modal-header>
-    <mz-modal-content>
-      <span class="row col s6">
-      <mz-input-container class="col s6">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.suspectFirstName"
-          [label]="'Suspect First Name'"
-          [validate]="'true'"
-          id="input-firstname"
-          type="text">              
-        </mz-input-container>
-      <mz-input-container class="col s6">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.suspectLastName"
-          [label]="'Suspect Last Name'"
-          [validate]="'true'"
-          id="input-lastname"
-          type="text">              
-      </mz-input-container>
-    </span>
-      <mz-input-container class="col s12">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.caseNumber"
-          [label]="'Case Number'"
-          [validate]="'true'"
-          id="input-caseNumber"
-          placeholder=""
-          type="number">
-      </mz-input-container>
-      <div class="col s12">
-        Date Received
-        <div class="input-field inline">
-          <mz-input-container class="col s12">              
-            <input [(ngModel)]="newCase.dateReceived" id="datereceived" type="datetime-local">
-          </mz-input-container>
-        </div>
-      </div> 
-      <mz-input-container class="col s12">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.caseDescription"
-          [label]="'Case Description'"
-          [validate]="'true'"
-          id="input-desc"
-          type="text">              
-      </mz-input-container>
-      <span class="row col s6">
-      <mz-input-container class="col s6">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.examinerFirstName"
-          [label]="'Examiner First Name'"
-          [validate]="'true'"
-          id="input-ex-firstname"
-          type="text">              
-      </mz-input-container>
-      <mz-input-container class="col s6">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.examinerLastName"
-          [label]="'Examiner Last Name'"
-          [validate]="'true'"
-          id="input-ex-lastname"
-          type="text">              
-      </mz-input-container>
-    </span>
-      <mz-input-container class="col s12">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.collectionLocation"
-          [label]="'Collection Location'"
-          [validate]="'true'"
-          id="input-loc"
-          type="text">              
-      </mz-input-container>
-      <mz-input-container class="col s6">
-        <input mz-input mz-validation required
-          [(ngModel)]="newCase.labId"
-          [label]="'Lab ID'"
-
-          id="input-labid"
-          placeholder=""
-          type="number">
-      </mz-input-container>    
-    </mz-modal-content>
-    <mz-modal-footer>
-        <button mz-button [flat]="true" style="color: #F44336" mz-modal-close>Cancel</button>
-        <button mz-button [flat]="true" style="color: #4CAF50" mz-modal-close (click)="postCase()">Add</button>
-    </mz-modal-footer>
+  <mz-modal-header>
+      <h3>Add Case</h3>
+  </mz-modal-header>
+  <mz-modal-content *ngFor="let field of form; let i = index">
+    <mz-input-container class="col s6">
+      <input mz-input mz-validation required
+        [(ngModel)]= "fieldValue[i]"
+        [label]="field.label"
+        [validate]="'true'"
+        [id]="field.id"
+        [type]="field.type">              
+    </mz-input-container>
+  </mz-modal-content>
+  <mz-modal-footer>
+      <button mz-button [flat]="true" style="color: #F44336" mz-modal-close>Cancel</button>
+      <button mz-button [flat]="true" style="color: #4CAF50" mz-modal-close (click)="postCase()">Add</button>
+  </mz-modal-footer>
 </mz-modal>
