@@ -18,7 +18,7 @@
 
   <mz-card-action>
     <!-- Link to all devices -->
-    <a (click)="routeToDevice()" style="text-decoration: none"> All Devices</a>
+    <a (click)="routeToDevice()"> All Devices</a>
     
     <!-- More options button -->
     <a mz-button mz-tooltip id="btn-more-options-dropdown" class="tooltipped float" 
@@ -34,18 +34,21 @@
     <mz-dropdown
       [id]="'more-options'"
       [align]="'left'"
-      [belowOrigin]="false"
       [constrainWidth]="false"
       [dropdownButtonId]="'btn-more-options-dropdown'"
-      [hover]="false"
       [stopPropagation]="true">
-      <mz-dropdown-item><a (click)="formModal.open()"><span style="font-size: 12px;">
+      <mz-dropdown-item><a (click)="formModal.open()">
+        <span style="font-size: 12px;">
         <i class="material-icons icon-size">mode_edit</i>
         Edit</span></a></mz-dropdown-item>
-      <mz-dropdown-divider></mz-dropdown-divider>
-      <mz-dropdown-item><a (click)="deleteCase()"><div style="color: #F44336; font-size: 12px;">
+      
+        <mz-dropdown-divider></mz-dropdown-divider>
+      
+      <mz-dropdown-item>
+        <a (click)="deleteCase()">
+        <span style="color: #F44336; font-size: 12px;">
         <i class="material-icons icon-size">delete</i>
-        Delete</div></a></mz-dropdown-item>
+        Delete</span></a></mz-dropdown-item>
     </mz-dropdown>
   </mz-card-action>
 </mz-card>

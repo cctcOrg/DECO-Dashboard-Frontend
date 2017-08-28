@@ -24,6 +24,7 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
   newCase = new Case(); 
   cases: Case[] = [];
  
+  // All arrays needed to make the form "dynamic"
   form: FormField[] = [];
   caseVariables: string[] = ["suspectFirstName", "suspectLastName",
     "caseNumber", "dateReceived", "caseDescription", 
@@ -37,7 +38,6 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
   types: String[] = ["text", "text", "number", "datetime-local", "text", "text",
   "text", "text", "text", "number"];
   fieldValue: any[] = ["", "", "", "", "", "", "", "", "", ""];
-
 
   caseSelected = false; 
   savedChanges = false;

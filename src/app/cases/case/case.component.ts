@@ -22,7 +22,8 @@ export class CaseComponent implements OnInit {
               private toastService: MzToastService,
               private breadcrumbs: BreadcrumbService,
               private collapsibles: CollapsibleService,
-              private route: ActivatedRoute, private router: Router) { }
+              private route: ActivatedRoute, 
+              private router: Router) { }
 
   // Tell the parent cases component to run its loadCases()
   @Output() reloadCaseView = new EventEmitter();

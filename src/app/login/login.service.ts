@@ -20,7 +20,7 @@ export class LoginService {
     login(email: string) {
         this.isLogin = true;
         console.log(email);
-        this.serverService.getUsers(email).subscribe(
+        this.serverService.getUserByEmail(email).subscribe(
             (response) => {
                 let data = response.json();
                 this.userId = +data.id;

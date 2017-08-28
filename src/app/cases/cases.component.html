@@ -11,7 +11,8 @@
 </div>
 
 <div id="fab"> 
-  <a class="btn-floating btn-large waves-effect waves-light red" (click)="fixedFooterModal.open()" ><i class="material-icons">add</i></a>
+  <a class="btn-floating btn-large waves-effect waves-light red" 
+  (click)="fixedFooterModal.open()"><i class="material-icons">add</i></a>
 </div>
 
 <mz-modal #fixedFooterModal [fixedFooter]="true">
@@ -30,6 +31,7 @@
   </mz-modal-content>
   <mz-modal-footer>
       <button mz-button [flat]="true" style="color: #F44336" mz-modal-close>Cancel</button>
-      <button mz-button [flat]="true" style="color: #4CAF50" mz-modal-close (click)="postCase()">Add</button>
+      <button mz-button [flat]="true" style="color: #4CAF50" mz-modal-close 
+        (click)="postCase()" type="submit">Add</button>
   </mz-modal-footer>
 </mz-modal>

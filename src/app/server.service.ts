@@ -23,8 +23,11 @@ export class ServerService {
     return this.http.get(this.url + '/evd/user');
   }
 
-  // Should rename to getUser()
-  getUsers(email: string) {
+  getUserById(id: number) {
+    return this.http.get(this.url + '/evd/user?id=' + id); 
+  }
+
+  getUserByEmail(email: string) {
     return this.http.get(this.url + '/evd/user?email=' + email); 
   }
 
