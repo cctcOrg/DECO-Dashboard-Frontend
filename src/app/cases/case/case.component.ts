@@ -22,7 +22,8 @@ export class CaseComponent implements OnInit {
               private toastService: MzToastService,
               private breadcrumbs: BreadcrumbService,
               private collapsibles: CollapsibleService,
-              private route: ActivatedRoute, private router: Router) { }
+              private route: ActivatedRoute, 
+              private router: Router) { }
 
   // Tell the parent cases component to run its loadCases()
   @Output() reloadCaseView = new EventEmitter();
@@ -38,7 +39,6 @@ export class CaseComponent implements OnInit {
   // Modify case, tell parent component to reload all case cards
   putCase() {
     this.serverService.putCase(this.currentCase.userId, this.currentCase.id, this.currentCase).subscribe(
-      // Reload cases
       (response) => this.reloadCaseView.emit(), 
       (error) => this.toastService.show('ERROR: Case not modified!', 4000)
     );
@@ -52,7 +52,6 @@ export class CaseComponent implements OnInit {
     console.log("Calling deleteCase()...");
     
     this.serverService.deleteCase(this.currentCase.userId, this.currentCase.id).subscribe(
-        // Reload cases
         (response) => this.reloadCaseView.emit(), 
         (error) => this.toastService.show('ERROR: Case not deleted!', 4000)
     );
