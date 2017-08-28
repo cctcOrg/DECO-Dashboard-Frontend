@@ -10,3 +10,7 @@ ul#file li {
 #purple {
     background: #9C27B0;
 }
+
+input {
+    font-size: 20px;
+}

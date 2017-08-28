@@ -10,3 +10,7 @@ ul#device li {
 #orange {
     background: #FF9800;
 }
+
+input {
+    font-size: 20px;
+}

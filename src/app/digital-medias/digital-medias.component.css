@@ -10,3 +10,7 @@ ul#digitalMedia li {
 #yellow {
     background: #FFC107;
 }
+
+input {
+    font-size: 20px;
+}

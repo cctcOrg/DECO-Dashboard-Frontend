@@ -10,3 +10,7 @@ ul#image li {
 #green {
     background: #4CAF50;
 }
+
+input {
+    font-size: 20px;
+}
