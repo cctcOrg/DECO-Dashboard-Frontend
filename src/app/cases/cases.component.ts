@@ -26,24 +26,22 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
  
   // All arrays needed to make the form "dynamic"
   form: FormField[] = [];
-  caseVariables: string[] = ["suspectFirstName", "suspectLastName",
-    "caseNumber", "dateReceived", "caseDescription", 
-    "examinerFirstName", "examinerLastName",
-    "collectionLocation", "labId"];
+  caseVariables: string[] = ["suspectFirstName", "suspectLastName", "caseNumber", 
+    "dateReceived", "caseDescription", "examinerFirstName", 
+    "examinerLastName", "collectionLocation", "labId"];
   labels: String[] = ["Suspect First Name", "Suspect Last Name", "Case Number",
-    null, "Case Description", "Examiner First Name", "Examiner Last Name", 
-    "Collection Location", "Lab ID"];
-  ids: String[] = ["input-firstname", "input-lastname", "input-caseNumber", "datereceived",
-    "input-desc", "input-ex-firstname", "input-ex-lastname", "input-loc"];
-  types: String[] = ["text", "text", "number", "datetime-local", "text", "text",
+    null, "Case Description", "Examiner First Name", 
+    "Examiner Last Name", "Collection Location", "Lab ID"];
+  ids: String[] = ["input-firstname", "input-lastname", "input-caseNumber", 
+    "datereceived", "input-desc", "input-ex-firstname", 
+    "input-ex-lastname", "input-loc"];
+  types: String[] = ["text", "text", "number", 
+  "datetime-local", "text", "text",
   "text", "text", "text", "number"];
-  fieldValue: any[] = ["", "", "", "", "", "", "", "", "", ""];
+  fieldValue: any[] = [null, null, null, null, null, null, null, null, null, null];
 
-  caseSelected = false; 
   savedChanges = false;
-  caseComplete = false;
-  numFields: number = 9;
-  curFields: number = 0;
+
   userId: number;
   sub: any;
   paramSubscription: Subscription;
@@ -96,10 +94,13 @@ export class CasesComponent implements OnInit, CanComponentDeactivate {
 
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
-    console.log('in can deactivate case');
+    this.setNewCase();
+    
+    console.log('In can deactivate case...');
     for(let temp in this.newCase) {
       let value = this.newCase[temp];
-      if((value !== undefined) && !this.savedChanges) {
+      console.log("VALUE: " + value);
+      if(value && !this.savedChanges) {
         return confirm('You are currently editing a case, do you wish to discard?')
       }
     }  

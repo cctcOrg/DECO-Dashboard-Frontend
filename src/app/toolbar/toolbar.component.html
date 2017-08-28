@@ -54,13 +54,11 @@
       </div>
         <!-- Breadcrumbs -->
         <nav class="nav-wrapper" class="z-depth-0" id="blue">
-            <div style="white-space: nowrap">
-              <a *ngIf="caseView" class="breadcrumb" (click)="breadCrumbCases()">Cases</a>
-              <a *ngIf="deviceView" class="breadcrumb" (click)="breadCrumbDevices()">Devices</a>
-              <a *ngIf="digitalMediaView" class="breadcrumb" (click)="breadCrumbDm()">Digital Media</a>
-              <a *ngIf="imageView" class="breadcrumb" (click)="breadCrumbImage()">Images</a>
-              <a *ngIf="fileView" class="breadcrumb">Files</a>
-            </div>
+          <a *ngIf="caseView" class="breadcrumb" (click)="breadCrumbCases()">Cases</a>
+          <a *ngIf="deviceView" class="breadcrumb" (click)="breadCrumbDevices()">Devices</a>
+          <a *ngIf="digitalMediaView" class="breadcrumb" (click)="breadCrumbDm()">Digital Media</a>
+          <a *ngIf="imageView" class="breadcrumb" (click)="breadCrumbImage()">Images</a>
+          <a *ngIf="fileView" class="breadcrumb">Files</a>
         </nav>
 
     </div>
