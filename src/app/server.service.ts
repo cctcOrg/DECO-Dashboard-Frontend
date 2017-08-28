@@ -108,7 +108,7 @@ export class ServerService {
     return this.http.get(this.url + '/evd/' + userId + '/case/' + caseId + '/dev/' + deviceId + '/dm/' + dmId + '/img/' + imgId + '/filemd');
   }
 
-  // TODO: DELETE THIS WHEN IN DELPOYING FOR PRODUCTION! Clear database for development purposes
+  // TODO: DELETE THIS WHEN IN DEPLOYING FOR PRODUCTION! Clear database for development purposes
   NUKE() {
     return this.http.delete(this.url+'/evd/nuke'); 
   }
