@@ -29,7 +29,7 @@ a {
 
 /* Remove spacing in front of a breadcrumb */
 .breadcrumb {
-    margin-left: -25px;
+    margin-left: -1.5vw;
 }
 
 .breadcrumb:hover {
