@@ -13,6 +13,7 @@ import { DevicesComponent } from './devices/devices.component';
 import { DigitalMediasComponent } from './digital-medias/digital-medias.component';
 import { ImagesComponent } from './images/images.component';
 import { FilesComponent } from './files/files.component';
+import { AccInfoComponent } from './acc-info/acc-info.component';
 /**
  * The basic idea behind the routing is that the login page will be the default home page,
  * and once logged in, the default action will be to load the Dashboard Component, along with
@@ -30,6 +31,7 @@ import { FilesComponent } from './files/files.component';
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'dashboard/:userId',canActivate: [AuthGuard], component: DashboardComponent, children: [
+    { path: 'account', component: AccInfoComponent},
     { path: 'cases', children: [
       { path: '', pathMatch: 'full', canDeactivate: [CanDeactivateGuard], component: CasesComponent },
       { path: ':caseId/devices', children: [
