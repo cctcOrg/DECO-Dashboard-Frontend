@@ -1,6 +1,6 @@
-# CCTC Forensic Case Dashboard Frontend
+# CCTC Digital Evidence Collection Dashboard Frontend
 
-Forensic Case Dashboard frontend for digital forensics examiners. Written in Angular 4.
+This is documentation for the CCTC Digital Evidence Collection (DECO) Dashboard, explaining the frontend development aspect ranging from setting up the development environment to developing the frontend interface for the forensic dashboard California Cyber Training Complex project. This is California’s first collaborative forensic data display that will allow investigators to track cases digitally.
 
 # Setup
 
