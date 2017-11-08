@@ -64,7 +64,7 @@ This web app follows the [MVC architecture pattern](https://en.wikipedia.org/wik
 ## 4.2 Dashboard
 1. The Dashboard contains 3 components: Toolbar, Collapsible, Cases
   * Toolbar: Contains the code for the sidenav bar, using ng2-materialize.
-  * Collapsible: 4 Collapsibles for the objects above files (cases, devices, digital medias, and images). Each collapsible  * displays the metadata related objects.
+  * Collapsible: 4 Collapsibles for the objects above files (cases, devices, digital medias, and images). Each collapsible displays the metadata related objects.
   * Cases: Contains the setup to create a case in a modal.
   
 ## 4.3 Cases
