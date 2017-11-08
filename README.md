@@ -26,10 +26,6 @@ Recommended IDEs:
 
 Because of the large amount of files creating an Angular project generates, we do not recommend working in a terminal text editor.
 
-# Design Libraries Used
-* [MaterializeCSS](http://materializecss.com/)
-* [ng2-materialize](https://sherweb.github.io/ng2-materialize/button/)
-
 ## 2.3 Material Design
 The overall design of the website is loosely following Google’s Material design language. Material Design follows some very specific guidelines that we suggest following to keep the look of the website consistent. Read more about it [here](https://material.io/guidelines/material-design/introduction.html). It’s a good idea to not combine this with other front end frameworks like Bootstrap (Bootstrap is based off a separate design language, we do not want to mix two design languages).
 
