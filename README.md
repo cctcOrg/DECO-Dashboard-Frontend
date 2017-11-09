@@ -1,6 +1,14 @@
 # CCTC Digital Evidence Collection Dashboard Frontend
 This is documentation for the CCTC Digital Evidence Collection (DECO) Dashboard, explaining the frontend development aspect ranging from setting up the development environment to developing the frontend interface for the forensic dashboard California Cyber Training Complex project. This is California’s first collaborative forensic data display that will allow investigators to track cases digitally.
 
+| Contributors       | Time Period        |
+|           ---      | ---                |
+| Jonathan Chianglin | Summer 2017        |
+| Vincy Chow         | Summer 2017        |
+| Duc Dao            | Summer, Fall 2017  |
+| Tyler Nash         | Summer 2017        |
+| Nick Ryan          | Summer 2017        |
+
 # 1.0 Setup
 1. Clone the repository and cd into it.
 2. Install [npm](https://www.npmjs.com/package/npm) through [node](https://nodejs.org/en/).
