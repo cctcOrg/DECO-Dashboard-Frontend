@@ -9,6 +9,8 @@ This is documentation for the CCTC Digital Evidence Collection (DECO) Dashboard,
        `sudo npm install` (in main repo folder).
 5. Launch with `ng serve`. Server will run at localhost:4200 by default.
 
+Note that the back end needs to be running in order to use the dashboard to its full capability.
+
 # 2.0 Enivronment and Technologies
 ## 2.1 Framework: Angular 4
 There’s a steep learning curve but it’s important to learn the architecture and the features of Angular that make it a powerful JavaScript framework. This documentation will not go into the technical details of Angular 4 so we suggest to learning Angular 4 through tutorials:
