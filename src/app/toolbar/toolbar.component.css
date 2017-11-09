@@ -59,3 +59,21 @@ a:active {
 mz-input {
     font-size: 20px;
 }
+
+.sidebar-header {
+    position: relative;
+    height: 200px;
+    margin-bottom: 8px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.header-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
