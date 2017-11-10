@@ -4,46 +4,50 @@
       <form class="col s12">
       <div class="row">
          <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate">
-            <label for="first_name">Current First Name</label>
+            <input id="first_name" type="text" class="validate" 
+            [(ngModel)]="user.firstName">
+            <label for="first_name">First Name</label>
          </div>
          <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Current Last Name</label>
+            <input id="last_name" type="text" class="validate"
+            [(ngModel)]="user.lastName">
+            <label for="last_name">Last Name</label>
          </div>
       </div>
-      <div class="row">
-            <div class="input-field col s6">
-               <input id="first_name" type="text" class="validate">
-               <label for="first_name">New First Name</label>
-            </div>
-            <div class="input-field col s6">
-               <input id="last_name" type="text" class="validate">
-               <label for="last_name">New Last Name</label>
-            </div>
-         </div>
-      <div class="row">
+      <!--<div class="row">             Can't edit passwords right now because user class doesn't have a password field
          <div class="input-field col s12">
             <input id="password" type="password" class="validate">
             <label for="password">Current Password</label>
          </div>
       </div>
       <div class="row">
-            <div class="input-field col s12">
-               <input id="password" type="password" class="validate">
-               <label for="password">New Password</label>
-            </div>
+         <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">New Password</label>
          </div>
+      </div>
       <div class="row">
          <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
+            <input id="password" type="password" class="validate">
+            <label for="password">Confirm New Password</label>
+         </div>
+      </div> -->
+      <div class="row">
+         <div class="input-field col s12">
+            <input id="email" type="email" class="validate" [(ngModel)]="user.email">
             <label for="email" data-error="Please include an '@' in the email address.">Current Email</label>
          </div>
       </div>
       <div class="row">
+         <div class="input-field col s12">
+            <input id="email" type="email" class="validate" [(ngModel)]="newEmail">
+            <label for="email" data-error="Please include an '@' in the email address.">New Email</label>
+         </div>
+      </div>
+      <div class="row">
             <div class="input-field col s12">
-               <input id="email" type="email" class="validate">
-               <label for="email" data-error="Please include an '@' in the email address.">New Email</label>
+               <input id="email" type="email" class="validate" [(ngModel)]="newEmail">
+               <label for="email" data-error="Please include an '@' in the email address.">Confirm New Email</label>
             </div>
          </div>
       </form>

@@ -35,6 +35,10 @@ export class ServerService {
     return this.http.post(this.url + '/evd/user', json);
   }
 
+  putUser(email: string, json: any) {
+    return this.http.put(this.url + 'evd/user?email=' + email, json);
+  }
+
   // Case methods
   getCase(userId: any, caseId) {
     return this.http.get(this.url + '/evd/' + userId + '/case?caseId=' + caseId); 
