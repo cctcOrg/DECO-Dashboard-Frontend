@@ -4,12 +4,22 @@
       <form class="col s12">
       <div class="row">
          <div class="input-field col s6">
-            <input id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
+            <input mz-input
+               [label]="'First Name'"
+               id="first_name" 
+               type="text" 
+               class="validate" 
+               [(ngModel)]="user.firstName" 
+               [ngModelOptions]="{standalone: true}">
          </div>
          <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
+            <input mz-input
+               [label]="'Last Name'"
+               id="last_name" 
+               type="text" 
+               class="validate" 
+               [(ngModel)]="user.lastName" 
+               [ngModelOptions]="{standalone: true}">
          </div>
       </div>
       <!--<div class="row">             Can't edit passwords right now because user class doesn't have a password field
@@ -32,26 +42,45 @@
       </div> -->
       <div class="row">
          <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="Please include an '@' in the email address.">Current Email</label>
+            <input mz-input mz-validation
+               [label]="'Current Email'"
+               id="email" 
+               type="email" 
+               class="validate" 
+               [(ngModel)]="user.email" 
+               [ngModelOptions]="{standalone: true}"
+               data-error="Please include an '@' in the email address.">
          </div>
       </div>
       <div class="row">
          <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="Please include an '@' in the email address.">New Email</label>
+            <input mz-input mz-validation
+               [label]="'New Email'"
+               id="email" 
+               type="email" 
+               class="validate" 
+               [(ngModel)]="newEmail" 
+               [ngModelOptions]="{standalone: true}"
+               data-error="Please include an '@' in the email address.">
          </div>
       </div>
       <div class="row">
-            <div class="input-field col s12">
-               <input id="email" type="email" class="validate">
-               <label for="email" data-error="Please include an '@' in the email address.">Confirm New Email</label>
-            </div>
+         <div class="input-field col s12">
+               <input mz-input mz-validation
+                  [label]="'Confirm New Email'"
+                  id="email" 
+                  type="email" 
+                  class="validate" 
+                  [(ngModel)]="newEmail" 
+                  [ngModelOptions]="{standalone: true}"
+                  data-error="Please include an '@' in the email address.">
          </div>
+      </div>
       </form>
 
-      <button class="waves-effect waves-light btn" id="orange">
-         <i class="material-icons left">save</i>Save Settings</button>
+      <a class="waves-effect waves-light btn" 
+         id="orange" type="submit" name="action" (click)="putUser()">
+         <i class="material-icons left">save</i>Save Settings</a>
    </div>
 </body>
 

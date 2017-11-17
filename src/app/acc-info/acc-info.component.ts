@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { CasesService } from './../cases/cases.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {User} from '../user';
 import { Response } from '@angular/http';
 
@@ -15,9 +15,9 @@ import { CollapsibleService } from '../collapsible.service';
   styleUrls: ['./acc-info.component.css']
 })
 export class AccInfoComponent implements OnInit {
-  user: User;
+  @Input() user: User = new User(0, "", "", "");
   userId: number;
-  newEmail: string = "";
+  @Input() newEmail: string = "";
 
   constructor(private serverService: ServerService,
               private casesService: CasesService,
@@ -26,12 +26,12 @@ export class AccInfoComponent implements OnInit {
               private collapsible: CollapsibleService) { }
 
   ngOnInit() {
+    this.getUserInfo();
+    
     // Remove all breadcrumbs except Cases in case we're N levels deep w/ the cards
     setTimeout( () => {
       this.breadcrumbs.viewCases();
     });
-
-    this.getUserInfo();
   }
 
   ngAfterViewInit() {
@@ -39,6 +39,7 @@ export class AccInfoComponent implements OnInit {
   }
   
   getUserInfo() {
+    var email;
     this.userId = this.casesService.getUserId();
 
     console.log("User ID: " + this.userId);
@@ -57,9 +58,24 @@ export class AccInfoComponent implements OnInit {
     );
   }
 
-  putUser() {    
-    this.serverService.putUser(this.user.email, this.user).subscribe(
+  resetForm() {
+    console.log("WELL MET");
+    this.newEmail = "";
+  }
+
+  putUser() {  
+    var oldEmail = this.user.email;
+    
+    // User entered new email, set new email in JSON
+    if (this.newEmail != "") {
+      this.user.email = this.newEmail;
+    }
+    
+    this.serverService.putUser(oldEmail, this.user).subscribe(
+      (response) => this.toastService.show('Changes saved!', 4000),
       (error) => this.toastService.show('ERROR: User not modified!', 4000)
-    )
+    );
+
+    this.newEmail = "";
   }
 }

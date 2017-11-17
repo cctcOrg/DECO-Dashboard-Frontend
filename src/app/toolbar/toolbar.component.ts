@@ -52,7 +52,9 @@ export class ToolbarComponent implements OnInit {
     this.breadcrumbs.currentDigitalMedia.subscribe(digitalMediaView => this.digitalMediaView = digitalMediaView);
     this.breadcrumbs.currentImage.subscribe(imageView => this.imageView = imageView);
     this.breadcrumbs.currentFile.subscribe(fileView => this.fileView = fileView);
+  }
 
+  ngAfterViewInit() {
     this.getUserInfo();
   }
 

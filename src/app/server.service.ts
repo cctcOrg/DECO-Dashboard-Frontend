@@ -36,7 +36,7 @@ export class ServerService {
   }
 
   putUser(email: string, json: any) {
-    return this.http.put(this.url + 'evd/user?email=' + email, json);
+    return this.http.put(this.url + '/evd/user?email=' + email, json);
   }
 
   // Case methods
