@@ -4,7 +4,7 @@ import {Http, RequestOptions, Headers} from '@angular/http';
 @Injectable()
 export class ServerService {
   // Local Fedora server with 5000 port URL, old IP 129.65.100.50
-  url = 'http://172.30.86.133:5000';
+  url = 'http://172.30.86.19:5000';
 
   // EC2 Server URL
   // url = 'http://ec2-34-212-218-147.us-west-2.compute.amazonaws.com:80';
@@ -33,6 +33,10 @@ export class ServerService {
 
   postUser(json: any) {
     return this.http.post(this.url + '/evd/user', json);
+  }
+
+  putUser(email: string, json: any) {
+    return this.http.put(this.url + 'evd/user?email=' + email, json);
   }
 
   // Case methods
