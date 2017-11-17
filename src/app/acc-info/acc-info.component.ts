@@ -16,8 +16,11 @@ import { CollapsibleService } from '../collapsible.service';
 })
 export class AccInfoComponent implements OnInit {
   user: User;
+  userId: number;
+  newEmail: string = "";
 
   constructor(private serverService: ServerService,
+              private casesService: CasesService,
               private toastService: MzToastService,
               private breadcrumbs: BreadcrumbService,
               private collapsible: CollapsibleService) { }
@@ -27,12 +30,33 @@ export class AccInfoComponent implements OnInit {
     setTimeout( () => {
       this.breadcrumbs.viewCases();
     });
+
+    this.getUserInfo();
   }
 
   ngAfterViewInit() {
     Promise.resolve(null).then( () => this.collapsible.removeAllCollapsible() );
   }
   
+  getUserInfo() {
+    this.userId = this.casesService.getUserId();
+
+    console.log("User ID: " + this.userId);
+
+    this.serverService.getUserById(this.userId).subscribe(
+      (response: Response) => {
+        const data = response.json();
+        console.log(data);
+
+        this.user = new User(this.userId, 
+                             data.email, 
+                             data.firstName, 
+                             data.lastName);
+      },
+      (error) => console.log(error)
+    );
+  }
+
   putUser() {    
     this.serverService.putUser(this.user.email, this.user).subscribe(
       (error) => this.toastService.show('ERROR: User not modified!', 4000)
